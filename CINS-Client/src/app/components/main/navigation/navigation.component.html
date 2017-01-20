@@ -1,0 +1,17 @@
+<md-toolbar color="primary">
+  <span>Topics:</span>
+  <md-toolbar-row *ngFor="let mainTopic of mainTopics">
+    <span>
+      {{mainTopic}}
+      </span>
+      <span class="example-spacer"></span>
+      <md-menu #appMenu="mdMenu">
+        <button md-menu-item *ngFor="let subTopic of allTopics[mainTopic]" (click)="setCurrentSelectedSubTopic(subTopic)">{{subTopic}}</button>
+      </md-menu>
+
+      <button md-icon-button [mdMenuTriggerFor]="appMenu">
+         <md-icon>more_vert</md-icon>
+      </button>
+
+  </md-toolbar-row>
+</md-toolbar>

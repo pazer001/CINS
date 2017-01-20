@@ -1,0 +1,6 @@
+.vagrant
+bootstrap.sh
+CINS Servers Chart.vsdx
+npm-debug.log
+ubuntu-xenial-16.04-cloudimg-console.log
+Vagrantfile

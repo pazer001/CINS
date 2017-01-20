@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html/CINS":{"fsnotify":true,"guestpath":"/var/www/html/CINS","hostpath":"E:/Projects/CINS","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"E:/Projects/CINS","disabled":false,"__vagrantfile":true}}}
