@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/CINS-server-laravel" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CINS-Server-Laravel" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/CINS-Client/dist" />
       <excludeFolder url="file://$MODULE_DIR$/CINS-Client/node_modules/@angular/core/src/linker/dist" />
       <excludeFolder url="file://$MODULE_DIR$/CINS-Client/node_modules/@angular/core/src/linker/tmp" />
@@ -11,5 +11,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP Runtime" type="php">
+        <CLASSES>
+          <root url="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/standard" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/standard" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

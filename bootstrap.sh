@@ -61,3 +61,10 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 sudo apt-get install -y net-tools
 sudo npm install -g angular-cli
+sudo npm install -g nodemon
+sudo apt-get install nginx -y
+sudo apt-get install php-fpm
+sudo service apache2 stop
+sudo service nginx start
+sudo apt-get install postgresql postgresql-contrib -y
+sudo postgres -p 5433
