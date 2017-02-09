@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buildprod": "npm install && npm install rimraf -g && rimraf node_modules"
+    "buildprod": "npm install && rimraf node_modules"
   },
   "author": "",
   "license": "ISC",
