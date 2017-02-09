@@ -1,4 +1,4 @@
-const UsersModel = require('../Models/UsersModel');
+const UsersModel = require('./UsersModel');
 
 class UsersController {
     setUserSession(req) {

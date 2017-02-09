@@ -5,7 +5,7 @@ const session           =   require('client-sessions');
 const cookieParser      =   require('cookie-parser');
 const TopicsController  =   require('./Controllers/TopicsController');
 const UsersController   =   require('./Controllers/UsersController');
-const config            =   require('./config.json');
+const config            =   require('./../config.json');
 
 const app       = express();
 

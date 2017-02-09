@@ -1,5 +1,5 @@
 const pg        =   require('pg');
-const UserModel =   require('../Models/UsersModel');
+const UserModel =   require('UsersModel');
 const config    =   require('../config.json');
 
 class TopicsModel {

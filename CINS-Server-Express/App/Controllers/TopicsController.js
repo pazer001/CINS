@@ -1,4 +1,4 @@
-const TopicsModel   =   require('../Models/TopicsModel');
+const TopicsModel   =   require('./TopicsModel');
 
 class TopicsController {
     async getAllTopics() {
