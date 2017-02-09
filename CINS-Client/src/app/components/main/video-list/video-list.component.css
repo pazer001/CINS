@@ -1,0 +1,20 @@
+.image-container {
+  width: 100%;
+  max-width: 100%;
+}
+.image-container img {
+  max-width: 150px;
+  display: inline;
+}
+
+.list-title {
+  display: inline!important;
+}
+
+.media-info {
+  display: inline-block;
+}
+
+.image-container .frame {
+  background-color: transparent;
+}

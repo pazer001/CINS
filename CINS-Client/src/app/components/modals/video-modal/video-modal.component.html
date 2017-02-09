@@ -1,0 +1,23 @@
+<div class="dialog">
+  <div class="window">
+    <div class="window-caption bg-cyan fg-white">
+      <span class="window-caption-icon"><img src=""></span>
+      <span class="window-caption-title">{{data.selectedVideo ? data.selectedVideo.Title : ''}}</span>
+      <span class="btn-close bg-red fg-white" (click)="data.closeMedia()"></span>
+    </div>
+    <div class="window-content bg-dark fg-white" *ngIf="data.selectedVideo.Type === 'Video'">
+      <div *ngIf="data.selectedVideo.Source === 'Youtube'">
+        <iframe [src]="data.getSelectedVideo(data.selectedVideo.Source).Url" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div *ngIf="data.selectedVideo.Source === 'Vimeo'">
+        <iframe [src]="data.getSelectedVideo(data.selectedVideo.Source).Url" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="window-content bg-dark fg-white" *ngIf="data.selectedVideo.Type === 'Article'">
+        <iframe [src]="data.getArticleUrl(data.selectedVideo.Url)" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+  </div>
+</div>

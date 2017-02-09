@@ -1,0 +1,18 @@
+{
+  "Development": {
+    "apiServer": {
+      "URL": "localhost"
+    }
+  },
+  "Test": {
+    "apiServer": {
+      "URL": "192.168.172.132:90"
+    }
+  },
+  "Production": {
+    "apiServer": {
+      "URL": "http://cincserverloadbalancer-449561112.eu-west-2.elb.amazonaws.com"
+    }
+  }
+}
+

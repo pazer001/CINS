@@ -1,0 +1,24 @@
+.window-content {
+  height: 100%!important;
+}
+
+.bg-grayDark input {
+  /*background-color: #333333 !important;*/
+}
+
+button {
+  margin: 0 auto;
+  /*display: block;*/
+}
+
+.window-caption {
+  line-height: 16px;
+}
+
+.window {
+  height: 100%;
+}
+
+.window.warning {
+  box-shadow: none;
+}

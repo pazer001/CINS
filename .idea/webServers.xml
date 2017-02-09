@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="c4c61bc7-15a7-4260-89e4-fcb9ff1dceb6" name="Vagrant" url="http://192.1">
-        <fileTransfer host="192.1" port="2222" privateKey="E:\Projects\CINS\.vagrant\machines\default\virtualbox\private_key" rootFolder="/var/www/html/CINS" accessType="SFTP" keyPair="true">
+      <webServer id="c4c61bc7-15a7-4260-89e4-fcb9ff1dceb6" name="Vagrant" url="http://127.0.0.1">
+        <fileTransfer host="127.0.0.1" port="2222" privateKey="E:\Projects\CINS\.vagrant\machines\default\virtualbox\private_key" rootFolder="/var/www/html/CINS" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
@@ -18,7 +18,7 @@
           <option name="port" value="2222" />
         </fileTransfer>
       </webServer>
-      <webServer id="90b7f45a-8adb-4244-86b1-2b7791e9e068" name="Load Balancer - Nginx - 80" url="http://192.168.172.128">
+      <webServer id="90b7f45a-8adb-4244-86b1-2b7791e9e068" name="Client - Load Balancer - 80" url="http://192.168.172.128">
         <fileTransfer host="192.168.172.128" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
@@ -26,7 +26,7 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="59f57945-a837-455a-b89d-71717b7b701e" name="Client - Node - 8080 - 1" url="http://192.168.172.129">
+      <webServer id="59f57945-a837-455a-b89d-71717b7b701e" name="Client - Node - 80 - 1" url="http://192.168.172.129">
         <fileTransfer host="192.168.172.129" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions controlEncoding="UTF-8" dataProtectionLevel="Private" />
@@ -34,7 +34,7 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="314f581d-c69b-452d-b88c-72feb0d600b0" name="Client - Node - 8080 - 2" url="http://192.168.172.130">
+      <webServer id="314f581d-c69b-452d-b88c-72feb0d600b0" name="Client - Node - 80 - 2" url="http://192.168.172.130">
         <fileTransfer host="192.168.172.130" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
@@ -42,8 +42,64 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="d24947ec-9ff0-4a44-9cb8-d41e827ecdee" name="Client - Node - 8080 - 3" url="http://192.168.172.131">
+      <webServer id="d24947ec-9ff0-4a44-9cb8-d41e827ecdee" name="Client - Node - 80 - 3" url="http://192.168.172.131">
         <fileTransfer host="192.168.172.131" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="d3f00f51-c6cc-4f95-9174-8411ab17bf70" name="Server - Load Balancer - 90" url="http://192.168.172.132">
+        <fileTransfer host="192.168.172.132" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="c597aec3-e3af-45ec-a75c-59059bbf43b1" name="Server - Node - 9000 - 1" url="http://192.168.172.133">
+        <fileTransfer host="192.168.172.133" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="c15906be-334a-4149-b9fe-9b065da4e732" name="Server - Node - 9000 - 2" url="http://192.168.172.134">
+        <fileTransfer host="192.168.172.134" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="ec53e769-1d26-4696-85e1-1053eacaa3e4" name="Server - Node - 9000 - 3" url="http://192.168.172.135">
+        <fileTransfer host="192.168.172.135" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="6965d520-132e-4f6a-8c1d-5de2725410f8" name="Database - Postgresql - 5432" url="http://192.168.172.136">
+        <fileTransfer host="192.168.172.136" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="99ecd82b-f6b6-43e9-b7b9-135a16d43733" name="Production - Server" url="http://ec2-52-56-142-20.eu-west-2.compute.amazonaws.com">
+        <fileTransfer host="ec2-52-56-142-20.eu-west-2.compute.amazonaws.com" port="22" privateKey="E:\SSH-keys\CINCServerKey.pem" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="77edee6c-ae47-4dcb-95aa-7ec3d2eba446" name="Production - Client" url="http://ec2-52-56-142-70.eu-west-2.compute.amazonaws.com">
+        <fileTransfer host="ec2-52-56-142-70.eu-west-2.compute.amazonaws.com" port="22" privateKey="E:\SSH-keys\CINCClient.pem" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

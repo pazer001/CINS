@@ -1,67 +1,151 @@
-import { Injectable }     from '@angular/core';
+import {Injectable}     from '@angular/core';
+import {Observable}     from 'rxjs/Observable';
+import {Http, Response, Headers, RequestOptions, URLSearchParams, RequestOptionsArgs} from '@angular/http';
+import {DomSanitizer} from "@angular/platform-browser";
+import 'rxjs/add/operator/map';
+import * as moment from 'moment';
+
+
 @Injectable()
 export class DataService {
-  private topics: Array<any>;
-  currentSelectedSubTopic: string;
-  constructor() {
-    this.topics   = [];
-    this.topics['JavaScript'] = [
-      'ES5',
-      'ES2015',
-      'ES2016',
-      'jQuery',
-      'jQueryUI',
-      'Angular',
-      'Angular 2',
-      'Angular Material',
-      'BackboneJS',
-      'GWT',
-      'KnockoutJS',
-      'KoaJS',
-      'Mootools',
-      'Prototype',
-      'ReactJS',
-      'Typescript',
-      'WebGL',
-      'WebRTC',
-      'Socket.IO',
-      'EmberJS',
-      'ExtJS',
-      'Highcharts',
-    ];
-    this.topics['NodeJS']   = [
-      'NodeJS',
-      'KoaJS',
-      'ExpressJS'
-    ];
-    this.topics['CSS']  = [
-      'CSS',
-      'Bootstrap',
-      'Materialize',
-      'Foundation',
-      'Pure.CSS',
-      'SASS',
-      'LESS',
-    ];
-    this.topics['PHP'] = [
-      'PHP 5',
-      'PHP 7',
-      'Laravel',
-      'Lumen',
-      'CakePHP',
-      'Codeigniter'
-    ];
+  currentSelectedSubTopic: any;
+  currentSelectedSubTopicMedia: Array<any>;
+  currentSelectedSubTopicMediaFiltered: Array<any>;
+  selectedVideo: any;
+  isVideoModalOpen: boolean;
+  isUserLoginModalOpen: boolean;
+  userLoggedIn: boolean;
+  filter: string;
+  userDetails: any;
+
+  constructor(private http: Http, private domSanitizer: DomSanitizer) {
+    this.selectedVideo            = null;
+    this.isVideoModalOpen         = false;
+    this.isUserLoginModalOpen     = false;
+    this.userLoggedIn             = false;
+    this.currentSelectedSubTopic  = {Name: 'Latest Media'};
+    this.filter                   = 'All';
+    this.userDetails              = null;
   }
 
-  getTopics() {
-    return this.topics
+  getAllTopics(): Observable<any> {
+    return this.http.get(`api/getAllTopics`).map(res => res.json())
   }
 
-  getCurrentSelectedSubTopic() {
-    return this.currentSelectedSubTopic;
+  getMedia(Id): Observable<any> {
+    return this.http.get(`api/getMedia/${Id}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
+  }
+
+  getLatestMedia(): Observable<any> {
+    let userId  = this.userDetails ? this.userDetails.data.Id : '0';
+    return this.http.get(`api/getLatestMedia/${userId}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
+  }
+
+  openMedia(currentSelectedSubTopicVideo) {
+    let notAllowedIframeSource  = {
+      'Medium': true,
+      'Free Code Camp': true
+    };
+
+    if(notAllowedIframeSource[currentSelectedSubTopicVideo.Source]) {
+      var win = window.open(currentSelectedSubTopicVideo.Url, '_blank');
+      win.focus();
+      return;
+    }
+
+    this.selectedVideo = currentSelectedSubTopicVideo;
+    this.isVideoModalOpen = true;
+  }
+
+  closeMedia() {
+    this.selectedVideo = null;
+    this.isVideoModalOpen = false;
+  }
+
+  getSelectedVideo(videoSource) {
+    // console.log(videoSource, this.selectedVideo)
+    switch (videoSource) {
+      case 'Youtube':
+        this.selectedVideo.Url = this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.selectedVideo.Url}/?color=white&iv_load_policy=3&modestbranding=1`);
+        break;
+
+      case 'Vimeo':
+        this.selectedVideo.Url = this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.selectedVideo.Url}?quality=1080p`);
+    }
+
+    return this.selectedVideo;
+  }
+
+  getArticleUrl(articleUrl) {
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(articleUrl);
+  }
+
+  openUserLoginModalOpen() {
+    this.isUserLoginModalOpen = true;
+  }
+
+  closeUserLoginModalOpen() {
+    this.isUserLoginModalOpen = false;
   }
 
   setCurrentSelectedSubTopic(subTopic) {
     this.currentSelectedSubTopic = subTopic;
+    this.getMedia(subTopic.Id).subscribe(media => {
+      this.currentSelectedSubTopicMedia = media;
+      this.setFilter('All');
+    })
   }
+
+  getUser(getUser): Observable<any> {
+    let params: URLSearchParams = new URLSearchParams();
+    for (let i in getUser) {
+      params.set(i, getUser[i])
+    }
+    let options = new RequestOptions({
+      search: params
+    });
+
+    this.userDetails  = this.http.get(`user`, options).map(res => res.json());
+    return this.userDetails;
+  }
+
+  postUser(postUser): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(`user`, JSON.stringify(postUser), options).map(res => res.json())
+  }
+
+  postUserLogout(): Observable<any> {
+    return this.http.post(`api/userLogout`, null).map(res => res.json())
+  }
+
+  setFilter(type = 'All') {
+    this.filter = type;
+    this.currentSelectedSubTopicMediaFiltered = this.filterMedia(this.filter, this.currentSelectedSubTopicMedia);
+  }
+
+  filterMedia(type, media): any {
+    switch (type) {
+      case 'All':
+        return media;
+        // break;
+
+      case 'Article':
+        return media.filter(mediaItem => mediaItem.Type == 'Article');
+        // break;
+
+      case 'Video':
+        return media.filter(mediaItem => mediaItem.Type == 'Video');
+        // break;
+    }
+  }
+
+  postUserTopicsSave(userId, selectedSubTopicId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(`userTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
+  deleteUserTopicsSave(userId, selectedSubTopicId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(`UserTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
 }
