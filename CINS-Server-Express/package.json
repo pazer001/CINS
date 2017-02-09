@@ -1,5 +1,5 @@
 {
-  "name": "cins-server-express",
+  "name": "cins-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
