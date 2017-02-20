@@ -1,0 +1,127 @@
+/*@import "../../fonts/devicon-master/devicon.min.css";*/
+
+.v-menu.darcula li.menu-title, .d-menu.darcula li.menu-title {
+  color: white;
+}
+.v-menu.darcula li > a, .d-menu.darcula li > a {
+  background: transparent;
+  color: #ffffff;
+}
+
+.v-menu {
+  background: transparent;
+}
+.v-menu .icon {
+  width: 2rem;
+  height: 2rem;
+  color: #ffffff;
+  background-color: #59cde2;
+  max-height: 100%;
+}
+.v-menu .icon:before {
+  vertical-align: middle;
+}
+
+.v-menu li a .icon, .v-menu li a img {
+  top: 40%;
+  left: 0;
+}
+
+.v-menu li {
+  background: transparent!important;
+}
+
+.dropdown-toggle:hover {
+  background: rgba(255,255,255,0.1)!important;
+}
+
+#menu-tiles {
+  display: none;
+}
+
+#menu-tiles.active {
+  display: block;
+  overflow-y: scroll;
+  height: 475px;
+}
+
+#menu-tiles.active::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+}
+
+#menu-tiles.active::-webkit-scrollbar-thumb {
+  background-color: #707070;
+}
+
+#menu-tiles.active::-webkit-scrollbar-track {
+  background-color: #4c4c4c;
+}
+
+
+.main-topic-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-topic-tile img {
+  width: 100%;
+}
+
+
+
+.tile-large {
+  font-size: 3em;
+}
+
+.tile-large img {
+  max-width: 75%;
+}
+
+.tile-wide {
+  font-size: 1.5em;
+}
+
+.tile-wide img {
+  max-width: 40%;
+}
+
+.tile-square {
+  font-size: 1.5em;
+}
+
+.tile-square img {
+  max-width: 85%;
+}
+
+.tile-small {
+  font-size: 0.75em;
+}
+
+.tile-small img {
+  width: 70%;
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+  .tile-container {
+    width: 64%;
+  }
+  .main-topic-tile {
+    width: 80%!important;
+    height: 19%!important;
+    font-size: 1em;
+  }
+
+  .main-topic-tile i {
+    width: 2em!important;
+    font-size: 3em!important;
+  }
+
+  .main-topic-tile img {
+    max-width: 50%;
+  }
+}

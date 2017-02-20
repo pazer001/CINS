@@ -1,0 +1,90 @@
+#bar {
+  width: 100%;
+  height: 45px;
+  background: rgba(0,0,0,0.75);
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  overflow: hidden;
+}
+
+
+#bar button {
+  width: 50px;
+  height: 45px;
+  border: none;
+  background-size: 42%;
+  outline: none;
+  background-color: transparent;
+}
+
+#start:hover, #search:hover {
+  background-color: rgba(255, 255, 255, 0.25)!important;
+}
+
+#start:hover > span {
+  color: #4390df !important;
+}
+
+#search {
+  transform: scale(-1, 1);
+}
+
+#search span:before {
+  font-weight: 100;
+}
+
+#start-menu {
+  opacity: 0;
+  width: 55%;
+  height: 0%;
+  position: fixed;
+  bottom: 45px;
+  background: rgba(51, 51, 51, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 3;
+  transition: height .1s, opacity .2s ease-in-out;
+  overflow: hidden;
+}
+
+#start-menu.active {
+  opacity: 1;
+  height: 55%;
+  transition: height .2s, opacity .1s ease-in-out;
+}
+
+
+#search-menu {
+  opacity: 0;
+  width: 55%;
+  height: 0%;
+  position: fixed;
+  bottom: 45px;
+  background: rgba(51, 51, 51, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 0;
+  transition: height .1s, opacity .2s ease-in-out;
+  overflow: hidden;
+  transform: transale3d(0,0,0);
+}
+
+#search-menu.active {
+  opacity: 1;
+  height: 55%;
+  transition: height .2s, opacity .1s ease-in-out;
+  transform: transale3d(0,0,0);
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+  #start-menu, #search-menu {
+    width: 100%;
+    z-index: 3;
+  }
+
+  #start-menu.active, #search-menu.active {
+    height: 93%;
+  }
+}

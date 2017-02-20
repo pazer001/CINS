@@ -4,6 +4,7 @@ import {Http, Response, Headers, RequestOptions, URLSearchParams, RequestOptions
 import {DomSanitizer} from "@angular/platform-browser";
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';
+import {LayoutService} from "./layout.service";
 
 
 @Injectable()
@@ -17,8 +18,9 @@ export class DataService {
   userLoggedIn: boolean;
   filter: string;
   userDetails: any;
+  ratedMedia: any;
 
-  constructor(private http: Http, private domSanitizer: DomSanitizer) {
+  constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService) {
     this.selectedVideo            = null;
     this.isVideoModalOpen         = false;
     this.isUserLoginModalOpen     = false;
@@ -26,6 +28,7 @@ export class DataService {
     this.currentSelectedSubTopic  = {Name: 'Latest Media'};
     this.filter                   = 'All';
     this.userDetails              = null;
+    this.ratedMedia               = {};
   }
 
   getAllTopics(): Observable<any> {
@@ -42,19 +45,28 @@ export class DataService {
   }
 
   openMedia(currentSelectedSubTopicVideo) {
-    let notAllowedIframeSource  = {
-      'Medium': true,
-      'Free Code Camp': true
-    };
 
-    if(notAllowedIframeSource[currentSelectedSubTopicVideo.Source]) {
+    // let notAllowedIframeSource  = {
+    //   'Medium': true,
+    //   'Free Code Camp': true,
+    //   'ReactJS News IO': true,
+    //   'Reactjs News': true,
+    //   'Code Mentor': true,
+    //   'Thinkster': true,
+    //   'Hashbang Weekly': true,
+    //   'Tech Beacon': true,
+    //   'Dave Ceddia': true,
+    //   'reddit': true,
+    // };
+
+    // if(notAllowedIframeSource[currentSelectedSubTopicVideo.Source]) {
       var win = window.open(currentSelectedSubTopicVideo.Url, '_blank');
       win.focus();
-      return;
-    }
-
-    this.selectedVideo = currentSelectedSubTopicVideo;
-    this.isVideoModalOpen = true;
+      // return;
+    // }
+    this.layoutService.toggleFooterButtonsActive('startMenuActive');
+    // this.selectedVideo = currentSelectedSubTopicVideo;
+    // this.isVideoModalOpen = true;
   }
 
   closeMedia() {
@@ -63,7 +75,6 @@ export class DataService {
   }
 
   getSelectedVideo(videoSource) {
-    // console.log(videoSource, this.selectedVideo)
     switch (videoSource) {
       case 'Youtube':
         this.selectedVideo.Url = this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.selectedVideo.Url}/?color=white&iv_load_policy=3&modestbranding=1`);
@@ -148,4 +159,14 @@ export class DataService {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     return this.http.delete(`UserTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
+
+  rateMedia(mediaId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(`rateMedia/${mediaId}`, options).map(res => res.json())
+  }
+
+  search(term): Observable<any> {
+    return this.http.get(`api/search/${term}`).map(res => res.json())
+  }
 }

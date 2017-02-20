@@ -1,0 +1,28 @@
+<nav id="topics-navigation">
+  <div class="flex-grid">
+    <div class="row">
+      <div class="cell colspan4 padding10 left-menu-container">
+        <div id="main-topic-menu">
+          <ul class="v-menu darcula min-size-required" style="margin-left: 10px; margin-bottom: 10px;">
+            <li class="menu-title">Main Topics</li>
+            <li *ngFor="let mainTopic of mainTopics">
+              <a class="dropdown-toggle" (click)="setActiveNavigationMainTopic(mainTopic)"><span
+                class="mif-my-location icon"></span>{{mainTopic}}</a>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+      <div class="cell colspan8" *ngIf="allTopics[activeNavigationMainTopic] && allTopics[activeNavigationMainTopic]">
+        <div id="menu-tiles" class="tile-container" [ngClass]="activeNavigationMainTopic ? 'active' : ''">
+          <div class="main-topic-tile" [ngClass]="[tilesTypes[i % tilesTypes.length], tilesColors[i % tilesColors.length]]" data-role="tile" *ngFor="let subTopic of allTopics[activeNavigationMainTopic]; let i = index" (click)="setCurrentSelectedSubTopic(subTopic)">
+            <img src="assets/icons/{{subTopic.Name}}.png">
+            {{subTopic.Name}}
+            </div>
+        </div >
+      </div>
+    </div>
+  </div>
+</nav>
+

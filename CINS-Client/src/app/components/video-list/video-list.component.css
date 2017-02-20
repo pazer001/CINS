@@ -1,0 +1,28 @@
+.panel>.heading>.icon {
+  padding: 0;
+}
+
+.window {
+  margin-bottom: 1em;
+}
+
+.btn-max:after {
+  display: none;
+}
+
+.window-icon {
+  vertical-align: middle;
+}
+
+.window-content {
+  height: 97px!important;
+  overflow: hidden;
+}
+
+/*Mobile*/
+.window-caption-title {
+  width: 68%;
+  overflow: hidden;
+  display: inline-block;
+  height: 14px;
+}

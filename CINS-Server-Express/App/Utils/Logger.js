@@ -1,5 +1,5 @@
 const pg            =   require('pg');
-const config        =   require('../config.json');
+const config        =   require('../../config.json');
 class Logger {
     constructor() {
         this.pgClient   =   new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);

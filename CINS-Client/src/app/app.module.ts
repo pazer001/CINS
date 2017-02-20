@@ -6,15 +6,17 @@ import { HttpModule, Jsonp } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import {DataService} from './services/data.service';
+import {LayoutService} from './services/layout.service';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NavigationComponent } from './components/main/navigation/navigation.component';
-import { VideoListComponent } from './components/main/video-list/video-list.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { VideoListComponent } from './components/video-list/video-list.component';
 import { VideoModalComponent } from './components/modals/video-modal/video-modal.component';
 import { UserLoginComponent } from './components/modals/user-login/user-login.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,15 @@ import { UserLoginComponent } from './components/modals/user-login/user-login.co
     NavigationComponent,
     VideoListComponent,
     VideoModalComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [DataService, CookieService],
+  providers: [DataService, CookieService, LayoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

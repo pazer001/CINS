@@ -1,0 +1,51 @@
+const MediaModel   =   require('../Models/MediaModel');
+
+class MediaController {
+    async rateMedia(req, mediaId) {
+        if(req.session.rateMedia && req.session.rateMedia[mediaId]) {
+            return {
+                code: 401,
+                ratedMediaCount: await this.ratedMediaCount(mediaId),
+                message: 'Media Already Rated'
+            }
+        }
+        let rateMedia   =   await MediaModel.rateMedia(mediaId);
+        if(rateMedia.rowCount) {
+            req.session.rateMedia   =   {};
+            req.session.rateMedia[mediaId] = true;
+            return {
+                code: 200,
+                ratedMediaCount: await this.ratedMediaCount(mediaId),
+                message: 'Media Rated Successfully'
+            }
+        } else {
+            return {
+                code: 400,
+                ratedMediaCount: await this.ratedMediaCount(mediaId),
+                message: 'Media Not Rated Successfully'
+            }
+        }
+    }
+
+    async ratedMediaCount(mediaId) {
+        let ratedMediaCount     =   await MediaModel.ratedMediaCount(mediaId);
+
+        if(ratedMediaCount && ratedMediaCount.rowCount) {
+            return ratedMediaCount.rows.pop().RatingCount;
+        } else {
+            return 0
+        }
+    }
+
+    async search(term) {
+        let search     =   await MediaModel.search(term);
+
+        if(search && search.rowCount) {
+            return search.rows;
+        } else {
+            return null;
+        }
+    }
+}
+
+module.exports  =   new MediaController();

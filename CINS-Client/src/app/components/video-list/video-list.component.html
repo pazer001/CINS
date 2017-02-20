@@ -1,0 +1,57 @@
+<div>
+  <h2>{{dataService.currentSelectedSubTopic.Name}}</h2>
+  <button
+    [ngClass]="dataService.filter === 'All' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
+    (click)="dataService.setFilter('All')">All
+  </button>
+  <button
+    [ngClass]="dataService.filter === 'Article' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
+    (click)="dataService.setFilter('Article')">Articles
+  </button>
+  <button
+    [ngClass]="dataService.filter === 'Video' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
+    (click)="dataService.setFilter('Video')">Videos
+  </button>
+  <span *ngIf="dataService.currentSelectedSubTopic.Name !== 'Latest Media' && dataService.userDetails">
+      <button
+        *ngIf="dataService.userDetails.subTopicsSaveIds && dataService.userDetails.subTopicsSaveIds.data && !dataService.userDetails.subTopicsSaveIds.data.includes(dataService.currentSelectedSubTopic.Id)"
+        class="image-button"
+        (click)="postUserTopicsSave(dataService.userDetails.data.Id, dataService.currentSelectedSubTopic.Id)">
+        Save
+        <span class="icon mif-plus"></span>
+      </button>
+
+      <button
+        *ngIf="dataService.userDetails.subTopicsSaveIds && dataService.userDetails.subTopicsSaveIds.data && dataService.userDetails.subTopicsSaveIds.data.includes(dataService.currentSelectedSubTopic.Id)"
+        class="image-button"
+        (click)="deleteUserTopicsSave(dataService.userDetails.data.Id, dataService.currentSelectedSubTopic.Id)">
+        Remove
+        <span class="icon mif-minus"></span>
+      </button>
+    </span>
+</div>
+
+<div class="row" *ngFor="let currentSelectedSubTopicMediaFilteredItem of dataService.currentSelectedSubTopicMediaFiltered">
+  <div class="window" *ngIf="!layoutService.onlySearchBarResult">
+    <div class="window-caption bg-cyan fg-white">
+      <span class="window-caption-icon">
+        <span [ngClass]="currentSelectedSubTopicMediaFilteredItem.Type === 'Article' ? 'mif-file-binary' : 'mif-file-play'"></span>
+        <!--<img src="{{currentSelectedSubTopicMediaFilteredItem.ImageUrl}}">-->
+      </span>
+      <span class="window-caption-title" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">{{currentSelectedSubTopicMediaFilteredItem.Title}}</span>
+      <span class="btn-min"></span>
+      <span class="btn-max" (click)="rateMedia(currentSelectedSubTopicMediaFilteredItem.Id)" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code === 200 ? 'bg-lime fg-white' : dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code !== 200 ? 'bg-red fg-white' : ''" >
+        <span class="window-icon" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] ? '' : 'icon mif-expand-less'">{{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount ? dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount : ''}}</span>
+      </span>
+      <span class="btn-close"></span>
+    </div>
+    <div class="window-content bg-dark fg-white" style="height: 100px" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">
+      <span class="fg-yellow">C:\&gt;</span> ssh ubuntu-xenial<br/>
+      <span class="fg-yellow">root@ubuntu-xenial:</span> grep "{{currentSelectedSubTopicMediaFilteredItem.Description}}" <br />
+      <span class="fg-yellow">root@ubuntu-xenial:</span> su - {{currentSelectedSubTopicMediaFilteredItem.Source}}<br/>
+      <span class="fg-yellow">{{currentSelectedSubTopicMediaFilteredItem.Source}}@ubuntu-xenial:</span>
+      {{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}
+    </div>
+  </div>
+</div>
+<app-video-modal *ngIf="dataService.isVideoModalOpen"></app-video-modal>

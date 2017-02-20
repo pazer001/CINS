@@ -1,4 +1,4 @@
-const TopicsModel   =   require('./TopicsModel');
+const TopicsModel   =   require('../Models/TopicsModel');
 
 class TopicsController {
     async getAllTopics() {
@@ -20,9 +20,13 @@ class TopicsController {
     }
 
     async getLatestMedia(userId) {
-        let data            =   {},
-            getVideos    =  await TopicsModel.getLatestMedia(userId);
-        return getVideos.rows;
+        let getLatestMedia    =  await TopicsModel.getLatestMedia(userId);
+
+        if(getLatestMedia && getLatestMedia.rowCount) {
+            return getLatestMedia.rows;
+        } else {
+            return null;
+        }
     }
 
 }

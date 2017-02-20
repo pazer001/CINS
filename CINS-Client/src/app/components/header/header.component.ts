@@ -9,15 +9,8 @@ import {DataService} from '../../services/data.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private data: DataService) { }
+  constructor(private dataService: DataService) { }
 
-  ngOnInit() {
-    // FB.init({
-    //   appId      : '364538587264940',
-    //   cookie     : false,
-    //   xfbml      : true,  // parse social plugins on this page
-    //   version    : 'v2.8'
-    // });
-  }
+  ngOnInit() {}
 
 }

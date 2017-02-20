@@ -1,6 +1,6 @@
 const pg        =   require('pg');
-const config    =   require('../config.json');
-const Logger    =   require('./Logger');
+const config    =   require('../../config.json');
+const Logger    =   require('../Utils/Logger');
 
 class TopicsModel {
     constructor() {

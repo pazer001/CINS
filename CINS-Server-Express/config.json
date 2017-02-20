@@ -10,10 +10,6 @@
       "idleTimeoutMillis": 30000
     },
     "Servers": {
-      "Client": {
-        "Url": "localhost",
-        "Port": "4200"
-      },
       "Backend": {
         "Url": "localhost",
         "Port": "9000"
@@ -31,13 +27,9 @@
       "idleTimeoutMillis": 30000
     },
     "Servers": {
-      "Client": {
-        "Url": "192.168.172.128",
-        "Port": "80"
-      },
       "Backend": {
         "Url": "192.168.172.132",
-        "Port": "90"
+        "Port": "9000"
       }
     }
   },
@@ -52,10 +44,6 @@
       "idleTimeoutMillis": 30000
     },
     "Servers": {
-      "Client": {
-        "Url": "localhost",
-        "Port": "8080"
-      },
       "Backend": {
         "Url": "localhost",
         "Port": "8080"

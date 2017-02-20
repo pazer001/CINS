@@ -1,19 +1,21 @@
-require("babel-polyfill");
 const express           =   require('express');
 const bodyParser        =   require('body-parser');
-const session           =   require('client-sessions');
+const session           =   require('express-session');
 const cookieParser      =   require('cookie-parser');
 const TopicsController  =   require('./Controllers/TopicsController');
 const UsersController   =   require('./Controllers/UsersController');
+const MediaController   =   require('./Controllers/MediaController');
 const config            =   require('./../config.json');
 
 const app       = express();
 
 app.use(bodyParser.json());
 app.use(session({
+    resave: true,
+    saveUninitialized: true,
     cookieName: 'session',
     secret: 'random_string_goes_here',
-    duration: 30 * 60 * 1000,
+    duration: new Date(Date.now() + (30 * 86400 * 1000)),
     activeDuration: 5 * 60 * 1000,
 }));
 app.use(cookieParser());
@@ -69,5 +71,15 @@ app.delete('/userTopicsSave/:userId/:subTopicId', async function (req, res) {
     res.json(postUserTopicsSave)
 });
 
+app.post('/rateMedia/:mediaId', async function (req, res) {
+    let rateMedia    =   await MediaController.rateMedia(req, req.params.mediaId);
+    res.json(rateMedia)
+});
 
-app.listen(config[process.env.NODE_ENV].Servers.Backend.Port);
+app.get('/search/:term', async function (req, res) {
+    let search    =   await MediaController.search(req.params.term);
+    res.json(search);
+});
+
+
+app.listen(config[process.env.NODE_ENV].Servers.Backend.Port, () => console.log(`Server ${process.env.NODE_ENV} on port: ${config[process.env.NODE_ENV].Servers.Backend.Port}`));

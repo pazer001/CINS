@@ -1,6 +1,6 @@
 const pg        =   require('pg');
-const UserModel =   require('UsersModel');
-const config    =   require('../config.json');
+const UserModel =   require('./UsersModel');
+const config    =   require('../../config.json');
 
 class TopicsModel {
     constructor() {
@@ -15,7 +15,7 @@ class TopicsModel {
                                 "SubTopics"."Name",
                                 "SubTopics"."SearchTerm"
                             FROM "CINS"."MainTopics"
-                            LEFT JOIN "CINS"."SubTopics" ON "MainTopics"."Id" = "SubTopics"."MainTopicsId";`;
+                            JOIN "CINS"."SubTopics" ON "MainTopics"."Id" = "SubTopics"."MainTopicsId" AND "SubTopics"."Active" = 't';`;
             this.pgClient.query(query, (err, result) => {
                 if(err) console.log(err);
                 resolve(result);
@@ -26,7 +26,8 @@ class TopicsModel {
     async getMedia(Id) {
         return new Promise(resolve => {
             const query     = `SELECT 
-                                    "Media"."PublishedAt", 
+                                    "Media"."Id",
+                                    DATE("Media"."PublishedAt") AS "PublishedAt",
                                     "Media"."Title", 
                                     "Media"."Description", 
                                     "Media"."Source" AS "Source", 
@@ -45,22 +46,26 @@ class TopicsModel {
     }
 
     async getLatestMedia(userId) {
-        let userTopicsSave  =   await UserModel.getUserTopicsSave(userId),
+        let userTopicsSave      =   await UserModel.getUserTopicsSave(userId),
             userTopicsSaveIds   =   userTopicsSave.data || [];
         return new Promise(resolve => {
-            const query     =   `SELECT 
-                                    "Media"."PublishedAt", 
-                                    "Media"."Title", 
-                                    "Media"."Description", 
-                                    "Media"."Source" AS "Source", 
+            const query     =   `SELECT
+                                    "Media"."Id",
+                                    DATE("Media"."PublishedAt") AS "PublishedAt",
+                                    "Media"."Title",
+                                    "Media"."Description",
+                                    "Media"."Source" AS "Source",
                                     "Media"."Url",
-                                    COALESCE(NULLIF("Media"."ImageUrl", ''), "Sources"."ImageUrl") AS "ImageUrl", 
+                                    "MediaRating"."RatingCount" AS "RatingCount",
+                                    COALESCE (NULLIF ("Media"."ImageUrl", ''),"Sources"."ImageUrl") AS "ImageUrl",
                                     "Media"."Type"
-                              FROM "CINS"."Media" 
-                              LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
-                               ${userTopicsSaveIds.length ? `WHERE "Media"."SubTopicsId" IN(${userTopicsSaveIds.join(',')})` : ``} 
-                              ORDER BY "Media"."PublishedAt" DESC
-                              LIMIT 100`;
+                                FROM
+                                    "CINS"."Media"
+                                LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
+                                LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+                                ${userTopicsSaveIds.length ? `WHERE "Media"."SubTopicsId" IN(${userTopicsSaveIds.join(',')})` : ``}
+                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
+                                LIMIT 100`;
             this.pgClient.query(query, (err, result) => {
                 if(err) console.log(err);
                 resolve(result);
