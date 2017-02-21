@@ -1,0 +1,47 @@
+<!--<div class="input-control text full-size" data-role="input">-->
+  <!--<input type="text" style="padding-right: 58px;" [(ngModel)]="term" (keyup.enter)="search(term)" (keyup)="search(term)">-->
+  <!--<button class="button"><span class="mif-search" (click)="search(term)"></span></button>-->
+<!--</div>-->
+
+<div id="search-menu-results" class="margin10">
+  <div class="panel">
+    <div class="heading">
+      <!--<span class="title">Results</span>-->
+      <input type="text" style="padding-right: 58px;" [(ngModel)]="term" (keyup.enter)="search(term)" (keyup)="search(term)">
+      <span class="icon mif-search" (click)="search(term)"></span>
+
+    </div>
+    <div class="content padding10" *ngIf="term">
+      <div class="listview-outlook" data-role="listview">
+        <div class="list-group">
+          <div class="list-group-content">
+            <a class="list" *ngFor="let media of searchResults">
+              <div class="list-content" (click)="dataService.openMedia(media)">
+                <span class="list-title ribbed-grayDark text-shadow">{{media.Title}}</span>
+                <span class="list-subtitle">{{media.Source}} on {{media.PublishedAt}}</span>
+                <span class="list-remark">{{media.Description}}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
