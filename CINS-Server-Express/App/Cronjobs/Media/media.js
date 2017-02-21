@@ -11,6 +11,8 @@ const C             =   require('./SubTopics/C');
 const Cpp           =   require('./SubTopics/Cpp');
 const React           =   require('./SubTopics/React');
 const ReactNative           =   require('./SubTopics/ReactNative');
+const ES6           =   require('./SubTopics/ES6');
+
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos   =   require('./GeneralVideos');
 
@@ -27,10 +29,11 @@ class Media {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
         try {
 
-            // console.log(`facebook...`); this.setMedia(await ReactNative.facebook());
-            // console.log(`reactNativeNewsTwitter...`); this.setMedia(await ReactNative.reactNativeNewsTwitter());
-            // console.log(`facebookDocs...`); this.setMedia(await ReactNative.facebookDocs());
-            // console.log(`tutorialsPoint...`); this.setMedia(await ReactNative.tutorialsPoint());
+
+            // console.log(`es6Features...`); this.setMedia(await ES6.es6Features());
+            // console.log(`exploringjs...`); this.setMedia(await ES6.exploringjs());
+            // console.log(`babel...`); this.setMedia(await ES6.babel());
+            console.log(`qnimate...`); this.setMedia(await ES6.qnimate());
 
 
 return;
@@ -74,6 +77,12 @@ return;
             console.log(`thebluecoder...`); this.setMedia(await React.thebluecoder());
             console.log(`hashbangweekly...`); this.setMedia(await React.hashbangweekly());
             console.log(`daveceddia...`); this.setMedia(await React.daveceddia());
+
+            //React Native
+            console.log(`facebook...`); this.setMedia(await ReactNative.facebook());
+            console.log(`reactNativeNewsTwitter...`); this.setMedia(await ReactNative.reactNativeNewsTwitter());
+            console.log(`facebookDocs...`); this.setMedia(await ReactNative.facebookDocs());
+            console.log(`tutorialsPoint...`); this.setMedia(await ReactNative.tutorialsPoint());
 
             //General Articles
             console.log(`medium...`); this.setMedia(await GeneralArticles.medium(this.subTopics));
