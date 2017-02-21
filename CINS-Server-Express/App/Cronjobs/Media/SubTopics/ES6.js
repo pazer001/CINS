@@ -112,15 +112,42 @@ class ES6 {
         })
     }
 
-    async babel() {
+    async nczOnline() {
         return new Promise(async function (resolve) {
             let mediaUrls = [];
-            let url = `http://ccoenraets.github.io/es6-tutorial/`;
+            let url = `https://www.nczonline.net/blog/tag/ecmascript-6/`;
             let html = await Utils.request(url);
             if (!html) throw url;
             let $ = cheerio.load(html);
-            $('.container').find('ul').find('li').find('a').filter(function () {
+            $('.post-content').find('li').filter(function () {
                 if (!$(this).text()) return;
+                mediaUrls.push({
+                    PublishedAt: $(this).find('small').text(),
+                    Title: $(this).find('a').text().trim(),
+                    Description: null,
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: 30,
+                    Source: 'NCZ Online',
+                    Url: `${`https://www.nczonline.net/`}${$(this).find('a').prop('href')}`,
+                    Type: 'Article'
+                })
+            });
+            console.log(mediaUrls)
+            resolve(mediaUrls);
+        })
+    }
+
+    async tutorialsPoint() {
+        return new Promise(async function (resolve) {
+            let mediaUrls = [];
+            let url = `https://www.tutorialspoint.com/es6/index.htm`;
+            let html = await Utils.request(url);
+            if (!html) throw url;
+            let $ = cheerio.load(html);
+            $('.sidebar .nav.left-menu').find('a').filter(function () {
+                if ($(this).closest('ul').hasClass('push-bottom')) return;
                 mediaUrls.push({
                     PublishedAt: moment().format(),
                     Title: $(this).text().trim(),
@@ -129,8 +156,34 @@ class ES6 {
                     ImageWidth: null,
                     ImageHeight: null,
                     SubTopicsId: 30,
-                    Source: 'Babel',
-                    Url: `${`http://ccoenraets.github.io`}${$(this).prop('href')}`,
+                    Source: 'Tutorials Point',
+                    Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
+                    Type: 'Article'
+                })
+            });
+            console.log(mediaUrls)
+            resolve(mediaUrls);
+        })
+    }
+
+    async mozilla() {
+        return new Promise(async function (resolve) {
+            let mediaUrls = [];
+            let url = `https://hacks.mozilla.org/category/es6-in-depth/`;
+            let html = await Utils.request(url);
+            if (!html) throw url;
+            let $ = cheerio.load(html);
+            $('#content-main').find('.article-list').find('.list-item').filter(function () {
+                mediaUrls.push({
+                    PublishedAt: $(this).find('.post__meta').find('abbr').prop('title'),
+                    Title: $(this).find('h3').find('a').text().trim(),
+                    Description: $(this).find('.post__tease').text(),
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: 30,
+                    Source: 'Mozilla',
+                    Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
                 })
             });

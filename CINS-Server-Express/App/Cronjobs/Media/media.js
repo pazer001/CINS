@@ -33,7 +33,10 @@ class Media {
             // console.log(`es6Features...`); this.setMedia(await ES6.es6Features());
             // console.log(`exploringjs...`); this.setMedia(await ES6.exploringjs());
             // console.log(`babel...`); this.setMedia(await ES6.babel());
-            console.log(`qnimate...`); this.setMedia(await ES6.qnimate());
+            // console.log(`qnimate...`); this.setMedia(await ES6.qnimate());
+            // console.log(`nczOnline...`); this.setMedia(await ES6.nczOnline());
+            // console.log(`tutorialsPoint...`); this.setMedia(await ES6.tutorialsPoint());
+            console.log(`mozilla...`); this.setMedia(await ES6.mozilla());
 
 
 return;
