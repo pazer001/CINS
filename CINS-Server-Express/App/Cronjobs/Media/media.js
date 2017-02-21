@@ -20,33 +20,14 @@ const GeneralVideos   =   require('./GeneralVideos');
 
 class Media {
     constructor() {
-        this.pgClient = new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
+        this.pgClient   = new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
         this.pgClient.connect();
         this.subTopics  =   null;
-        this.media  =   [];
+        this.media      =   [];
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
         try {
-
-
-            // console.log(`es6Features...`); this.setMedia(await ES6.es6Features());
-            // console.log(`exploringjs...`); this.setMedia(await ES6.exploringjs());
-            // console.log(`babel...`); this.setMedia(await ES6.babel());
-            // console.log(`qnimate...`); this.setMedia(await ES6.qnimate());
-            // console.log(`nczOnline...`); this.setMedia(await ES6.nczOnline());
-            // console.log(`tutorialsPoint...`); this.setMedia(await ES6.tutorialsPoint());
-            console.log(`mozilla...`); this.setMedia(await ES6.mozilla());
-
-
-return;
-
-
-
-
-
-            console.log(`youtube...`); this.setMedia(await GeneralVideos.youtube());
-
             //C
             console.log(`drdobbs...`); this.setMedia(await C.drdobbs());
 
@@ -87,11 +68,26 @@ return;
             console.log(`facebookDocs...`); this.setMedia(await ReactNative.facebookDocs());
             console.log(`tutorialsPoint...`); this.setMedia(await ReactNative.tutorialsPoint());
 
+            //ES6
+            console.log(`es6Features...`); this.setMedia(await ES6.es6Features());
+            console.log(`exploringjs...`); this.setMedia(await ES6.exploringjs());
+            console.log(`babel...`); this.setMedia(await ES6.babel());
+            console.log(`qnimate...`); this.setMedia(await ES6.qnimate());
+            console.log(`nczOnline...`); this.setMedia(await ES6.nczOnline());
+            console.log(`tutorialsPoint...`); this.setMedia(await ES6.tutorialsPoint());
+            console.log(`mozilla...`); this.setMedia(await ES6.mozilla());
+            console.log(`jsNext...`); this.setMedia(await ES6.jsNext());
+            console.log(`youDontKnowJS...`); this.setMedia(await ES6.youDontKnowJS());
+
             //General Articles
             console.log(`medium...`); this.setMedia(await GeneralArticles.medium(this.subTopics));
             console.log(`techbeacon...`); this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
             console.log(`infoq...`); this.setMedia(await GeneralArticles.infoq(this.subTopics));
             console.log(`rayWenderlich...`); this.setMedia(await GeneralArticles.rayWenderlich(this.subTopics));
+            console.log(`frontendEront...`); this.setMedia(await GeneralArticles.frontendEront(this.subTopics));
+
+            //General Video
+            console.log(`youtube...`); this.setMedia(await GeneralVideos.youtube());
 
         } catch (e) {
             console.log(e)

@@ -18,8 +18,8 @@ app.use(session({
     duration: new Date(Date.now() + (30 * 86400 * 1000)),
     activeDuration: 5 * 60 * 1000,
 }));
-app.use(cookieParser());
 
+app.use(cookieParser());
 
 app.get('/', function (req, res) {
     res.send('CINS!')
@@ -48,6 +48,7 @@ app.post('/user', async function (req, res) {
 });
 
 app.get('/user', async function (req, res) {
+    console.log(req.query)
     let getUser    =   await UsersController.getUser(req.query);
     if(getUser.code === 200) {
         UsersController.setUserSession(req);

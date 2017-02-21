@@ -5,6 +5,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';
 import {LayoutService} from "./layout.service";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 
 @Injectable()
@@ -19,8 +20,10 @@ export class DataService {
   filter: string;
   userDetails: any;
   ratedMedia: any;
+  mySubTopics: Array<string>;
+  subTopicsIds: Array<string>;
 
-  constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService) {
+  constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService, private cookieService: CookieService) {
     this.selectedVideo            = null;
     this.isVideoModalOpen         = false;
     this.isUserLoginModalOpen     = false;
@@ -29,6 +32,34 @@ export class DataService {
     this.filter                   = 'All';
     this.userDetails              = null;
     this.ratedMedia               = {};
+    this.mySubTopics              = [];
+    this.subTopicsIds             = [];
+
+    if(this.cookieService.get('userLoggedIn')) {
+      this.userDetails  = JSON.parse(localStorage.getItem('userDetails'));
+      this.userLoggedIn  = true;
+    } else {
+      localStorage.removeItem('userDetails');
+      this.userLoggedIn  = false;
+    }
+
+    this.getLatestMedia();
+  }
+
+  setMySubTopics(data) {
+    for(let mainTopic in data) {
+      let mainTopicObject   = data[mainTopic];
+      for(let subTopic in mainTopicObject) {
+        let subTopicObject  = mainTopicObject[subTopic];
+        this.subTopicsIds[subTopicObject.Id]  = subTopicObject.Name;
+      }
+    }
+
+    if(this.userDetails.subTopicsSaveIds) {
+      for(let subTopicId of this.userDetails.subTopicsSaveIds.data) {
+        this.mySubTopics[subTopicId]  = this.subTopicsIds[subTopicId]
+      }
+    }
   }
 
   getAllTopics(): Observable<any> {
@@ -91,14 +122,6 @@ export class DataService {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(articleUrl);
   }
 
-  openUserLoginModalOpen() {
-    this.isUserLoginModalOpen = true;
-  }
-
-  closeUserLoginModalOpen() {
-    this.isUserLoginModalOpen = false;
-  }
-
   setCurrentSelectedSubTopic(subTopic) {
     this.currentSelectedSubTopic = subTopic;
     this.getMedia(subTopic.Id).subscribe(media => {
@@ -116,7 +139,7 @@ export class DataService {
       search: params
     });
 
-    this.userDetails  = this.http.get(`user`, options).map(res => res.json());
+    this.userDetails  = this.http.get(`api/user`, options).map(res => res.json());
     return this.userDetails;
   }
 

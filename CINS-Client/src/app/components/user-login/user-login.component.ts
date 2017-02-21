@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../../services/data.service';
+import {DataService} from '../../services/data.service';
 import {CookieService} from 'angular2-cookie/core';
 
 
@@ -13,13 +13,13 @@ export class UserLoginComponent implements OnInit {
   registerLastName: string;
   registerEMail: string;
   registerPassword: string;
-  registerIcon: string;
 
   loginEMail: string;
   loginPassword: string;
-  loginIcon: string;
 
-  constructor(private dataService: DataService, private cookieService: CookieService) { }
+  constructor(private dataService: DataService) {
+
+  }
 
   getUser(loginEMail, loginPassword) {
     let getUser   = {
@@ -27,20 +27,13 @@ export class UserLoginComponent implements OnInit {
       Password: loginPassword
     };
 
-    this.loginIcon = `mif-spinner5 mif-ani-spin`;
     this.dataService.getUser(getUser).subscribe(data => {
       this.dataService.userDetails  = data;
+      this.dataService.setMySubTopics(data);
       localStorage.setItem('userDetails', JSON.stringify(data));
 
       if(data.code === 200) {
         this.getLatestMedia();
-        this.loginIcon  = `mif-checkmark`;
-        this.dataService.userLoggedIn  = true;
-      } else if(data.code === 400) {
-        this.loginIcon  = `mif-cancel`;
-        this.dataService.userLoggedIn  = false;
-      } else {
-        this.loginIcon  = null;
       }
     })
   }
@@ -53,7 +46,6 @@ export class UserLoginComponent implements OnInit {
       Password: registerPassword,
     };
 
-    this.registerIcon = `mif-spinner5 mif-ani-spin`;
     this.dataService.postUser(postUser).subscribe(data => {
       this.dataService.userDetails  = data;
 
@@ -65,14 +57,6 @@ export class UserLoginComponent implements OnInit {
             localStorage.setItem('userDetails', JSON.stringify(data));
           }
         });
-
-        this.registerIcon  = `mif-checkmark`;
-        this.dataService.userLoggedIn  = true;
-      } else if(data.code === 400) {
-        this.registerIcon  = `mif-cancel`;
-        this.dataService.userLoggedIn  = false;
-      } else {
-        this.registerIcon  = null;
       }
     })
   }
@@ -82,8 +66,6 @@ export class UserLoginComponent implements OnInit {
       if(data.code === 200) {
         this.dataService.userDetails  = null;
         localStorage.removeItem('userDetails');
-        this.dataService.userLoggedIn  = false;
-        this.registerIcon  = ``;
       }
     })
   }
@@ -96,17 +78,6 @@ export class UserLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.cookieService.get('userLoggedIn')) {
-      this.dataService.userDetails  = JSON.parse(localStorage.getItem('userDetails'));
-      this.dataService.userLoggedIn  = true;
-      this.loginIcon  = `mif-checkmark`;
-    } else {
-      this.registerIcon  = ``;
-      localStorage.removeItem('userDetails');
-      this.dataService.userLoggedIn  = false;
-    }
-
-    this.getLatestMedia();
 
   }
 

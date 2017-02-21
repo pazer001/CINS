@@ -191,6 +191,58 @@ class ES6 {
             resolve(mediaUrls);
         })
     }
+
+    async jsNext() {
+        return new Promise(async function (resolve) {
+            let mediaUrls = [];
+            let url = `http://chimera.labs.oreilly.com/books/1234000001623/index.html`;
+            let html = await Utils.request(url);
+            if (!html) throw url;
+            let $ = cheerio.load(html);
+            $('.toc').find('a').filter(function () {
+                mediaUrls.push({
+                    PublishedAt: moment().format(),
+                    Title: $(this).text().trim(),
+                    Description: null,
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: 30,
+                    Source: 'JS.next',
+                    Url: `${`http://chimera.labs.oreilly.com/books/1234000001623/`}${$(this).prop('href')}`,
+                    Type: 'Article'
+                })
+            });
+            console.log(mediaUrls)
+            resolve(mediaUrls);
+        })
+    }
+
+    async youDontKnowJS() {
+        return new Promise(async function (resolve) {
+            let mediaUrls = [];
+            let url = `https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20&%20beyond/README.md#you-dont-know-js-es6--beyond`;
+            let html = await Utils.request(url);
+            if (!html) throw url;
+            let $ = cheerio.load(html);
+            $('.entry-content').find('ul').find('li').find('a').filter(function () {
+                mediaUrls.push({
+                    PublishedAt: moment().format(),
+                    Title: $(this).text().trim(),
+                    Description: null,
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: 30,
+                    Source: 'You Dont Know JS',
+                    Url: `${`https://github.com/`}${$(this).prop('href')}`,
+                    Type: 'Article'
+                })
+            });
+            
+            resolve(mediaUrls);
+        })
+    }
 }
 
 const es6 = new ES6();

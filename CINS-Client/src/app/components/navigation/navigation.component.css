@@ -105,6 +105,24 @@
   width: 70%;
 }
 
+#login-register-button {
+  text-align: center;
+}
+
+#login-register-button .mif-user {
+  background: gray;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+}
+
+#login-register-button:hover {
+  background-color: rgba(255, 255, 255, 0.25)!important;
+  cursor: pointer;
+}
+
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
   .tile-container {

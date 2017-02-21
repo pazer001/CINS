@@ -3,13 +3,13 @@
     <button id="start" (click)="layoutService.toggleFooterButtonsActive('startMenuActive')"><span
       class="mif-windows fg-white mif-lg"></span></button>
     <button id="search" (click)="layoutService.toggleFooterButtonsActive('searchMenuActive')"><span
-      class="mif-search fg-white "></span></button>
+      class="mif-search fg-white"></span></button>
   </div>
-  <div id="start-menu" class="padding10" [ngClass]="layoutService.footerButtonsActive['startMenuActive'] ? 'active' : ''">
+  <div id="start-menu" class="padding5" [ngClass]="layoutService.footerButtonsActive['startMenuActive'] ? 'active' : ''">
     <app-navigation></app-navigation>
   </div>
 
-  <div id="search-menu" class="padding10" [ngClass]="layoutService.footerButtonsActive['searchMenuActive'] ? 'active' : ''">
+  <div id="search-menu" [ngClass]="layoutService.footerButtonsActive['searchMenuActive'] ? 'active' : ''">
     <app-search></app-search>
   </div>
 

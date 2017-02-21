@@ -37,7 +37,8 @@ class TopicsModel {
                               FROM "CINS"."Media" 
                               LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
                               WHERE "Media"."SubTopicsId" = $1
-                              ORDER BY "Media"."PublishedAt" DESC`;
+                              ORDER BY "Media"."PublishedAt" DESC
+                              LIMIT 100`;
             this.pgClient.query(query, [Id], (err, result) => {
                 if(err) console.log(err);
                 resolve(result);

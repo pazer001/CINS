@@ -1,0 +1,72 @@
+<div id="user-details">
+
+  <!--Login-->
+  <div class="panel no-margin-top no-margin-right no-margin-left margin10" *ngIf="!dataService.userDetails">
+    <div class="heading">
+      <span class="icon mif-user-check"></span>
+      <span class="title">Login</span>
+    </div>
+    <div class="content padding10">
+      <div class="input-control text bg-grayDark">
+        <span class="mif-mail prepend-icon"></span>
+        <input type="email" placeholder="E-Mail" [(ngModel)]="loginEMail">
+      </div>
+      <div class="input-control text bg-grayDark">
+        <span class="mif-lock prepend-icon"></span>
+        <input type="password" placeholder="Password" [(ngModel)]="loginPassword">
+      </div>
+      <button class="button primary" (click)="getUser(loginEMail, loginPassword)">Login</button>
+    </div>
+  </div>
+
+  <!--Register-->
+  <div class="panel" *ngIf="!dataService.userDetails">
+    <div class="heading">
+      <span class="icon mif-user-plus"></span>
+      <span class="title">Register</span>
+    </div>
+    <div class="content padding10">
+      <div class="input-control text bg-grayDark">
+        <span class="mif-user prepend-icon"></span>
+        <input type="text" placeholder="First Name" [(ngModel)]="registerFirstName">
+      </div>
+      <div class="input-control text bg-grayDark">
+        <span class="mif-user prepend-icon"></span>
+        <input type="text" placeholder="Last Name" [(ngModel)]="registerLastName">
+      </div>
+      <div class="input-control text bg-grayDark">
+        <span class="mif-mail prepend-icon"></span>
+        <input type="email" placeholder="E-Mail" [(ngModel)]="registerEMail">
+      </div>
+      <div class="input-control text bg-grayDark">
+        <span class="mif-lock prepend-icon"></span>
+        <input type="password" placeholder="Password" [(ngModel)]="registerPassword">
+      </div>
+      <button class="button primary"
+              (click)="postUser(registerFirstName, registerLastName, registerEMail, registerPassword)">Register
+      </button>
+    </div>
+  </div>
+
+
+  <!--Logout-->
+  <div class="panel no-margin-top no-margin-right no-margin-left margin10" *ngIf="dataService.userDetails">
+    <button class="image-button primary icon-right" (click)="userLogout()">
+      Logout
+      <span class="icon mif-user-minus bg-darkCobalt"></span>
+    </button>
+  </div>
+  <!--My Topics-->
+  <div class="panel" *ngIf="dataService.userDetails && dataService.mySubTopics">
+    <div class="heading">
+      <span class="icon mif-user-check"></span>
+      <span class="title">My Topics</span>
+    </div>
+    <div class="content padding10">
+      <div *ngFor="let mySubTopic of dataService.mySubTopics">
+        {{mySubTopic}}
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -3,7 +3,7 @@ const proxy       = require('express-http-proxy');
 const config      = require('./config.json');
 const compression = require('compression')
 
-var app       = express();
+const app         = express();
 app.use(compression());
 app.use(express.static('dist'));
 app.use('/api', proxy(config[process.env.NODE_ENV].apiServer.URL));

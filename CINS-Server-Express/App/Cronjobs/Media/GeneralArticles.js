@@ -120,33 +120,36 @@ class GeneralArticles {
         })
     }
 
-    // async appcoda(subTopics) {
-    //     return new Promise(async function(resolve) {
-    //         let mediaUrls   =   [];
-    //         subTopics.rows.forEach(async function(subTopic) {
-    //             let url = `http://www.appcoda.com/?s=${subTopic.SearchTerm}`;
-    //             let html = await Utils.request(url);
-    //             if(!html) throw url;
-    //             var $ = cheerio.load(html);
-    //             $('.post-list').find('article').filter(function() {
-    //                 mediaUrls.push({
-    //                     PublishedAt: moment().format(),
-    //                     Title: $(this).find('.post-content').find('h2').find('a').text(),
-    //                     Description: $(this).find('.excerpt').text(),
-    //                     ImageUrl: null,
-    //                     ImageWidth: null,
-    //                     ImageHeight: null,
-    //                     SubTopicsId: subTopic.Id,
-    //                     Source: 'Appcoda',
-    //                     Url: $(this).find('.post-thumbnail').find('a').first().prop('href'),
-    //                     Type: 'Article'
-    //                 });
-    //
-    //             });
-    //         });
-    //         setTimeout(() => {resolve(mediaUrls); }, 10000)
-    //     })
-    // }
+    async frontendEront(subTopics) {
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            subTopics.rows.forEach(async function(subTopic) {
+                if(subTopic.maintopics !== 'Web Development') return;
+                let url = `https://frontendfront.com/?s=${subTopic.Name}`;
+                let html = await Utils.request(url);
+                if(!html) throw url;
+                var $ = cheerio.load(html);
+                $('.stories').find('li').filter(function() {
+                    mediaUrls.push({
+                        PublishedAt: moment().format(),
+                        Title: $(this).find('h2').find('a').text(),
+                        Description: null,
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: subTopic.Id,
+                        Source: 'Frontend Front',
+                        Url: $(this).find('h2').find('a').prop('href'),
+                        Type: 'Article'
+                    });
+
+                });
+            });
+            setTimeout(() => {resolve(mediaUrls); }, 10000)
+        })
+    }
+
+
 
 
 }
