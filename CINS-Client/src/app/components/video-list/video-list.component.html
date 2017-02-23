@@ -1,16 +1,19 @@
-<div>
-  <h2>{{dataService.currentSelectedSubTopic.Name}}</h2>
-  <button
+<div class="options padding5">
+  <h2>{{dataService.currentSelectedSubTopic.Name === 'Latest Media' ? (dataService.mySubTopics.length ? 'My Media' : dataService.currentSelectedSubTopic.Name) : dataService.currentSelectedSubTopic.Name}}</h2>
+  <button class="image-button"
     [ngClass]="dataService.filter === 'All' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
     (click)="dataService.setFilter('All')">All
+    <span class="icon mif-books"></span>
   </button>
-  <button
+  <button class="image-button"
     [ngClass]="dataService.filter === 'Article' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
     (click)="dataService.setFilter('Article')">Articles
+    <span class="icon mif-file-binary"></span>
   </button>
-  <button
+  <button class="image-button"
     [ngClass]="dataService.filter === 'Video' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
     (click)="dataService.setFilter('Video')">Videos
+    <span class="icon mif-file-play"></span>
   </button>
   <span *ngIf="dataService.currentSelectedSubTopic.Name !== 'Latest Media' && dataService.userDetails">
       <button
@@ -31,27 +34,65 @@
     </span>
 </div>
 
-<div class="row" *ngFor="let currentSelectedSubTopicMediaFilteredItem of dataService.currentSelectedSubTopicMediaFiltered">
-  <div class="window" *ngIf="!layoutService.onlySearchBarResult">
-    <div class="window-caption bg-cyan fg-white">
-      <span class="window-caption-icon">
-        <span [ngClass]="currentSelectedSubTopicMediaFilteredItem.Type === 'Article' ? 'mif-file-binary' : 'mif-file-play'"></span>
-        <!--<img src="{{currentSelectedSubTopicMediaFilteredItem.ImageUrl}}">-->
-      </span>
-      <span class="window-caption-title" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">{{currentSelectedSubTopicMediaFilteredItem.Title}}</span>
-      <span class="btn-min"></span>
-      <span class="btn-max" (click)="rateMedia(currentSelectedSubTopicMediaFilteredItem.Id)" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code === 200 ? 'bg-lime fg-white' : dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code !== 200 ? 'bg-red fg-white' : ''" >
-        <span class="window-icon" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] ? '' : 'icon mif-expand-less'">{{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount ? dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount : ''}}</span>
-      </span>
-      <span class="btn-close"></span>
-    </div>
-    <div class="window-content bg-dark fg-white" style="height: 100px" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">
-      <span class="fg-yellow">C:\&gt;</span> ssh ubuntu-xenial<br/>
-      <span class="fg-yellow">root@ubuntu-xenial:</span> grep "{{currentSelectedSubTopicMediaFilteredItem.Description}}" <br />
-      <span class="fg-yellow">root@ubuntu-xenial:</span> su - {{currentSelectedSubTopicMediaFilteredItem.Source}}<br/>
-      <span class="fg-yellow">{{currentSelectedSubTopicMediaFilteredItem.Source}}@ubuntu-xenial:</span>
-      {{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}
+
+<div class="results padding5">
+<div class="panel no-margin-top no-margin-right no-margin-left margin10" *ngFor="let currentSelectedSubTopicMediaFilteredItem of dataService.currentSelectedSubTopicMediaFiltered">
+  <div class="heading">
+    <span class="icon" [ngClass]="currentSelectedSubTopicMediaFilteredItem.Type === 'Article' ? 'mif-file-binary' : 'mif-file-play'"></span>
+    <span class="title" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">{{currentSelectedSubTopicMediaFilteredItem.Title}}</span>
+
+    <span class="btn-max fg-white text-shadow" (click)="rateMedia(currentSelectedSubTopicMediaFilteredItem.Id)" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code === 200 ? 'ribbed-darkEmerald' : dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code !== 200 ? 'ribbed-darkRed' : ''" >
+      <span class="window-icon" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] ? '' : 'icon mif-expand-less'">{{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount ? dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount : ''}}</span>
+    </span>
+  </div>
+  <div class="content padding10" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">
+    <div class="flex-grid">
+      <div class="row">
+        <div class="cell colspan1 image">
+          <div class="image-container">
+            <div class="frame"><img src="assets/icons/{{currentSelectedSubTopicMediaFilteredItem.SubTopicName}}.png"></div>
+            <div class="image-overlay">
+              <h4>{{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}</h4>
+            </div>
+          </div>
+
+        </div>
+        <div class="cell colspan11 description padding5 no-padding-top no-padding-bottom" *ngIf="currentSelectedSubTopicMediaFilteredItem.Description">
+          {{currentSelectedSubTopicMediaFilteredItem.Description | trim}}
+        </div>
+
+        <div class="cell colspan11 description padding5 no-padding-top no-padding-bottom" *ngIf="!currentSelectedSubTopicMediaFilteredItem.Description">
+          (No Description)
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<app-video-modal *ngIf="dataService.isVideoModalOpen"></app-video-modal>
+</div>
+
+
+
+<!--<div class="row" *ngFor="let currentSelectedSubTopicMediaFilteredItem of dataService.currentSelectedSubTopicMediaFiltered">-->
+  <!--<div class="window" *ngIf="!layoutService.onlySearchBarResult">-->
+    <!--<div class="window-caption bg-cyan fg-white">-->
+      <!--<span class="window-caption-icon">-->
+        <!--<span [ngClass]="currentSelectedSubTopicMediaFilteredItem.Type === 'Article' ? 'mif-file-binary' : 'mif-file-play'"></span>-->
+        <!--&lt;!&ndash;<img src="{{currentSelectedSubTopicMediaFilteredItem.ImageUrl}}">&ndash;&gt;-->
+      <!--</span>-->
+      <!--<span class="window-caption-title" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">{{currentSelectedSubTopicMediaFilteredItem.Title}}</span>-->
+      <!--<span class="btn-min"></span>-->
+      <!--<span class="btn-max" (click)="rateMedia(currentSelectedSubTopicMediaFilteredItem.Id)" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code === 200 ? 'bg-lime fg-white' : dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code !== 200 ? 'bg-red fg-white' : ''" >-->
+        <!--<span class="window-icon" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] ? '' : 'icon mif-expand-less'">{{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount ? dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount : ''}}</span>-->
+      <!--</span>-->
+      <!--<span class="btn-close"></span>-->
+    <!--</div>-->
+    <!--<div class="window-content bg-dark fg-white" style="height: 100px" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">-->
+      <!--<span class="fg-yellow">C:\&gt;</span> ssh ubuntu-xenial<br/>-->
+      <!--<span class="fg-yellow">root@ubuntu-xenial:</span> grep "{{currentSelectedSubTopicMediaFilteredItem.Description}}" <br />-->
+      <!--<span class="fg-yellow">root@ubuntu-xenial:</span> su - {{currentSelectedSubTopicMediaFilteredItem.Source}}<br/>-->
+      <!--<span class="fg-yellow">{{currentSelectedSubTopicMediaFilteredItem.Source}}@ubuntu-xenial:</span>-->
+      <!--{{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<app-video-modal *ngIf="dataService.isVideoModalOpen"></app-video-modal>-->

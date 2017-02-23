@@ -46,6 +46,21 @@ class MediaController {
             return null;
         }
     }
+
+    async requestMedia(data) {
+        let search     =   await MediaModel.requestMedia(data);
+        if(search && search.rowCount) {
+            return {
+                code: 200,
+                message: 'Request Media Successfully'
+            }
+        } else {
+            return {
+                code: 400,
+                message: 'Request Media Not Successfully'
+            }
+        }
+    }
 }
 
 module.exports  =   new MediaController();

@@ -1,16 +1,20 @@
 <div id="footer">
   <div id="bar">
-    <button id="start" (click)="layoutService.toggleFooterButtonsActive('startMenuActive')"><span
-      class="mif-windows fg-white mif-lg"></span></button>
-    <button id="search" (click)="layoutService.toggleFooterButtonsActive('searchMenuActive')"><span
-      class="mif-search fg-white"></span></button>
+    <button id="start" (click)="layoutService.toggleFooterButtonsActive('startMenuActive')"><span class="mif-windows fg-white mif-lg"></span></button>
+    <button id="search" (click)="layoutService.toggleFooterButtonsActive('searchMenuActive')"><span class="mif-search fg-white"></span></button>
+    <button id="add-media" (click)="layoutService.toggleFooterButtonsActive('addMediaModal')"><span class="mif-plus fg-lightBlue mif-lg"></span></button>
   </div>
+
   <div id="start-menu" class="padding5" [ngClass]="layoutService.footerButtonsActive['startMenuActive'] ? 'active' : ''">
     <app-navigation></app-navigation>
   </div>
 
   <div id="search-menu" [ngClass]="layoutService.footerButtonsActive['searchMenuActive'] ? 'active' : ''">
     <app-search></app-search>
+  </div>
+
+  <div id="add-media-modal" *ngIf="layoutService.footerButtonsActive['addMediaModal']">
+    <app-add-media></app-add-media>
   </div>
 
 

@@ -33,9 +33,12 @@ class TopicsModel {
                                     "Media"."Source" AS "Source", 
                                     "Media"."Url",
                                     COALESCE(NULLIF("Media"."ImageUrl", ''), "Sources"."ImageUrl") AS "ImageUrl", 
-                                    "Media"."Type"
+                                    "Media"."Type",
+                                    "SubTopics"."Name" AS "SubTopicName"
                               FROM "CINS"."Media" 
                               LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
+                              LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+                              LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
                               WHERE "Media"."SubTopicsId" = $1
                               ORDER BY "Media"."PublishedAt" DESC
                               LIMIT 100`;
@@ -59,11 +62,13 @@ class TopicsModel {
                                     "Media"."Url",
                                     "MediaRating"."RatingCount" AS "RatingCount",
                                     COALESCE (NULLIF ("Media"."ImageUrl", ''),"Sources"."ImageUrl") AS "ImageUrl",
-                                    "Media"."Type"
+                                    "Media"."Type",
+                                    "SubTopics"."Name" AS "SubTopicName"
                                 FROM
                                     "CINS"."Media"
                                 LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
                                 LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+                                LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
                                 ${userTopicsSaveIds.length ? `WHERE "Media"."SubTopicsId" IN(${userTopicsSaveIds.join(',')})` : ``}
                                 ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
                                 LIMIT 100`;

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {LayoutService} from "../../services/layout.service";
+import {TrimPipe} from '../../pipes/trim.pipe';
 
 
 @Component({
@@ -40,7 +41,14 @@ export class VideoListComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+  getLatestMedia() {
+    this.dataService.getLatestMedia().subscribe(media => {
+      this.dataService.currentSelectedSubTopicMedia = media;
+      this.dataService.setFilter('All');
+    });
+  }
 
+  ngOnInit() {
+    this.getLatestMedia();
   }
 }

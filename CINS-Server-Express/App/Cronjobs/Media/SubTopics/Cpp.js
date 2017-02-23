@@ -167,7 +167,6 @@ class Cpp {
                 if (!media.Title) return;
                 mediaUrls.push(media)
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }

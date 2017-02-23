@@ -16,8 +16,6 @@ const ES6           =   require('./SubTopics/ES6');
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos   =   require('./GeneralVideos');
 
-
-
 class Media {
     constructor() {
         this.pgClient   = new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
@@ -27,6 +25,9 @@ class Media {
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
+
+
+
         try {
             //C
             console.log(`drdobbs...`); this.setMedia(await C.drdobbs());
@@ -83,7 +84,7 @@ class Media {
             console.log(`medium...`); this.setMedia(await GeneralArticles.medium(this.subTopics));
             console.log(`techbeacon...`); this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
             console.log(`infoq...`); this.setMedia(await GeneralArticles.infoq(this.subTopics));
-            console.log(`rayWenderlich...`); this.setMedia(await GeneralArticles.rayWenderlich(this.subTopics));
+            // console.log(`rayWenderlich...`); this.setMedia(await GeneralArticles.rayWenderlich(this.subTopics));
             console.log(`frontendEront...`); this.setMedia(await GeneralArticles.frontendEront(this.subTopics));
 
             //General Video
@@ -115,26 +116,27 @@ class Media {
             media.Type
         ];
 
-        if(!media.Url || !media.Title) return;
+        //Check for good parameters
+        if(!media.Url || !media.Title || !moment(media.PublishedAt)) return;
+
         let lngDetector             =   new LanguageDetect(),
             languageDetect          =   lngDetector.detect(media.Title),
             languageDetectFilter    =   languageDetect.filter(languageDetail => languageDetail[0] === 'english')
 
-        if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) {
-            return;
-        }
+        //Filter english characters
+        if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
+
 
         const query = `INSERT INTO "CINS"."Media"
                                         ("PublishedAt", "Title", "Description", "ImageUrl", "ImageWidth", "ImageHeight", "SubTopicsId", "Source", "Url", "Type")
                                         VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
                                         ON CONFLICT ("Url") DO NOTHING`;
 
-        this.pgClient.query(query, data, (error, result) => {
+        this.pgClient.query(query, data, error => {
             if (error) Logger.toDB(JSON.stringify(error), query, JSON.stringify(data));
         });
     }
 }
 
 
-const media     =   new Media();
-media.init();
+module.exports  =   new Media();

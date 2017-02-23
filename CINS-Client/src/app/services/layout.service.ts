@@ -9,11 +9,12 @@ export class LayoutService {
     this.footerButtonsActive                      = [];
     this.footerButtonsActive['startMenuActive']   = false;
     this.footerButtonsActive['searchMenuActive']  = false;
-    this.onlySearchBarResult  = false;
+    this.footerButtonsActive['addMediaModal']     = false;
+    this.onlySearchBarResult                      = false;
 
   }
   toggleFooterButtonsActive(footerButton) {
-    if(this.footerButtonsActive[footerButton] == true) {
+    if(this.footerButtonsActive[footerButton]) {
       this.footerButtonsActive[footerButton]  = false;
       return;
     }
@@ -23,6 +24,12 @@ export class LayoutService {
     }
 
     this.footerButtonsActive[footerButton]  = true;
+  }
+
+  hideFooterButtonsActive() {
+    for(let button in this.footerButtonsActive) {
+      this.footerButtonsActive[button]  = false
+    }
   }
 
 

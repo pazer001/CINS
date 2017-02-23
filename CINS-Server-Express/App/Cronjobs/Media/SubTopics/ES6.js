@@ -26,7 +26,7 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
+            
             resolve(mediaUrls);
         })
     }
@@ -53,7 +53,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
@@ -80,7 +79,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
@@ -107,7 +105,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
@@ -134,7 +131,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
@@ -161,7 +157,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
@@ -187,7 +182,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
@@ -213,7 +207,6 @@ class ES6 {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }

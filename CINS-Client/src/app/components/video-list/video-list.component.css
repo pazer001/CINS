@@ -1,28 +1,80 @@
-.panel>.heading>.icon {
+.panel .title, .panel .content, .panel .mif-expand-less {
+  cursor: pointer;
+}
+
+.heading {
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-.window {
-  margin-bottom: 1em;
+.heading .icon, .heading .btn-max {
+  flex: 1;
 }
 
-.btn-max:after {
-  display: none;
-}
-
-.window-icon {
-  vertical-align: middle;
-}
-
-.window-content {
-  height: 97px!important;
+.heading .title {
+  flex: 20;
+  flex-shrink: 1;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 5%;
+  height: 55%;
 }
 
-/*Mobile*/
-.window-caption-title {
-  width: 68%;
-  overflow: hidden;
-  display: inline-block;
-  height: 14px;
+.btn-max {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-max {
+  float: right;
+  height: 100%;
+  width: 4%;
+  text-align: center;
+}
+
+.frame {
+  background-color: transparent;
+}
+
+.image-overlay {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.description {
+  font-size: calc(1vw + 50%);
+}
+
+.image-container {
+  /*max-width: 60%;*/
+}
+
+.image {
+  text-align: center;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+  .content img {
+    max-width: 75%;
+  }
+
+  .title {
+    font-size: 2.5vh;
+  }
+
+  .heading {
+    padding: .625rem 1em;
+  }
+
+  .panel>.heading>.icon+.title {
+    margin-left: 10%;
+  }
+
+  .image-container {
+    max-width: 75%;
+  }
 }

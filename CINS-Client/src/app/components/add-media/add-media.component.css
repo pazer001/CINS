@@ -1,0 +1,33 @@
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.result-icon {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  vertical-align: middle;
+  height: 2.625rem;
+  width: 2.625rem;
+  text-align: center;
+  padding: .625rem;
+}
+
+.message {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 0px) and (min-width: 480px){
+  h4 {
+    font-size: 6vw;
+  }
+}

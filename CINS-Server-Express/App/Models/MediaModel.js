@@ -57,6 +57,19 @@ class MediaModel {
             })
         })
     }
+
+    requestMedia(data) {
+        return new Promise(resolve => {
+            const query = `INSERT INTO "CINS"."RequestMedia" 
+                            ("PublishedAt", "Title", "Description", "Source", "Url", "SubTopicsId", "Type") 
+                            VALUES(now(), $1, $2, $3, $4, $5, $6)
+                            ON CONFLICT ("Url") DO NOTHING`;
+            this.pgClient.query(query, data, (err, result) => {
+                if (err) console.log(err);
+                resolve(result);
+            })
+        })
+    }
 }
 
 module.exports = new MediaModel();

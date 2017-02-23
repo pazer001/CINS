@@ -22,6 +22,7 @@ export class DataService {
   ratedMedia: any;
   mySubTopics: Array<string>;
   subTopicsIds: Array<string>;
+  subTopics: Array<string>;
 
   constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService, private cookieService: CookieService) {
     this.selectedVideo            = null;
@@ -34,13 +35,14 @@ export class DataService {
     this.ratedMedia               = {};
     this.mySubTopics              = [];
     this.subTopicsIds             = [];
+    this.subTopics                = [];
 
     if(this.cookieService.get('userLoggedIn')) {
-      this.userDetails  = JSON.parse(localStorage.getItem('userDetails'));
-      this.userLoggedIn  = true;
+      this.userDetails    = JSON.parse(localStorage.getItem('userDetails'));
+      this.userLoggedIn   = true;
     } else {
       localStorage.removeItem('userDetails');
-      this.userLoggedIn  = false;
+      this.userLoggedIn   = false;
     }
 
     this.getLatestMedia();
@@ -52,6 +54,7 @@ export class DataService {
       for(let subTopic in mainTopicObject) {
         let subTopicObject  = mainTopicObject[subTopic];
         this.subTopicsIds[subTopicObject.Id]  = subTopicObject.Name;
+        this.subTopics.push(subTopicObject)
       }
     }
 
@@ -76,28 +79,8 @@ export class DataService {
   }
 
   openMedia(currentSelectedSubTopicVideo) {
-
-    // let notAllowedIframeSource  = {
-    //   'Medium': true,
-    //   'Free Code Camp': true,
-    //   'ReactJS News IO': true,
-    //   'Reactjs News': true,
-    //   'Code Mentor': true,
-    //   'Thinkster': true,
-    //   'Hashbang Weekly': true,
-    //   'Tech Beacon': true,
-    //   'Dave Ceddia': true,
-    //   'reddit': true,
-    // };
-
-    // if(notAllowedIframeSource[currentSelectedSubTopicVideo.Source]) {
-      var win = window.open(currentSelectedSubTopicVideo.Url, '_blank');
-      win.focus();
-      // return;
-    // }
-    this.layoutService.toggleFooterButtonsActive('startMenuActive');
-    // this.selectedVideo = currentSelectedSubTopicVideo;
-    // this.isVideoModalOpen = true;
+    window.open(currentSelectedSubTopicVideo.Url, '_blank').focus();
+    this.layoutService.hideFooterButtonsActive();
   }
 
   closeMedia() {
@@ -146,7 +129,7 @@ export class DataService {
   postUser(postUser): Observable<any> {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    return this.http.post(`user`, JSON.stringify(postUser), options).map(res => res.json())
+    return this.http.post(`api/user`, JSON.stringify(postUser), options).map(res => res.json())
   }
 
   postUserLogout(): Observable<any> {
@@ -177,19 +160,25 @@ export class DataService {
   postUserTopicsSave(userId, selectedSubTopicId): Observable<any> {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    return this.http.post(`userTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
+    return this.http.post(`api/userTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
   deleteUserTopicsSave(userId, selectedSubTopicId): Observable<any> {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(`UserTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
+    return this.http.delete(`api/UserTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
 
   rateMedia(mediaId): Observable<any> {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    return this.http.post(`rateMedia/${mediaId}`, options).map(res => res.json())
+    return this.http.post(`api/rateMedia/${mediaId}`, options).map(res => res.json())
   }
 
   search(term): Observable<any> {
     return this.http.get(`api/search/${term}`).map(res => res.json())
+  }
+
+  postRequestMedia(data) {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(`api/requestMedia/`, JSON.stringify(data), options).map(res => res.json())
   }
 }

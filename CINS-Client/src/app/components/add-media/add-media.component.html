@@ -1,0 +1,30 @@
+<div class="padding10 dialog info">
+  <h1>Add Media</h1>
+  <div class="input-control text full-size" [ngClass]="errors['title'] === false ? 'error' : 'success'"><input type="text" placeholder="Title" [(ngModel)]="title" /></div>
+  <div class="input-control textarea full-size" [ngClass]="errors['description'] === false ? 'error' : 'success'"><textarea [(ngModel)]="description" placeholder="Description" style="resize: none; overflow-y: hidden; height: 98px;"></textarea></div>
+  <div class="input-control text full-size" [ngClass]="errors['source'] === false ? 'error' : 'success'"><input type="text" placeholder="Source or your name" [(ngModel)]="source"></div>
+  <div class="input-control text full-size" [ngClass]="errors['url'] === false ? 'error' : 'success'"><input type="text" placeholder="URL" [(ngModel)]="url"></div>
+
+  <div class="input-control select full-size" [ngClass]="errors['title'] === false ? 'type' : 'success'">
+    <select [(ngModel)]="subTopicId">
+      <option [value]="subTopic.Id" *ngFor="let subTopic of dataService.subTopics">{{subTopic.Name}}</option>
+    </select>
+  </div>
+
+  <div class="input-control select full-size" [ngClass]="errors['title'] === false ? 'type' : 'success'">
+    <select [(ngModel)]="type">
+      <option>Article</option>
+      <option>Video</option>
+    </select>
+  </div>
+  <span class="dialog-close-button" (click)="layoutService.toggleFooterButtonsActive('addMediaModal')"></span>
+  <div class="button-container">
+    <button class="image-button success" (click)="postAddMedia(title, description, source, url, subTopicId, type)">
+      Submit
+      <span class="icon mif-plus bg-emerald"></span>
+    </button>
+    <span class="result-icon" *ngIf="requestMediaResult" [ngClass]="requestMediaResult.code === 200 ? 'mif-checkmark' : 'mif-cross'"></span>
+
+  </div>
+  <div class="padding10 message" *ngIf="requestMediaResult">{{requestMediaResult.message}}</div>
+</div>

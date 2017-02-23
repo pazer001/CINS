@@ -96,11 +96,12 @@ class GeneralArticles {
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
-                let url = `https://www.raywenderlich.com/?s=${subTopic.SearchTerm}`;
+                let url = `https://www.raywenderlich.com/?s=${subTopic.Name}`;
                 let html = await Utils.request(url);
                 if(!html) throw url;
                 var $ = cheerio.load(html);
                 $('#content').find('article').filter(function() {
+                    if(!subTopic.Id) return;
                     mediaUrls.push({
                         PublishedAt: moment().format(),
                         Title: $(this).find('.entry-title').find('a').text(),

@@ -17,6 +17,8 @@ import { VideoListComponent } from './components/video-list/video-list.component
 import { VideoModalComponent } from './components/modals/video-modal/video-modal.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { SearchComponent } from './components/search/search.component';
+import { TrimPipe } from './Pipes/trim.pipe';
+import { AddMediaComponent } from './components/add-media/add-media.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SearchComponent } from './components/search/search.component';
     VideoListComponent,
     VideoModalComponent,
     UserLoginComponent,
-    SearchComponent
+    SearchComponent,
+    TrimPipe,
+    AddMediaComponent
   ],
   imports: [
     BrowserModule,

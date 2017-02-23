@@ -82,5 +82,18 @@ app.get('/search/:term', async function (req, res) {
     res.json(search);
 });
 
+app.post('/requestMedia', async function (req, res) {
+    let data    =   [
+        req.body.title,
+        req.body.description,
+        req.body.source,
+        req.body.url,
+        req.body.subTopicId,
+        req.body.type,
+    ];
+    let rateMedia    =   await MediaController.requestMedia(data);
+    res.json(rateMedia)
+});
+
 
 app.listen(config[process.env.NODE_ENV].Servers.Backend.Port, () => console.log(`Server ${process.env.NODE_ENV} on port: ${config[process.env.NODE_ENV].Servers.Backend.Port}`));

@@ -103,7 +103,6 @@ class ReactNative {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }

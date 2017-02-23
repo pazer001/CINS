@@ -650,4 +650,26 @@ ci-info: +-------+--------------+----------+---------------+-----------+-------+
 
 Ubuntu 16.04.1 LTS ubuntu-xenial ttyS0
 
-ubuntu-xenial login: 
+ubuntu-xenial login: [97141.343714] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[97141.343714]   Tx Queue             <0>
+[97141.343714]   TDH                  <f9>
+[97141.343714]   TDT                  <fb>
+[97141.343714]   next_to_use          <fb>
+[97141.343714]   next_to_clean        <f9>
+[97141.343714] buffer_info[next_to_clean]
+[97141.343714]   time_stamp           <1017161b9>
+[97141.343714]   next_to_watch        <fa>
+[97141.343714]   jiffies              <101716457>
+[97141.343714]   next_to_watch.status <0>
+[97143.350753] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[97143.350753]   Tx Queue             <0>
+[97143.350753]   TDH                  <f9>
+[97143.350753]   TDT                  <fb>
+[97143.350753]   next_to_use          <fb>
+[97143.350753]   next_to_clean        <f9>
+[97143.350753] buffer_info[next_to_clean]
+[97143.350753]   time_stamp           <1017161b9>
+[97143.350753]   next_to_watch        <fa>
+[97143.350753]   jiffies              <10171664d>
+[97143.350753]   next_to_watch.status <0>
+[97145.281816] e1000 0000:00:03.0 enp0s3: Reset adapter

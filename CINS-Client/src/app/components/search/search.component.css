@@ -1,3 +1,4 @@
+
 #search-menu-results .list-group-content {
   overflow-y: scroll;
   height: 28em;
@@ -38,18 +39,24 @@
 }
 
 #search-menu-results .heading input {
-  width: 93%;
+  width: 90%;
   height: 100%;
+  padding: 0;
 }
 
 #search-menu-results .heading .icon {
-  width: 7%;
+  width: 10%;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
 
   #search-menu-results .content {
     height: 80vh;
+  }
+
+  .heading .mif-search {
+    padding: 0;
+    line-height: 220%;
   }
 }
 
