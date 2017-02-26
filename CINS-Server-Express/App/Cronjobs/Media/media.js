@@ -12,6 +12,7 @@ const Cpp           =   require('./SubTopics/Cpp');
 const React           =   require('./SubTopics/React');
 const ReactNative           =   require('./SubTopics/ReactNative');
 const ES6           =   require('./SubTopics/ES6');
+const Angular           =   require('./SubTopics/Angular');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos   =   require('./GeneralVideos');
@@ -26,8 +27,9 @@ class Media {
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
 
+        console.log(`angular...`); this.setMedia(await Angular.angular());
 
-
+        return;
         try {
             //C
             console.log(`drdobbs...`); this.setMedia(await C.drdobbs());

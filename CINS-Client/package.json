@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node app.js",
-    "serve": "concurrently --kill-others \"ng build --watch\" \"nodemon --harmony-async-await app.js\"",
+    "serve": "concurrently --kill-others \"ng build --watch\" \"nodemon app.js\"",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
