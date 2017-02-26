@@ -27,9 +27,6 @@ class Media {
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
 
-        console.log(`angular...`); this.setMedia(await Angular.angular());
-
-        return;
         try {
             //C
             console.log(`drdobbs...`); this.setMedia(await C.drdobbs());
@@ -88,6 +85,16 @@ class Media {
             console.log(`infoq...`); this.setMedia(await GeneralArticles.infoq(this.subTopics));
             // console.log(`rayWenderlich...`); this.setMedia(await GeneralArticles.rayWenderlich(this.subTopics));
             console.log(`frontendEront...`); this.setMedia(await GeneralArticles.frontendEront(this.subTopics));
+            console.log(`infoWorld...`); this.setMedia(await GeneralArticles.infoWorld(this.subTopics));
+
+            //Angular
+            console.log(`angular...`); this.setMedia(await Angular.angular());
+            console.log(`angualrTwitter...`); this.setMedia(await Angular.angualrTwitter());
+            console.log(`reddit...`); this.setMedia(await Angular.reddit());
+            console.log(`blogspot...`); this.setMedia(await Angular.blogspot());
+            console.log(`angularNews...`); this.setMedia(await Angular.angularNews());
+            console.log(`tutorialsPoint...`); this.setMedia(await Angular.tutorialsPoint());
+            console.log(`tutorialsPoint...`); this.setMedia(await Angular.thoughtram());
 
             //General Video
             console.log(`youtube...`); this.setMedia(await GeneralVideos.youtube());
@@ -119,11 +126,11 @@ class Media {
         ];
 
         //Check for good parameters
-        if(!media.Url || !media.Title || !moment(media.PublishedAt)) return;
+        if(!media.Url || !media.Title) return;
 
         let lngDetector             =   new LanguageDetect(),
             languageDetect          =   lngDetector.detect(media.Title),
-            languageDetectFilter    =   languageDetect.filter(languageDetail => languageDetail[0] === 'english')
+            languageDetectFilter    =   languageDetect.filter(languageDetail => languageDetail[0] === 'english');
 
         //Filter english characters
         if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;

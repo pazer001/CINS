@@ -150,6 +150,34 @@ class GeneralArticles {
         })
     }
 
+    async infoWorld(subTopics) {
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            subTopics.rows.forEach(async function(subTopic) {
+                let url = `http://www.infoworld.com/search?query=${subTopic.SearchTerm}`;
+                let html = await Utils.request(url);
+                if(!html) throw url;
+                var $ = cheerio.load(html);
+                $('.post-cont').filter(function() {
+                    mediaUrls.push({
+                        PublishedAt:moment().format(),
+                        Title: $(this).find('h3').find('a').text(),
+                        Description: $(this).find('.summary').text(),
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: subTopic.Id,
+                        Source: 'Info World',
+                        Url: `http://www.infoworld.com/${$(this).find('h3').find('a').prop('href')}`,
+                        Type: 'Article'
+                    });
+
+                });
+            });
+            setTimeout(() => {resolve(mediaUrls); }, 10000)
+        })
+    }
+
 
 
 
