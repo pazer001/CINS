@@ -28,6 +28,7 @@ class Media {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
 
         try {
+            console.time('COMPLETED')
             //C
             console.log(`drdobbs...`); this.setMedia(await C.drdobbs());
 
@@ -94,11 +95,12 @@ class Media {
             console.log(`blogspot...`); this.setMedia(await Angular.blogspot());
             console.log(`angularNews...`); this.setMedia(await Angular.angularNews());
             console.log(`tutorialsPoint...`); this.setMedia(await Angular.tutorialsPoint());
-            console.log(`tutorialsPoint...`); this.setMedia(await Angular.thoughtram());
+            console.log(`thoughtram...`); this.setMedia(await Angular.thoughtram());
 
             //General Video
             console.log(`youtube...`); this.setMedia(await GeneralVideos.youtube());
 
+            console.timeEnd('COMPLETED')
         } catch (e) {
             console.log(e)
         }

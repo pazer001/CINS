@@ -48,7 +48,6 @@ app.post('/user', async function (req, res) {
 });
 
 app.get('/user', async function (req, res) {
-    console.log(req.query)
     let getUser    =   await UsersController.getUser(req.query);
     if(getUser.code === 200) {
         UsersController.setUserSession(req);

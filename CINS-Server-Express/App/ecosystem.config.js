@@ -9,20 +9,13 @@ module.exports = {
       {
           name      : "API",
           script    : "app.js",
-          watch       : true,
-          env: {
-              COMMON_VARIABLE: "true",
-              NODE_ENV: "Production"
-          }
+          watch       : true
       },
       {
           name      : "CRONJOBS",
+          cwd: 'Cronjobs',
           script    : "cronjobs.js",
-          watch       : true,
-          env: {
-              COMMON_VARIABLE: "true",
-              NODE_ENV: "Production"
-          }
+          watch       : true
       },
   ],
 

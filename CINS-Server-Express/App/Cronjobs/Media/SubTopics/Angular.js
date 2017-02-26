@@ -64,7 +64,6 @@ class Angular {
             if(!html) throw url;
             let $   =   cheerio.load(html);
             $('#siteTable').find('.entry').filter(function() {
-                console.log($(this).find('.linkflairlabel').prop('title'))
                 if($(this).find('.linkflairlabel').prop('title') === 'Announcement' || $(this).find('.linkflairlabel').prop('title') === 'Article' || $(this).find('.linkflairlabel').prop('title') === 'Video' || $(this).find('.linkflairlabel').prop('title') === 'Resource') {
                     mediaUrls.push({
                         PublishedAt: null,
@@ -189,7 +188,6 @@ class Angular {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
