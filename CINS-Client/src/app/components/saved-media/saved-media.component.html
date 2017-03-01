@@ -1,0 +1,23 @@
+<div class="padding10 dialog info">
+  <h1>Saved Media</h1>
+  <span class="dialog-close-button" (click)="layoutService.toggleFooterButtonsActive('savedMedia')"></span>
+  <div class="listview-outlook bg-white" data-role="listview" *ngIf="dataService.savedMediaData.length">
+    <a class="list" *ngFor="let savedMedia of dataService.savedMediaData">
+      <div class="flex-grid">
+        <div class="row">
+          <div class="colspan1 center cell">
+            <span class="mif-cancel mif-2x icon" (click)="deleteUserMediaSave(dataService.userDetails.data.Id, savedMedia.Id)"></span>
+          </div>
+          <div class="list-content colspan11 cell">
+            <span class="list-title">{{savedMedia.Title}}</span>
+            <span class="list-subtitle">{{savedMedia.Source}} on {{savedMedia.PublishedAt}}</span>
+            <span class="list-remark">{{savedMedia.Description}}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div *ngIf="!dataService.savedMediaData.length">
+    (No saved media found)
+  </div>
+</div>

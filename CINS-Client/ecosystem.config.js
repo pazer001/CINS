@@ -10,11 +10,7 @@ module.exports = {
           name      : "Client",
           script    : "app.js",
           ignore_watch : ["node_modules", "dist/assets"],
-          watch       : true,
-          env: {
-              COMMON_VARIABLE: "true",
-              NODE_ENV: "Production"
-          }
+          watch       : true
       },
   ],
 

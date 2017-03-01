@@ -1,0 +1,17 @@
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.list-remark {
+  width: 75%!important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
