@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-main',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
+    this.dataService.routeSnapshotData  = this.route.snapshot.data;
+  }
 
   ngOnInit() {
   }

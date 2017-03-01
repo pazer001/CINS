@@ -154,7 +154,8 @@ class GeneralArticles {
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
-                let url = `http://www.infoworld.com/search?query=${subTopic.SearchTerm}`;
+                if(!subTopic.InfoWorld) return;
+                let url = `http://www.infoworld.com/search?contentType=article%2Cresource&query=${subTopic.InfoWorld}&s=d`;
                 let html = await Utils.request(url);
                 if(!html) throw url;
                 var $ = cheerio.load(html);
@@ -171,7 +172,6 @@ class GeneralArticles {
                         Url: `http://www.infoworld.com/${$(this).find('h3').find('a').prop('href')}`,
                         Type: 'Article'
                     });
-
                 });
             });
             setTimeout(() => {resolve(mediaUrls); }, 10000)

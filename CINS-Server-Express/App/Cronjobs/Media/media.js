@@ -13,6 +13,7 @@ const React           =   require('./SubTopics/React');
 const ReactNative           =   require('./SubTopics/ReactNative');
 const ES6           =   require('./SubTopics/ES6');
 const Angular           =   require('./SubTopics/Angular');
+const Foundation           =   require('./SubTopics/Foundation');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos   =   require('./GeneralVideos');
@@ -26,6 +27,8 @@ class Media {
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
+
+
 
         try {
             console.time('COMPLETED')
@@ -47,7 +50,7 @@ class Media {
             console.log(`ramblingComments...`); this.setMedia(await Cpp.ramblingComments());
             console.log(`attractiveChaos...`); this.setMedia(await Cpp.attractiveChaos());
             console.log(`lightSleeper...`); this.setMedia(await Cpp.lightSleeper());
-            console.log(`lightSleeper...`); this.setMedia(await Cpp.theFastwareProject());
+            console.log(`theFastwareProject...`); this.setMedia(await Cpp.theFastwareProject());
             console.log(`theACCUOverloadJournals...`); this.setMedia(await Cpp.theACCUOverloadJournals());
             console.log(`learningCpp...`); this.setMedia(await Cpp.learningCpp());
 
@@ -97,6 +100,11 @@ class Media {
             console.log(`tutorialsPoint...`); this.setMedia(await Angular.tutorialsPoint());
             console.log(`thoughtram...`); this.setMedia(await Angular.thoughtram());
 
+            //Foundation
+            console.log(`foundation...`); this.setMedia(await Foundation.foundation());
+            console.log(`foundationTutorials...`); this.setMedia(await Foundation.foundationTutorials());
+            console.log(`tutorialsPoint...`); this.setMedia(await Foundation.tutorialsPoint());
+
             //General Video
             console.log(`youtube...`); this.setMedia(await GeneralVideos.youtube());
 
@@ -142,12 +150,12 @@ class Media {
                                         ("PublishedAt", "Title", "Description", "ImageUrl", "ImageWidth", "ImageHeight", "SubTopicsId", "Source", "Url", "Type")
                                         VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
                                         ON CONFLICT ("Url") DO NOTHING`;
-
         this.pgClient.query(query, data, error => {
             if (error) Logger.toDB(JSON.stringify(error), query, JSON.stringify(data));
         });
     }
 }
 
-
+// var cron = new Media();
+// cron.init();
 module.exports  =   new Media();

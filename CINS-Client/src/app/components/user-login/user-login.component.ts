@@ -70,8 +70,8 @@ export class UserLoginComponent implements OnInit {
     })
   }
 
-  getLatestMedia() {
-    this.dataService.getLatestMedia().subscribe(media => {
+  getLatestMedia(userId = null) {
+    this.dataService.getLatestMedia(this.dataService.userDetails.data.Id || null).subscribe(media => {
       this.dataService.currentSelectedSubTopicMedia = media;
       this.dataService.setFilter('All');
     });

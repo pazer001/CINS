@@ -13,22 +13,6 @@ class TopicsController {
         return data;
     }
 
-    async getMedia(Id) {
-        let data            =   {},
-            getVideos    =  await TopicsModel.getMedia(Id);
-        return getVideos.rows;
-    }
-
-    async getLatestMedia(userId) {
-        let getLatestMedia    =  await TopicsModel.getLatestMedia(userId);
-
-        if(getLatestMedia && getLatestMedia.rowCount) {
-            return getLatestMedia.rows;
-        } else {
-            return null;
-        }
-    }
-
 }
 
 module.exports  =   new TopicsController();

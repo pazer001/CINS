@@ -29,8 +29,17 @@
   background: transparent!important;
 }
 
+.dropdown-toggle {
+  /*padding: 0 0 0 20%;*/
+}
+
 .dropdown-toggle:hover {
   background: rgba(255,255,255,0.1)!important;
+}
+
+.dropdown-toggle .icon {
+  /*top: 0;*/
+  /*left: 0;*/
 }
 
 #menu-tiles {

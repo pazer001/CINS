@@ -61,6 +61,22 @@ class MediaController {
             }
         }
     }
+
+    async getMedia(Id) {
+        let data            =   {},
+            getVideos    =  await MediaModel.getMedia(Id);
+        return getVideos.rows;
+    }
+
+    async getLatestMedia(userId) {
+        let getLatestMedia    =  await MediaModel.getLatestMedia(userId);
+
+        if(getLatestMedia && getLatestMedia.rowCount) {
+            return getLatestMedia.rows;
+        } else {
+            return null;
+        }
+    }
 }
 
 module.exports  =   new MediaController();

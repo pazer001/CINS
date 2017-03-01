@@ -1,8 +1,0 @@
-{
-  "/": {
-    "target": "http://localhost:9000",
-    "secure": false,
-    "pathRewrite": {"^/api" : ""}
-  },
-  "/assets": "src/assets/"
-}

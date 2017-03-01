@@ -1,0 +1,96 @@
+#main {
+  margin-top: -10px;
+  background: no-repeat fixed;
+}
+
+/*Desktop*/
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-768x1280.jpg') ;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 960px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-960x540.jpg') ;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 1024px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-2400x1350.jpg') ;
+  }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-1280x720.jpg') ;
+  }
+}
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-1366x768.jpg') ;
+  }
+}
+@media only screen and (min-width: 1367px) and (max-width: 1600px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-1600x900.jpg') ;
+  }
+}
+@media only screen and (min-width: 1601px) and (max-width: 1920px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-1920x1080.jpg') ;
+  }
+}
+@media only screen and (min-width: 1921px) and (max-width: 2400px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-2400x1350.jpg') ;
+  }
+}
+@media only screen and (min-width: 2401px) and (max-width: 2560px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-2560x1440.jpg') ;
+  }
+}
+@media only screen and (min-width: 2561px) and (max-width: 2880px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-2880x1620.jpg') ;
+  }
+}
+@media only screen and (min-width: 2881px) and (max-width: 3554px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-3554x1999.jpg') ;
+  }
+}
+@media only screen and (min-width: 3555px) and (max-width: 3840px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-3840x2160.jpg') ;
+  }
+}
+
+
+/*Mobile*/
+@media only screen and (min-width: 0px) and (max-width: 240px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-240x320.jpg') ;
+  }
+}
+
+@media only screen and (min-width: 241px) and (max-width: 320px) {
+  #main {
+    /*width: 109%;*/
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-480x640.jpg') ;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-640x960.jpg') ;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 640px) {
+  #main {
+    background-image: url('../assets/background/windows_10_hero_4k-wallpaper-640x960.jpg') ;
+  }
+}
+

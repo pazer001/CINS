@@ -15,8 +15,8 @@
                 <ul class="v-menu darcula min-size-required">
                   <li class="menu-title">Main Topics</li>
                   <li *ngFor="let mainTopic of mainTopics">
-                    <a class="dropdown-toggle" (click)="setActiveNavigationMainTopic(mainTopic)">
-                      <span class="mif-my-location icon"></span>{{mainTopic}}</a>
+                    <a class="dropdown-toggle" (click)="setActiveNavigationMainTopic(mainTopic.maintopics)">
+                      <span class="mif-{{mainTopic.Icon}} icon"></span>{{mainTopic.maintopics}}</a>
                   </li>
                 </ul>
               </div>
@@ -28,13 +28,13 @@
 
       <div class="cell colspan10" *ngIf="navigation === 'subTopics'">
         <div id="menu-tiles" class="tile-container" [ngClass]="activeNavigationMainTopic ? 'active' : ''">
-          <div class="main-topic-tile padding5 no-padding-left no-padding-right"
+          <a [routerLink]="[subTopic.Name]" class="main-topic-tile padding5 no-padding-left no-padding-right fg-white"
                [ngClass]="[tilesTypes[i % tilesTypes.length], tilesColors[i % tilesColors.length]]" data-role="tile"
                *ngFor="let subTopic of allTopics[activeNavigationMainTopic]; let i = index"
                (click)="setCurrentSelectedSubTopic(subTopic)">
             <img src="assets/icons/{{subTopic.Name}}.png">
             {{subTopic.Name}}
-          </div>
+          </a>
         </div>
       </div>
 
@@ -43,11 +43,6 @@
           <app-user-login></app-user-login>
         </div>
       </div>
-
-
-
-
-
     </div>
   </div>
 </nav>

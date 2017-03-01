@@ -31,12 +31,12 @@ app.get('/getAllTopics', async function (req, res) {
 });
 
 app.get('/getMedia/:Id', async function (req, res) {
-    let getMedia    =   await TopicsController.getMedia(req.params.Id);
+    let getMedia    =   await MediaController.getMedia(req.params.Id);
     res.json(getMedia)
 });
 
 app.get('/getLatestMedia/:userId', async function (req, res) {
-    let getLatestMedia    =   await TopicsController.getLatestMedia(req.params.userId);
+    let getLatestMedia    =   await MediaController.getLatestMedia(req.params.userId);
     res.json(getLatestMedia);
 });
 
@@ -50,7 +50,7 @@ app.post('/user', async function (req, res) {
 app.get('/user', async function (req, res) {
     let getUser    =   await UsersController.getUser(req.query);
     if(getUser.code === 200) {
-        UsersController.setUserSession(req);
+        UsersController.setUserSession(req, getUser.data.Id);
         UsersController.setUserCookie(res, getUser.data.Id);
     }
     res.json(getUser)
@@ -62,12 +62,12 @@ app.post('/userLogout', async function (req, res) {
 });
 
 app.post('/userTopicsSave/:userId/:subTopicId', async function (req, res) {
-    let postUserTopicsSave    =   await UsersController.postUserTopicsSave(req.params.userId, req.params.subTopicId);
+    let postUserTopicsSave    =   await UsersController.postUserTopicsSave(req.params.userId, req.params.subTopicId, req);
     res.json(postUserTopicsSave)
 });
 
 app.delete('/userTopicsSave/:userId/:subTopicId', async function (req, res) {
-    let postUserTopicsSave    =   await UsersController.deleteUserTopicsSave(req.params.userId, req.params.subTopicId);
+    let postUserTopicsSave    =   await UsersController.deleteUserTopicsSave(req.params.userId, req.params.subTopicId, req);
     res.json(postUserTopicsSave)
 });
 
@@ -92,6 +92,21 @@ app.post('/requestMedia', async function (req, res) {
     ];
     let rateMedia    =   await MediaController.requestMedia(data);
     res.json(rateMedia)
+});
+
+app.post('/userMediaSave/:userId/:mediaId', async function (req, res) {
+    let postUserMediaSave    =   await UsersController.postUserMediaSave(req.params.userId, req.params.mediaId, req);
+    res.json(postUserMediaSave)
+});
+
+app.delete('/userMediaSave/:userId/:mediaId', async function (req, res) {
+    let deleteUserMediaSave    =   await UsersController.deleteUserMediaSave(req.params.userId, req.params.mediaId, req);
+    res.json(deleteUserMediaSave)
+});
+
+app.get('/savedMedia/:userId', async function (req, res) {
+    let savedMedia    =   await UsersController.savedMedia(req.params.userId, req);
+    res.json(savedMedia)
 });
 
 

@@ -22,7 +22,9 @@ export class DataService {
   ratedMedia: any;
   mySubTopics: Array<string>;
   subTopicsIds: Array<string>;
-  subTopics: Array<string>;
+  subTopics: any;
+  routeSnapshotData: any;
+  savedMediaData: Array<any>;
 
   constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService, private cookieService: CookieService) {
     this.selectedVideo            = null;
@@ -36,6 +38,8 @@ export class DataService {
     this.mySubTopics              = [];
     this.subTopicsIds             = [];
     this.subTopics                = [];
+    this.routeSnapshotData        = null;
+    this.savedMediaData           = [];
 
     if(this.cookieService.get('userLoggedIn')) {
       this.userDetails    = JSON.parse(localStorage.getItem('userDetails'));
@@ -45,7 +49,7 @@ export class DataService {
       this.userLoggedIn   = false;
     }
 
-    this.getLatestMedia();
+    // this.getLatestMedia();
   }
 
   setMySubTopics(data) {
@@ -58,7 +62,7 @@ export class DataService {
       }
     }
 
-    if(this.userDetails.subTopicsSaveIds) {
+    if(this.userDetails && this.userDetails.subTopicsSaveIds) {
       for(let subTopicId of this.userDetails.subTopicsSaveIds.data) {
         this.mySubTopics[subTopicId]  = this.subTopicsIds[subTopicId]
       }
@@ -73,9 +77,8 @@ export class DataService {
     return this.http.get(`api/getMedia/${Id}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
   }
 
-  getLatestMedia(): Observable<any> {
-    let userId  = this.userDetails ? this.userDetails.data.Id : '0';
-    return this.http.get(`api/getLatestMedia/${userId}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
+  getLatestMedia(userId = null): Observable<any> {
+    return this.http.get(`api/getLatestMedia/${userId || 0}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
   }
 
   openMedia(currentSelectedSubTopicVideo) {
@@ -122,8 +125,7 @@ export class DataService {
       search: params
     });
 
-    this.userDetails  = this.http.get(`api/user`, options).map(res => res.json());
-    return this.userDetails;
+    return this.http.get(`api/user`, options).map(res => res.json());
   }
 
   postUser(postUser): Observable<any> {
@@ -161,6 +163,7 @@ export class DataService {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     return this.http.post(`api/userTopicsSave/${userId}/${selectedSubTopicId}`, options).map(res => res.json())}
+
   deleteUserTopicsSave(userId, selectedSubTopicId): Observable<any> {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
@@ -180,5 +183,21 @@ export class DataService {
     let headers = new Headers({'content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     return this.http.post(`api/requestMedia/`, JSON.stringify(data), options).map(res => res.json())
+  }
+
+  postUserMediaSave(userId, mediaId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(`api/userMediaSave/${userId}/${mediaId}`, options).map(res => res.json())
+  }
+
+  deleteUserMediaSave(userId, mediaId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(`api/userMediaSave/${userId}/${mediaId}`, options).map(res => res.json())
+  }
+
+  savedMedia(userId) {
+    return this.http.get(`api/savedMedia/${userId}`).map(res => res.json());
   }
 }

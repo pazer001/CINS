@@ -2,7 +2,7 @@ const pg        =   require('pg');
 const config    =   require('../../config.json');
 const Logger    =   require('../Utils/Logger');
 
-class TopicsModel {
+class UsersModel {
     constructor() {
         this.pgClient   =   new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
         this.pgClient.connect();
@@ -126,6 +126,67 @@ class TopicsModel {
             })
         })
     }
+
+    async postUserMediaSave(userId, mediaId) {
+        let data    =   [
+            userId,
+            mediaId
+        ];
+
+        return new Promise(resolve => {
+            const query     =   `INSERT INTO "CINS"."UserMediaSave" ("UserId", "MediaId") VALUES ($1, $2)`;
+            this.pgClient.query(query, data, (err, result) => {
+                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                resolve(result);
+            })
+        })
+    }
+
+    async deleteUserMediaSave(userId, mediaId) {
+        let data    =   [
+            userId,
+            mediaId
+        ];
+
+        return new Promise(resolve => {
+            const query     =   `DELETE FROM "CINS"."UserMediaSave" WHERE "UserMediaSave"."UserId" = $1 AND "UserMediaSave"."MediaId" = $2`;
+            this.pgClient.query(query, data, (err, result) => {
+                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                resolve(result);
+            })
+        })
+    }
+
+    async savedMedia(userId) {
+        let data    =   [
+            userId
+        ];
+
+        return new Promise(resolve => {
+            const query     =   `SELECT
+                                    DISTINCT "Media"."Id",
+                                    DATE("Media"."PublishedAt") AS "PublishedAt",
+                                    "Media"."Title",
+                                    "Media"."Description",
+                                    "Media"."Source" AS "Source",
+                                    "Media"."Url",
+                                    "MediaRating"."RatingCount" AS "RatingCount",
+                                    "Media"."Type",
+                                    "SubTopics"."Name" AS "SubTopicName"
+                                FROM
+                                    "CINS"."Media"
+                                LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+                                LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
+																JOIN "CINS"."UserMediaSave" ON "Media"."Id" = "UserMediaSave"."MediaId"
+																WHERE "UserMediaSave"."UserId" = $1
+                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
+                                LIMIT 100`;
+            this.pgClient.query(query, data, (err, result) => {
+                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                resolve(result);
+            })
+        })
+    }
 }
 
-module.exports  =   new TopicsModel();
+module.exports  =   new UsersModel();

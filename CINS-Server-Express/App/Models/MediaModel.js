@@ -1,5 +1,6 @@
 const pg = require('pg');
 const config = require('../../config.json');
+const UserModel     =   require('./UsersModel');
 
 class MediaModel {
     constructor() {
@@ -66,6 +67,60 @@ class MediaModel {
                             ON CONFLICT ("Url") DO NOTHING`;
             this.pgClient.query(query, data, (err, result) => {
                 if (err) console.log(err);
+                resolve(result);
+            })
+        })
+    }
+
+    // Media for specific topic
+    async getMedia(Id) {
+        return new Promise(resolve => {
+            const query     = `SELECT 
+                                    "Media"."Id",
+                                    DATE("Media"."PublishedAt") AS "PublishedAt",
+                                    "Media"."Title", 
+                                    "Media"."Description", 
+                                    "Media"."Source" AS "Source", 
+                                    "Media"."Url", 
+                                    "Media"."Type",
+                                    "SubTopics"."Name" AS "SubTopicName"
+                              FROM "CINS"."Media" 
+                              LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+                              LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
+                              WHERE "Media"."SubTopicsId" = $1
+                              ORDER BY "Media"."PublishedAt" DESC
+                              LIMIT 100`;
+            this.pgClient.query(query, [Id], (err, result) => {
+                if(err) console.log(err);
+                resolve(result);
+            })
+        })
+    }
+
+    // General latest media of user latest media
+    async getLatestMedia(userId) {
+        let userTopicsSave      =   await UserModel.getUserTopicsSave(userId),
+            userTopicsSaveIds   =   userTopicsSave.data || [];
+        return new Promise(resolve => {
+            const query     =   `SELECT
+                                    "Media"."Id",
+                                    DATE("Media"."PublishedAt") AS "PublishedAt",
+                                    "Media"."Title",
+                                    "Media"."Description",
+                                    "Media"."Source" AS "Source",
+                                    "Media"."Url",
+                                    "MediaRating"."RatingCount" AS "RatingCount",
+                                    "Media"."Type",
+                                    "SubTopics"."Name" AS "SubTopicName"
+                                FROM
+                                    "CINS"."Media"
+                                LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+                                LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
+                                ${userTopicsSaveIds.length ? `WHERE "Media"."SubTopicsId" IN(${userTopicsSaveIds.join(',')})` : ``}
+                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
+                                LIMIT 100`;
+            this.pgClient.query(query, (err, result) => {
+                if(err) console.log(err);
                 resolve(result);
             })
         })

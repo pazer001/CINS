@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class RestmeClientPage {
+export class CINSClientPage {
   navigateTo() {
     return browser.get('/');
   }

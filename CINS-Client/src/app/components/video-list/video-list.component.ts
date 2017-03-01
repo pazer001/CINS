@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {LayoutService} from "../../services/layout.service";
-import {TrimPipe} from '../../pipes/trim.pipe';
-
 
 @Component({
   selector: 'app-video-list',
@@ -33,22 +31,32 @@ export class VideoListComponent implements OnInit {
 
   rateMedia(mediaId) {
     this.dataService.rateMedia(mediaId).subscribe(data => {
-      // if(data.code === 200) {
-      //   this.dataService.ratedMedia[mediaId]  = data.ratedMediaCount;
-      // } else {
-        this.dataService.ratedMedia[mediaId]  = data;
-      // }
+      this.dataService.ratedMedia[mediaId]  = data;
     })
   }
 
-  getLatestMedia() {
-    this.dataService.getLatestMedia().subscribe(media => {
+  getLatestMedia(userId = null) {
+    this.dataService.getLatestMedia(userId).subscribe(media => {
       this.dataService.currentSelectedSubTopicMedia = media;
       this.dataService.setFilter('All');
     });
   }
 
+  postUserMediaSave(userId, mediaId) {
+    this.dataService.postUserMediaSave(userId, mediaId).subscribe(result => {
+      if(result.code === 200) {
+        this.dataService.savedMedia(this.dataService.userDetails.data.Id).subscribe(result => {
+          if(result.code === 200 && result.data.length) {
+            this.dataService.savedMediaData   = result.data;
+          }
+        })
+      }
+    })
+  }
+
   ngOnInit() {
-    this.getLatestMedia();
+    if(!this.dataService.routeSnapshotData) {
+      this.getLatestMedia(this.dataService.userDetails.data.Id || null);
+    }
   }
 }

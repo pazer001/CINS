@@ -18,7 +18,7 @@
   background-color: transparent;
 }
 
-#start:hover, #search:hover, #add-media:hover {
+#bar button:hover {
   background-color: rgba(255, 255, 255, 0.25)!important;
 }
 
@@ -46,12 +46,14 @@
   z-index: 2;
   transition: height .1s, opacity .2s ease-in-out;
   overflow: hidden;
+  will-change: transform, opacity;
 }
 
 #start-menu.active {
   opacity: 1;
   height: 55%;
   transition: height .2s, opacity .1s ease-in-out;
+  will-change: transform, opacity;
 }
 
 
@@ -68,7 +70,7 @@
   transition: height .1s, opacity .2s ease-in-out;
   overflow: hidden;
   transform: translate3d(0,0,0);
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 #search-menu.active {
@@ -76,7 +78,7 @@
   height: 55%;
   transition: height .2s, opacity .1s ease-in-out;
   transform: translate3d(0,0,0);
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 /*#add-media-modal {*/

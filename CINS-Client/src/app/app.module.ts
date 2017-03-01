@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Jsonp } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+import {appRoutes} from './app.routing';
+
 
 import { AppComponent } from './app.component';
 
@@ -17,8 +20,10 @@ import { VideoListComponent } from './components/video-list/video-list.component
 import { VideoModalComponent } from './components/modals/video-modal/video-modal.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { SearchComponent } from './components/search/search.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TrimPipe } from './pipes/trim.pipe';
 import { AddMediaComponent } from './components/add-media/add-media.component';
+import { SavedMediaComponent } from './components/saved-media/saved-media.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +36,17 @@ import { AddMediaComponent } from './components/add-media/add-media.component';
     VideoModalComponent,
     UserLoginComponent,
     SearchComponent,
+    NotFoundComponent,
     TrimPipe,
-    AddMediaComponent
+    AddMediaComponent,
+    SavedMediaComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [DataService, CookieService, LayoutService],
   bootstrap: [AppComponent]

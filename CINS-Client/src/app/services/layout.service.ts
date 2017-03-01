@@ -10,6 +10,7 @@ export class LayoutService {
     this.footerButtonsActive['startMenuActive']   = false;
     this.footerButtonsActive['searchMenuActive']  = false;
     this.footerButtonsActive['addMediaModal']     = false;
+    this.footerButtonsActive['savedMedia']        = false;
     this.onlySearchBarResult                      = false;
 
   }
@@ -31,6 +32,4 @@ export class LayoutService {
       this.footerButtonsActive[button]  = false
     }
   }
-
-
 }

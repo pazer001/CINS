@@ -1,4 +1,3 @@
-let cwd     =   process.env.NODE_ENV === 'Development' ? '/var/www/html/CINS/CINS-Server-Express/App/Cronjobs' : '/var/www/CINS/CINS-Server-Express/App/Cronjobs';
 module.exports = {
   /**
    * Application configuration section
@@ -8,16 +7,14 @@ module.exports = {
 
     // First application
       {
-          name      : "API",
+          name      : "Client",
           script    : "app.js",
-          watch     : true,
-          exec_mode: 'cluster'
-      },
-      {
-          name      : "CRONJOBS",
-          cwd       : cwd,
-          script    : "cronjobs.js",
-          watch     : true
+          ignore_watch : ["node_modules", "dist/assets"],
+          watch       : true,
+          env: {
+              COMMON_VARIABLE: "true",
+              NODE_ENV: "Production"
+          }
       },
   ],
 

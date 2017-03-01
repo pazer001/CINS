@@ -8,12 +8,14 @@
   align-items: center;
 }
 
-.heading .icon, .heading .btn-max {
+
+.heading .icon, .heading .btn-max, .heading .mif-floppy-disk {
   flex: 1;
+  position: inherit;
 }
 
 .heading .title {
-  flex: 20;
+  flex: 19;
   flex-shrink: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -28,11 +30,8 @@
   align-items: center;
 }
 
-.btn-max {
-  float: right;
-  height: 100%;
-  width: 4%;
-  text-align: center;
+.heading .mif-floppy-disk {
+  cursor: pointer;
 }
 
 .frame {
@@ -49,33 +48,25 @@
   font-size: calc(1vw + 50%);
 }
 
-.image-container {
-  /*max-width: 60%;*/
-}
-
 .image {
   text-align: center;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
-  .content img {
-    max-width: 75%;
-  }
-
   .title {
     font-size: 2.5vh;
     height: 80%!important;
   }
 
   .heading {
-    padding: .625rem 1em;
+    padding: .625rem 0;
   }
 
   .panel>.heading>.icon+.title {
     margin-left: 10%;
   }
 
-  .image-container {
-    max-width: 75%;
+  h5 {
+    margin: 0;
   }
 }

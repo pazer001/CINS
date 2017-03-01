@@ -1,10 +1,10 @@
-import { RestmeClientPage } from './app.po';
+import { CINSClientPage } from './app.po';
 
-describe('restme-client App', function() {
-  let page: RestmeClientPage;
+describe('cins-client App', () => {
+  let page: CINSClientPage;
 
   beforeEach(() => {
-    page = new RestmeClientPage();
+    page = new CINSClientPage();
   });
 
   it('should display message saying app works', () => {
