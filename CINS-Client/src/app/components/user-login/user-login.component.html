@@ -57,14 +57,15 @@
     </button>
   </div>
   <!--My Topics-->
-  <div class="panel" *ngIf="dataService.userDetails && dataService.mySubTopics">
+  <div class="panel my-topics" *ngIf="dataService.userDetails && dataService.mySubTopics">
     <div class="heading">
       <span class="icon mif-user-check"></span>
       <span class="title">My Topics</span>
+      <span class="mif-cancel icon" (click)="deleteAllUserTopicsSave(dataService.userDetails.data.Id)"></span>
     </div>
     <div class="content padding10">
-      <div *ngFor="let mySubTopic of dataService.mySubTopics">
-        {{mySubTopic}}
+      <div *ngFor="let mySubTopic of dataService.userDetails.subTopicsSaveIds.data">
+        {{dataService.subTopicsIds[mySubTopic]}}
       </div>
     </div>
   </div>

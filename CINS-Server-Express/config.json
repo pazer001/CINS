@@ -1,5 +1,5 @@
 {
-  "Development": {
+  "development": {
     "PostgreSQL": {
       "user": "CINS",
       "database": "CINS",

@@ -24,6 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TrimPipe } from './pipes/trim.pipe';
 import { AddMediaComponent } from './components/add-media/add-media.component';
 import { SavedMediaComponent } from './components/saved-media/saved-media.component';
+import { ClockComponent } from './components/clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SavedMediaComponent } from './components/saved-media/saved-media.compon
     NotFoundComponent,
     TrimPipe,
     AddMediaComponent,
-    SavedMediaComponent
+    SavedMediaComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,

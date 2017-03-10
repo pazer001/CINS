@@ -11,12 +11,10 @@ const app       = express();
 
 app.use(bodyParser.json());
 app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    cookieName: 'session',
-    secret: 'random_string_goes_here',
-    duration: new Date(Date.now() + (30 * 86400 * 1000)),
-    activeDuration: 5 * 60 * 1000,
+    secret: 'mU4TFfKQ',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }
 }));
 
 app.use(cookieParser());
@@ -25,7 +23,7 @@ app.get('/', function (req, res) {
     res.send('CINS!')
 });
 
-app.get('/getAllTopics', async function (req, res) {
+app.get('/allTopics', async function (req, res) {
     let getAllTopics    =   await TopicsController.getAllTopics();
     res.json(getAllTopics)
 });
@@ -41,14 +39,14 @@ app.get('/getLatestMedia/:userId', async function (req, res) {
 });
 
 app.post('/user', async function (req, res) {
-    let postUser    =   await UsersController.postUser(req.body);
-    UsersController.setUserSession(req);
+    let postUser    =   await UsersController.postUser(req.body.firstName, req.body.lastName, req.body.password, req.body.eMail);
+    UsersController.setUserSession(req, postUser.data.data.Id);
     UsersController.setUserCookie(res, postUser.data.data.Id);
     res.json(postUser);
 });
 
 app.get('/user', async function (req, res) {
-    let getUser    =   await UsersController.getUser(req.query);
+    let getUser    =   await UsersController.getUser(req.query.EMail, req.query.Password);
     if(getUser.code === 200) {
         UsersController.setUserSession(req, getUser.data.Id);
         UsersController.setUserCookie(res, getUser.data.Id);
@@ -107,6 +105,17 @@ app.delete('/userMediaSave/:userId/:mediaId', async function (req, res) {
 app.get('/savedMedia/:userId', async function (req, res) {
     let savedMedia    =   await UsersController.savedMedia(req.params.userId, req);
     res.json(savedMedia)
+});
+
+app.delete('/allUserTopicsSave/:userId', async function (req, res) {
+    let deleteAllUserTopicsSave    =   await UsersController.deleteAllUserTopicsSave(req.params.userId, req);
+    res.json(deleteAllUserTopicsSave)
+});
+
+app.post('/keepAlive/:userId', async function (req, res) {
+    UsersController.setUserSession(req, req.params.userId);
+    UsersController.setUserCookie(res, req.params.userId);
+    res.json({code: 200});
 });
 
 

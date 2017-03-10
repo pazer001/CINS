@@ -1,114 +1,142 @@
-const pg            =   require('pg');
-const moment        =   require('moment');
-const TopicsModel   =   require('../../Models/TopicsModel');
-const Logger        =   require('../../Utils/Logger');
-const request       =   require('request');
-const cheerio       =   require('cheerio');
-const striptags     =   require('striptags');
+const moment            =   require('moment');
+const DB                =   require('../../Utils/DB');
+const TopicsModel       =   require('../../Models/TopicsModel');
+const Logger            =   require('../../Utils/Logger');
+const request           =   require('request');
+const cheerio           =   require('cheerio');
+const striptags         =   require('striptags');
 const LanguageDetect    =   require('languagedetect');
-const config        =   require('../../../config.json');
-const C             =   require('./SubTopics/C');
-const Cpp           =   require('./SubTopics/Cpp');
-const React           =   require('./SubTopics/React');
-const ReactNative           =   require('./SubTopics/ReactNative');
-const ES6           =   require('./SubTopics/ES6');
+const config            =   require('../../../config.json');
+const C                 =   require('./SubTopics/C');
+const Cpp               =   require('./SubTopics/Cpp');
+const React             =   require('./SubTopics/React');
+const ReactNative       =   require('./SubTopics/ReactNative');
+const ES6               =   require('./SubTopics/ES6');
 const Angular           =   require('./SubTopics/Angular');
-const Foundation           =   require('./SubTopics/Foundation');
+const Foundation        =   require('./SubTopics/Foundation');
+const Aurelia           =   require('./SubTopics/Aurelia');
+const KoaJS             =   require('./SubTopics/KoaJS');
+const JavaScript        =   require('./SubTopics/JavaScript');
+const PHP               =   require('./SubTopics/PHP');
+const Clojure           =   require('./SubTopics/Clojure');
 
 const GeneralArticles   =   require('./GeneralArticles');
-const GeneralVideos   =   require('./GeneralVideos');
+const GeneralVideos     =   require('./GeneralVideos');
 
 class Media {
     constructor() {
-        this.pgClient   = new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
-        this.pgClient.connect();
         this.subTopics  =   null;
         this.media      =   [];
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
 
-
-
         try {
-            console.time('COMPLETED')
+            console.time('COMPLETED: ');
             //C
-            console.log(`drdobbs...`); this.setMedia(await C.drdobbs());
+            this.setMedia(await C.drdobbs());
 
             //C++
-            console.log(`isocpp...`); this.setMedia(await Cpp.isocpp());
-            console.log(`msdn...`); this.setMedia(await Cpp.msdn());
-            console.log(`cppSoup...`); this.setMedia(await Cpp.cppSoup());
-            console.log(`cppTruth...`); this.setMedia(await Cpp.cppTruth());
-            console.log(`oldNewThing...`); this.setMedia(await Cpp.oldNewThing());
-            console.log(`cppSource...`); this.setMedia(await Cpp.cppSource());
-            console.log(`theViewFromAristeia...`); this.setMedia(await Cpp.theViewFromAristeia());
-            console.log(`herbSutter...`); this.setMedia(await Cpp.herbSutter());
-            console.log(`thinkingAsynchronouslyInCpp...`); this.setMedia(await Cpp.thinkingAsynchronouslyInCpp());
-            console.log(`reddit...`); this.setMedia(await Cpp.reddit());
-            console.log(`mrEdd...`); this.setMedia(await Cpp.mrEdd());
-            console.log(`ramblingComments...`); this.setMedia(await Cpp.ramblingComments());
-            console.log(`attractiveChaos...`); this.setMedia(await Cpp.attractiveChaos());
-            console.log(`lightSleeper...`); this.setMedia(await Cpp.lightSleeper());
-            console.log(`theFastwareProject...`); this.setMedia(await Cpp.theFastwareProject());
-            console.log(`theACCUOverloadJournals...`); this.setMedia(await Cpp.theACCUOverloadJournals());
-            console.log(`learningCpp...`); this.setMedia(await Cpp.learningCpp());
+            this.setMedia(await Cpp.isocpp());
+            this.setMedia(await Cpp.msdn());
+            this.setMedia(await Cpp.cppSoup());
+            this.setMedia(await Cpp.cppTruth());
+            this.setMedia(await Cpp.oldNewThing());
+            this.setMedia(await Cpp.theViewFromAristeia());
+            this.setMedia(await Cpp.herbSutter());
+            this.setMedia(await Cpp.thinkingAsynchronouslyInCpp());
+            this.setMedia(await Cpp.mrEdd());
+            this.setMedia(await Cpp.ramblingComments());
+            this.setMedia(await Cpp.attractiveChaos());
+            this.setMedia(await Cpp.lightSleeper());
+            this.setMedia(await Cpp.theFastwareProject());
+            this.setMedia(await Cpp.theACCUOverloadJournals());
+            this.setMedia(await Cpp.learningCpp());
+            this.setMedia(await Cpp.bartoszMilewski());
 
             //React
-            console.log(`reactjsNews...`); this.setMedia(await React.reactjsNews());
-            console.log(`reactjsNewsIO...`); this.setMedia(await React.reactjsNewsIO());
-            console.log(`reactjsNewsTwitter...`); this.setMedia(await React.reactjsNewsTwitter());
-            console.log(`scotch...`); this.setMedia(await React.scotch());
-            console.log(`codementor...`); this.setMedia(await React.codementor());
-            console.log(`tutorialzine...`); this.setMedia(await React.tutorialzine());
-            console.log(`thinkster...`); this.setMedia(await React.thinkster());
-            console.log(`thebluecoder...`); this.setMedia(await React.thebluecoder());
-            console.log(`hashbangweekly...`); this.setMedia(await React.hashbangweekly());
-            console.log(`daveceddia...`); this.setMedia(await React.daveceddia());
+            this.setMedia(await React.reactjsNews());
+            this.setMedia(await React.reactjsNewsIO());
+            this.setMedia(await React.reactjsNewsTwitter());
+            this.setMedia(await React.scotch());
+            this.setMedia(await React.codementor());
+            this.setMedia(await React.tutorialzine());
+            this.setMedia(await React.thinkster());
+            this.setMedia(await React.thebluecoder());
+            this.setMedia(await React.hashbangweekly());
+            this.setMedia(await React.daveceddia());
 
             //React Native
-            console.log(`facebook...`); this.setMedia(await ReactNative.facebook());
-            console.log(`reactNativeNewsTwitter...`); this.setMedia(await ReactNative.reactNativeNewsTwitter());
-            console.log(`facebookDocs...`); this.setMedia(await ReactNative.facebookDocs());
-            console.log(`tutorialsPoint...`); this.setMedia(await ReactNative.tutorialsPoint());
+            this.setMedia(await ReactNative.facebook());
+            this.setMedia(await ReactNative.reactNativeNewsTwitter());
+            this.setMedia(await ReactNative.facebookDocs());
+            this.setMedia(await ReactNative.tutorialsPoint());
 
             //ES6
-            console.log(`es6Features...`); this.setMedia(await ES6.es6Features());
-            console.log(`exploringjs...`); this.setMedia(await ES6.exploringjs());
-            console.log(`babel...`); this.setMedia(await ES6.babel());
-            console.log(`qnimate...`); this.setMedia(await ES6.qnimate());
-            console.log(`nczOnline...`); this.setMedia(await ES6.nczOnline());
-            console.log(`tutorialsPoint...`); this.setMedia(await ES6.tutorialsPoint());
-            console.log(`mozilla...`); this.setMedia(await ES6.mozilla());
-            console.log(`jsNext...`); this.setMedia(await ES6.jsNext());
-            console.log(`youDontKnowJS...`); this.setMedia(await ES6.youDontKnowJS());
-
-            //General Articles
-            console.log(`medium...`); this.setMedia(await GeneralArticles.medium(this.subTopics));
-            console.log(`techbeacon...`); this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
-            console.log(`infoq...`); this.setMedia(await GeneralArticles.infoq(this.subTopics));
-            // console.log(`rayWenderlich...`); this.setMedia(await GeneralArticles.rayWenderlich(this.subTopics));
-            console.log(`frontendEront...`); this.setMedia(await GeneralArticles.frontendEront(this.subTopics));
-            console.log(`infoWorld...`); this.setMedia(await GeneralArticles.infoWorld(this.subTopics));
+            this.setMedia(await ES6.es6Features());
+            this.setMedia(await ES6.exploringjs());
+            this.setMedia(await ES6.babel());
+            this.setMedia(await ES6.qnimate());
+            this.setMedia(await ES6.nczOnline());
+            this.setMedia(await ES6.tutorialsPoint());
+            this.setMedia(await ES6.mozilla());
+            this.setMedia(await ES6.jsNext());
+            this.setMedia(await ES6.youDontKnowJS());
 
             //Angular
-            console.log(`angular...`); this.setMedia(await Angular.angular());
-            console.log(`angualrTwitter...`); this.setMedia(await Angular.angualrTwitter());
-            console.log(`reddit...`); this.setMedia(await Angular.reddit());
-            console.log(`blogspot...`); this.setMedia(await Angular.blogspot());
-            console.log(`angularNews...`); this.setMedia(await Angular.angularNews());
-            console.log(`tutorialsPoint...`); this.setMedia(await Angular.tutorialsPoint());
-            console.log(`thoughtram...`); this.setMedia(await Angular.thoughtram());
+            this.setMedia(await Angular.angular());
+            this.setMedia(await Angular.angualrTwitter());
+            this.setMedia(await Angular.blogspot());
+            this.setMedia(await Angular.angularNews());
+            this.setMedia(await Angular.tutorialsPoint());
+            this.setMedia(await Angular.thoughtram());
 
             //Foundation
-            console.log(`foundation...`); this.setMedia(await Foundation.foundation());
-            console.log(`foundationTutorials...`); this.setMedia(await Foundation.foundationTutorials());
-            console.log(`tutorialsPoint...`); this.setMedia(await Foundation.tutorialsPoint());
+            this.setMedia(await Foundation.foundation());
+            this.setMedia(await Foundation.foundationTutorials());
+            this.setMedia(await Foundation.tutorialsPoint());
+
+            // Aurelia
+            this.setMedia(await Aurelia.aurelia());
+            this.setMedia(await Aurelia.tutorialsDojo());
+            this.setMedia(await Aurelia.tutorialsPoint());
+            this.setMedia(await Aurelia.tutAurelia());
+
+            // KoaJS
+            this.setMedia(await KoaJS.tutorialsPoint());
+
+            //JavaScript
+            this.setMedia(await JavaScript.javascript());
+            this.setMedia(await JavaScript.echoJs());
+            this.setMedia(await JavaScript.jsOrg());
+            this.setMedia(await JavaScript.jsLive());
+
+            //PHP
+            this.setMedia(await PHP.phpToday());
+            this.setMedia(await PHP.planetPHP());
+            this.setMedia(await PHP.zend());
+            this.setMedia(await PHP.alltop());
+            this.setMedia(await PHP.phpbuilder());
+            this.setMedia(await PHP.tutorialsPoint());
+
+            //Clojure
+            this.setMedia(await Clojure.clojureNews());
+            this.setMedia(await Clojure.planetClosure());
+
+            //General Articles
+            this.setMedia(await GeneralArticles.medium(this.subTopics));
+            this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
+            this.setMedia(await GeneralArticles.infoq(this.subTopics));
+            this.setMedia(await GeneralArticles.frontendFront(this.subTopics));
+            this.setMedia(await GeneralArticles.infoWorld(this.subTopics));
+            this.setMedia(await GeneralArticles.sitepoint(this.subTopics));
+            this.setMedia(await GeneralArticles.reddit(this.subTopics));
 
             //General Video
-            console.log(`youtube...`); this.setMedia(await GeneralVideos.youtube());
+            this.setMedia(await GeneralVideos.youtube());
+            this.setMedia(await GeneralVideos.egghead(this.subTopics))
 
-            console.timeEnd('COMPLETED')
+            console.timeEnd('COMPLETED: ')
         } catch (e) {
             console.log(e)
         }
@@ -121,9 +149,10 @@ class Media {
         }
     }
 
-    insertMedia(media) {
+    async insertMedia(media) {
+        media.PublishedAt   =   media.PublishedAt || moment().format()
         let data = [
-            media.PublishedAt || moment().format(),
+            media.PublishedAt,
             striptags(media.Title),
             striptags(media.Description),
             media.ImageUrl || null,
@@ -136,7 +165,10 @@ class Media {
         ];
 
         //Check for good parameters
-        if(!media.Url || !media.Title) return;
+        if(!media.Url || !media.Title || moment(new Date(media.PublishedAt)).format() == 'Invalid date' || media.Title.length > 100) {
+            // console.log(media);
+            return;
+        };
 
         let lngDetector             =   new LanguageDetect(),
             languageDetect          =   lngDetector.detect(media.Title),
@@ -145,14 +177,26 @@ class Media {
         //Filter english characters
         if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
 
-
         const query = `INSERT INTO "CINS"."Media"
                                         ("PublishedAt", "Title", "Description", "ImageUrl", "ImageWidth", "ImageHeight", "SubTopicsId", "Source", "Url", "Type")
-                                        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-                                        ON CONFLICT ("Url") DO NOTHING`;
-        this.pgClient.query(query, data, error => {
-            if (error) Logger.toDB(JSON.stringify(error), query, JSON.stringify(data));
-        });
+                                        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
+                                        ON CONFLICT ("Url") DO NOTHING returning *;`;
+        try {
+            let queryResult =   await DB.query(query, data);
+            if(queryResult && queryResult.rowCount) {
+                let lastInsertedId      =   queryResult.rows ? queryResult.rows[0].Id : null;
+                if(lastInsertedId) {
+                    //Insert to elasticsearch
+                    let data    =   queryResult.rows[0];
+                    await DB.ESquery('media', lastInsertedId, data)
+                }
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
+
+
     }
 }
 

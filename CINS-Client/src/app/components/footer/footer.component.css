@@ -19,7 +19,7 @@
 }
 
 #bar button:hover {
-  background-color: rgba(255, 255, 255, 0.25)!important;
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 #start:hover > span {
@@ -35,62 +35,55 @@
 }
 
 #start-menu {
-  opacity: 0;
-  width: 55%;
+  width: 52%;
   height: 0%;
   position: fixed;
-  bottom: 45px;
+  bottom: 44px;
   background: rgba(51, 51, 51, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   z-index: 2;
-  transition: height .1s, opacity .2s ease-in-out;
+  transition: all .2s ease-in-out;
   overflow: hidden;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 #start-menu.active {
-  opacity: 1;
   height: 55%;
-  transition: height .2s, opacity .1s ease-in-out;
-  will-change: transform, opacity;
+  transform: translateY(0%);
+  will-change: transform;
 }
 
-
 #search-menu {
-  opacity: 0;
-  width: 55%;
+  width: 52%;
   height: 0%;
   position: fixed;
-  bottom: 45px;
+  bottom: 44px;
   background: rgba(51, 51, 51, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   z-index: 2;
-  transition: height .1s, opacity .2s ease-in-out;
+  transition: all .2s ease-in-out;
   overflow: hidden;
-  transform: translate3d(0,0,0);
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 #search-menu.active {
-  opacity: 1;
   height: 55%;
   transition: height .2s, opacity .1s ease-in-out;
-  transform: translate3d(0,0,0);
-  will-change: transform, opacity;
+  transform: translateY(0%);
+  will-change: transform;
 }
 
-/*#add-media-modal {*/
-  /*opacity: 0;*/
-  /*transition: opacity .2s ease-in-out;*/
-  /*transform: translate3d(0,0,0);*/
-  /*will-change: transform;*/
-/*}*/
+#clock {
+  width: 8%!important;
+  float: right;
+  cursor: inherit;
+}
 
-/*#add-media-modal.active {*/
-  /*opacity: 1;*/
-/*}*/
+#clock:hover {
+  background: transparent!important;
+}
 
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
@@ -102,4 +95,9 @@
   #start-menu.active, #search-menu.active {
     height: 93%;
   }
+
+  #clock {
+    width: 18%!important;
+  }
+
 }

@@ -1,4 +1,5 @@
-const MediaModel   =   require('../Models/MediaModel');
+const Logger        =   require('../Utils/Logger');
+const MediaModel    =   require('../Models/MediaModel');
 
 class MediaController {
     async rateMedia(req, mediaId) {
@@ -9,72 +10,88 @@ class MediaController {
                 message: 'Media Already Rated'
             }
         }
-        let rateMedia   =   await MediaModel.rateMedia(mediaId);
-        if(rateMedia.rowCount) {
-            req.session.rateMedia   =   {};
-            req.session.rateMedia[mediaId] = true;
-            return {
-                code: 200,
-                ratedMediaCount: await this.ratedMediaCount(mediaId),
-                message: 'Media Rated Successfully'
+
+        try {
+            let rateMedia   =   await MediaModel.rateMedia(mediaId);
+            if(rateMedia.rowCount) {
+                if(!req.session.rateMedia) req.session.rateMedia = [];
+                req.session.rateMedia[mediaId]  =   true;
+                return {
+                    code: 200,
+                    ratedMediaCount: await this.ratedMediaCount(mediaId),
+                    message: 'Media Rated Successfully'
+                }
+            } else {
+                return {
+                    code: 400,
+                    ratedMediaCount: await this.ratedMediaCount(mediaId),
+                    message: 'Media Not Rated Successfully'
+                }
             }
-        } else {
-            return {
-                code: 400,
-                ratedMediaCount: await this.ratedMediaCount(mediaId),
-                message: 'Media Not Rated Successfully'
-            }
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e))
         }
+
     }
 
     async ratedMediaCount(mediaId) {
-        let ratedMediaCount     =   await MediaModel.ratedMediaCount(mediaId);
+        try {
+            let ratedMediaCount     =   await MediaModel.ratedMediaCount(mediaId);
 
-        if(ratedMediaCount && ratedMediaCount.rowCount) {
-            return ratedMediaCount.rows.pop().RatingCount;
-        } else {
-            return 0
+            return (ratedMediaCount && ratedMediaCount.rowCount) ? ratedMediaCount.rows.pop().RatingCount : 0;
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e))
         }
+
     }
 
     async search(term) {
-        let search     =   await MediaModel.search(term);
-
-        if(search && search.rowCount) {
-            return search.rows;
-        } else {
-            return null;
+        try {
+            let search     =   await MediaModel.search(term);
+            return search;
+            // return (search && search.rowCount) ? search.rows : null; //From Postgres
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e))
         }
+
     }
 
     async requestMedia(data) {
-        let search     =   await MediaModel.requestMedia(data);
-        if(search && search.rowCount) {
-            return {
-                code: 200,
-                message: 'Request Media Successfully'
+        try {
+            let search     =   await MediaModel.requestMedia(data);
+            if(search && search.rowCount) {
+                return {
+                    code: 200,
+                    message: 'Request Media Successfully'
+                }
+            } else {
+                return {
+                    code: 400,
+                    message: 'Request Media Not Successfully'
+                }
             }
-        } else {
-            return {
-                code: 400,
-                message: 'Request Media Not Successfully'
-            }
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e))
         }
+
     }
 
     async getMedia(Id) {
-        let data            =   {},
-            getVideos    =  await MediaModel.getMedia(Id);
-        return getVideos.rows;
+        try {
+            let getVideos    =  await MediaModel.getMedia(Id);
+            return getVideos.rows;
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e))
+        }
+
     }
 
     async getLatestMedia(userId) {
-        let getLatestMedia    =  await MediaModel.getLatestMedia(userId);
-
-        if(getLatestMedia && getLatestMedia.rowCount) {
-            return getLatestMedia.rows;
-        } else {
-            return null;
+        try {
+            let getLatestMedia    =  await MediaModel.getLatestMedia(userId);
+            return (getLatestMedia && getLatestMedia.rowCount) ? getLatestMedia.rows : null;
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e))
         }
     }
 }

@@ -1,10 +1,11 @@
-const cheerio = require('cheerio');
-const Utils = require('../../../Utils/Utils');
+const cheerio   =   require('cheerio');
+const Utils     =   require('../../../Utils/Utils');
 const moment    =   require('moment');
 const fs        =   require('fs');
 
 class ES6 {
     async es6Features() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://es6-features.org/`;
@@ -32,6 +33,7 @@ class ES6 {
     }
 
     async exploringjs() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://exploringjs.com/es6/index.html`;
@@ -58,6 +60,7 @@ class ES6 {
     }
 
     async babel() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://ccoenraets.github.io/es6-tutorial/`;
@@ -84,6 +87,7 @@ class ES6 {
     }
 
     async qnimate() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://qnimate.com/post-series/ecmascript-6-complete-tutorial/`;
@@ -110,6 +114,7 @@ class ES6 {
     }
 
     async nczOnline() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://www.nczonline.net/blog/tag/ecmascript-6/`;
@@ -136,6 +141,7 @@ class ES6 {
     }
 
     async tutorialsPoint() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://www.tutorialspoint.com/es6/index.htm`;
@@ -162,6 +168,7 @@ class ES6 {
     }
 
     async mozilla() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://hacks.mozilla.org/category/es6-in-depth/`;
@@ -187,6 +194,7 @@ class ES6 {
     }
 
     async jsNext() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://chimera.labs.oreilly.com/books/1234000001623/index.html`;
@@ -212,6 +220,7 @@ class ES6 {
     }
 
     async youDontKnowJS() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20&%20beyond/README.md#you-dont-know-js-es6--beyond`;

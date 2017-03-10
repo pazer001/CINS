@@ -1,6 +1,7 @@
-const pg = require('pg');
-const config = require('../../config.json');
-const UserModel     =   require('./UsersModel');
+const pg        =   require('pg');
+const DB        =   require('../Utils/DB');
+const config    =   require('../../config.json');
+const UserModel =   require('./UsersModel');
 
 class MediaModel {
     constructor() {
@@ -15,7 +16,7 @@ class MediaModel {
                             ON CONFLICT ("MediaId") DO UPDATE
                             SET "RatingCount" = "MediaRating"."RatingCount" + 1`;
             this.pgClient.query(query, data, (err, result) => {
-                if (err) console.log(err);
+                if (err) throw err;
                 resolve(result);
             })
         })
@@ -26,37 +27,67 @@ class MediaModel {
         return new Promise(resolve => {
             const query = `SELECT "MediaRating"."RatingCount" FROM "CINS"."MediaRating" WHERE "MediaRating"."MediaId" = $1`;
             this.pgClient.query(query, data, (err, result) => {
-                if (err) console.log(err);
+                if (err) throw err;
                 resolve(result);
             })
         })
     }
 
     search(term) {
-        let data    =   [`%${term.toLowerCase()}%`];
+        //From Elasticsearch
         return new Promise(resolve => {
-            const query = `SELECT
-                                "Media"."Id",
-                                DATE("Media"."PublishedAt") AS "PublishedAt",
-                                "Media"."Title",
-                                "Media"."Description",
-                                "Media"."Source" AS "Source",
-                                "Media"."Url",
-                                "MediaRating"."RatingCount" AS "RatingCount",
-                                COALESCE (NULLIF ("Media"."ImageUrl", ''),"Sources"."ImageUrl") AS "ImageUrl",
-                                "Media"."Type"
-                            FROM
-                                "CINS"."Media"
-                            LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
-                            LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
-                            WHERE LOWER("Media"."Title") LIKE $1 OR LOWER("Media"."Description") LIKE $1
-                            ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
-                            LIMIT 100`;
-            this.pgClient.query(query, data, (err, result) => {
-                if (err) console.log(err);
-                resolve(result);
-            })
-        })
+            DB.ESclient.search({
+                index: 'media',
+                sort: 'PublishedAt:desc',
+                requestCache: true,
+                trackScores: false,
+                body: {
+                    query: {
+                        multi_match: {
+                            query: term,
+                            fields: ['Description', 'Title']
+                        }
+                    }
+                }
+            }, (error, response) => {
+                if (error) throw err;
+                let results =   [];
+                if(response.hits.hits.length) {
+                    for(let i in response.hits.hits) {
+                        results.push(response.hits.hits[i]._source)
+                    }
+                }
+                resolve(results);
+            });
+        });
+
+
+
+        //From Postgres
+        // let data    =   [`%${term.toLowerCase()}%`];
+        // return new Promise(resolve => {
+        //     const query = `SELECT
+        //                         "Media"."Id",
+        //                         DATE("Media"."PublishedAt") AS "PublishedAt",
+        //                         "Media"."Title",
+        //                         "Media"."Description",
+        //                         "Media"."Source" AS "Source",
+        //                         "Media"."Url",
+        //                         "MediaRating"."RatingCount" AS "RatingCount",
+        //                         COALESCE (NULLIF ("Media"."ImageUrl", ''),"Sources"."ImageUrl") AS "ImageUrl",
+        //                         "Media"."Type"
+        //                     FROM
+        //                         "CINS"."Media"
+        //                     LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
+        //                     LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
+        //                     WHERE LOWER("Media"."Title") LIKE $1 OR LOWER("Media"."Description") LIKE $1
+        //                     ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
+        //                     LIMIT 100`;
+        //     this.pgClient.query(query, data, (err, result) => {
+        //         if (err) throw err;
+        //         resolve(result);
+        //     })
+        // })
     }
 
     requestMedia(data) {
@@ -66,7 +97,7 @@ class MediaModel {
                             VALUES(now(), $1, $2, $3, $4, $5, $6)
                             ON CONFLICT ("Url") DO NOTHING`;
             this.pgClient.query(query, data, (err, result) => {
-                if (err) console.log(err);
+                if (err) throw err;
                 resolve(result);
             })
         })
@@ -91,7 +122,7 @@ class MediaModel {
                               ORDER BY "Media"."PublishedAt" DESC
                               LIMIT 100`;
             this.pgClient.query(query, [Id], (err, result) => {
-                if(err) console.log(err);
+                if(err) throw err;
                 resolve(result);
             })
         })
@@ -117,10 +148,10 @@ class MediaModel {
                                 LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
                                 LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
                                 ${userTopicsSaveIds.length ? `WHERE "Media"."SubTopicsId" IN(${userTopicsSaveIds.join(',')})` : ``}
-                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
+                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC, "Media"."PublishedAt" DESC
                                 LIMIT 100`;
             this.pgClient.query(query, (err, result) => {
-                if(err) console.log(err);
+                if(err) throw err;
                 resolve(result);
             })
         })

@@ -7,76 +7,44 @@ class UsersModel {
         this.pgClient   =   new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
         this.pgClient.connect();
     }
-    async postUser(data) {
-        var self    =   this;
-        data        =   [
-            data.FirstName || '',
-            data.LastName || '',
-            data.Password || '',
-            data.EMail || '',
-        ];
-
-        return new Promise((resolve, reject) => {
+    async postUser(firstName, lastName, password, eMail) {
+        return new Promise(resolve => {
+            let data        =   [
+                firstName || '',
+                lastName || '',
+                password || '',
+                eMail || '',
+            ];
             const query     =   `INSERT INTO "CINS"."Users" ("FirstName", "LastName", "Password", "EMail") VALUES($1, $2, $3, $4)`;
             this.pgClient.query(query, data, async function(err, result) {
-                if(err) {Logger.toDB(err, query, JSON.stringify(data)); reject(err)}
-                let returnResult    =   {};
-                if(result && result.rowCount) {
-                    returnResult.data       =   await self.getUser(data);
-                    returnResult.code       =   200;
-                    returnResult.message    =   'User Added Successfully';
-                } else {
-                    returnResult.code       =   400;
-                    returnResult.message    =   'User Not Added Successfully';
-                }
-                resolve(returnResult);
+                if(err) throw err;
+                resolve(result);
             })
         })
     }
-    async getUser(data) {
-        let self    =   this;
-        data        =   [
-            data.EMail || '',
-            data.Password || ''
-        ];
-
-        return new Promise((resolve, reject) => {
+    async getUser(eMail, password) {
+        return new Promise(resolve => {
+            data    =   [
+                eMail      || '',
+                password   || ''
+            ];
             const query     =   `SELECT "Users"."Id", "Users"."FirstName", "Users"."LastName", "Users"."EMail" FROM "CINS"."Users" WHERE "Users"."EMail" = $1 AND "Users"."Password" = $2`;
             this.pgClient.query(query, data, async function(err, result) {
-                if(err) {Logger.toDB(err, query, JSON.stringify(data)); reject(err)}
-                let returnResult    =   {};
-                if(result && result.rowCount) {
-                    returnResult.data       =   result.rows.shift();
-                    returnResult.subTopicsSaveIds   =   await self.getUserTopicsSave(returnResult.data.Id);
-                    returnResult.code       =   200;
-                    returnResult.message    =   'User Logged';
-                } else {
-                    returnResult.code       =   400;
-                    returnResult.message    =   'User Not Found';
-                }
-                resolve(returnResult);
+                if(err) throw err;
+                resolve(result);
             })
         })
     }
     async postUserTopicsSave(userId, subTopicsId) {
-        let data    =   [
-            userId,
-            subTopicsId
-        ];
-
         return new Promise(resolve => {
+            let data        =   [
+                userId         || '',
+                subTopicsId    || ''
+            ];
             const query     =   `INSERT INTO "CINS"."UserTopicsSave" ("UserId", "SubTopicId") VALUES($1, $2)`;
             this.pgClient.query(query, data, (err, result) => {
-                if(err) Logger.toDB(err, query, JSON.stringify(data));
-                let returnResult    =   {};
-                if(result && result.rowCount) {
-                    returnResult.code       =   200;
-                    returnResult.message    =   'User Sub Topic Saved Successfully';
-                } else {
-                    returnResult.code       =   400;
-                    returnResult.message    =   'User Sub Topic Not Saved Successfully';
-                }
-                resolve(returnResult);
+                if(err) throw err;
+                resolve(result);
             })
         })
     }
@@ -90,16 +58,8 @@ class UsersModel {
         return new Promise(resolve => {
             const query     =   `DELETE FROM "CINS"."UserTopicsSave" WHERE "UserTopicsSave"."UserId" = $1 AND "UserTopicsSave"."SubTopicId" = $2`;
             this.pgClient.query(query, data, (err, result) => {
-                if(err) Logger.toDB(err, query, JSON.stringify(data));
-                let returnResult    =   {};
-                if(result && result.rowCount) {
-                    returnResult.code       =   200;
-                    returnResult.message    =   'User Sub Topic Deleted Successfully';
-                } else {
-                    returnResult.code       =   400;
-                    returnResult.message    =   'User Sub Topic Not Deleted Successfully';
-                }
-                resolve(returnResult);
+                if(err) throw err;
+                resolve(result);
             })
         })
     }
@@ -112,7 +72,7 @@ class UsersModel {
         return new Promise(resolve => {
             const query     =   `SELECT "UserTopicsSave"."SubTopicId" FROM "CINS"."UserTopicsSave" WHERE "UserTopicsSave"."UserId" = $1`;
             this.pgClient.query(query, data, (err, result) => {
-                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                if(err) throw err;
                 let returnResult    =   {};
                 if(result && result.rowCount) {
                     returnResult.code       =   200;
@@ -121,6 +81,7 @@ class UsersModel {
                 } else {
                     returnResult.code       =   400;
                     returnResult.message    =   'User Sub Topic Not Found';
+                    returnResult.data       =   [];
                 }
                 resolve(returnResult);
             })
@@ -136,7 +97,7 @@ class UsersModel {
         return new Promise(resolve => {
             const query     =   `INSERT INTO "CINS"."UserMediaSave" ("UserId", "MediaId") VALUES ($1, $2)`;
             this.pgClient.query(query, data, (err, result) => {
-                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                if(err) throw err;
                 resolve(result);
             })
         })
@@ -151,7 +112,7 @@ class UsersModel {
         return new Promise(resolve => {
             const query     =   `DELETE FROM "CINS"."UserMediaSave" WHERE "UserMediaSave"."UserId" = $1 AND "UserMediaSave"."MediaId" = $2`;
             this.pgClient.query(query, data, (err, result) => {
-                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                if(err) throw err;
                 resolve(result);
             })
         })
@@ -182,7 +143,21 @@ class UsersModel {
                                 ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
                                 LIMIT 100`;
             this.pgClient.query(query, data, (err, result) => {
-                if(err) Logger.toDB(err, query, JSON.stringify(data));
+                if(err) throw err;
+                resolve(result);
+            })
+        })
+    }
+
+    async deleteAllUserTopicsSave(userId) {
+        let data    =   [
+            userId
+        ];
+
+        return new Promise(resolve => {
+            const query     =   `DELETE FROM "CINS"."UserTopicsSave" WHERE "UserTopicsSave"."UserId" = $1`;
+            this.pgClient.query(query, data, (err, result) => {
+                if(err) throw err;
                 resolve(result);
             })
         })

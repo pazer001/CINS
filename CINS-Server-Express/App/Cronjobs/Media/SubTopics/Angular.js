@@ -1,9 +1,10 @@
-const cheerio = require('cheerio');
+const cheerio   =   require('cheerio');
 const moment    =   require('moment');
-const Utils = require('../../../Utils/Utils');
+const Utils     =   require('../../../Utils/Utils');
 
 class Angular {
     async angular() {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             let url = `https://angular.io/news.html`;
@@ -19,7 +20,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 20,
                     Source: 'Angular',
                     Url: $(this).find('.title').find('a').attr('href'),
                     Type: 'Article'
@@ -31,6 +32,7 @@ class Angular {
     }
 
     async angualrTwitter() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://twitter.com/angular`;
@@ -45,7 +47,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 20,
                     Source: 'Angular Twitter',
                     Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
                     Type: 'Article'
@@ -56,35 +58,8 @@ class Angular {
         })
     }
 
-    async reddit() {
-        return new Promise(async function(resolve) {
-            let mediaUrls   =   [];
-            let url = `https://www.reddit.com/r/Angular2/new/`;
-            let html = await Utils.request(url);
-            if(!html) throw url;
-            let $   =   cheerio.load(html);
-            $('#siteTable').find('.entry').filter(function() {
-                if($(this).find('.linkflairlabel').prop('title') === 'Announcement' || $(this).find('.linkflairlabel').prop('title') === 'Article' || $(this).find('.linkflairlabel').prop('title') === 'Video' || $(this).find('.linkflairlabel').prop('title') === 'Resource') {
-                    mediaUrls.push({
-                        PublishedAt: null,
-                        Title: $(this).find('.title').find('a').text(),
-                        Description: null,
-                        ImageUrl: null,
-                        ImageWidth: null,
-                        ImageHeight: null,
-                        SubTopicsId: 3,
-                        Source: 'reddit',
-                        Url: `https://www.reddit.com${$(this).find('.title').find('a').prop('href')}`,
-                        Type: 'Article'
-                    })
-                }
-            });
-
-            resolve(mediaUrls);
-        })
-    }
-
     async blogspot() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://angularjs.blogspot.co.il/`;
@@ -99,7 +74,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 20,
                     Source: `Blogspot`,
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -113,6 +88,7 @@ class Angular {
     }
 
     async angularNews() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://angular.jsnews.io/`;
@@ -128,7 +104,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 20,
                     Source: 'Angular News',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -141,6 +117,7 @@ class Angular {
     }
 
     async tutorialsPoint() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://www.tutorialspoint.com/angular2/`;
@@ -156,7 +133,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 20,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -168,6 +145,7 @@ class Angular {
     }
 
     async thoughtram() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://blog.thoughtram.io/exploring-angular-2/`;
@@ -182,7 +160,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 20,
                     Source: 'Thoughtram',
                     Url: `https://blog.thoughtram.io/${$(this).find('a').prop('href')}`,
                     Type: 'Article'

@@ -5,8 +5,6 @@ import {DomSanitizer} from "@angular/platform-browser";
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';
 import {LayoutService} from "./layout.service";
-import {CookieService} from "angular2-cookie/services/cookies.service";
-
 
 @Injectable()
 export class DataService {
@@ -26,7 +24,7 @@ export class DataService {
   routeSnapshotData: any;
   savedMediaData: Array<any>;
 
-  constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService, private cookieService: CookieService) {
+  constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService) {
     this.selectedVideo            = null;
     this.isVideoModalOpen         = false;
     this.isUserLoginModalOpen     = false;
@@ -40,16 +38,6 @@ export class DataService {
     this.subTopics                = [];
     this.routeSnapshotData        = null;
     this.savedMediaData           = [];
-
-    if(this.cookieService.get('userLoggedIn')) {
-      this.userDetails    = JSON.parse(localStorage.getItem('userDetails'));
-      this.userLoggedIn   = true;
-    } else {
-      localStorage.removeItem('userDetails');
-      this.userLoggedIn   = false;
-    }
-
-    // this.getLatestMedia();
   }
 
   setMySubTopics(data) {
@@ -62,7 +50,7 @@ export class DataService {
       }
     }
 
-    if(this.userDetails && this.userDetails.subTopicsSaveIds) {
+    if(this.userDetails && this.userDetails.subTopicsSaveIds && this.userDetails.subTopicsSaveIds.data) {
       for(let subTopicId of this.userDetails.subTopicsSaveIds.data) {
         this.mySubTopics[subTopicId]  = this.subTopicsIds[subTopicId]
       }
@@ -70,7 +58,7 @@ export class DataService {
   }
 
   getAllTopics(): Observable<any> {
-    return this.http.get(`api/getAllTopics`).map(res => res.json())
+    return this.http.get(`api/allTopics`).map(res => res.json())
   }
 
   getMedia(Id): Observable<any> {
@@ -87,7 +75,7 @@ export class DataService {
   }
 
   closeMedia() {
-    this.selectedVideo = null;
+    this.selectedVideo    = null;
     this.isVideoModalOpen = false;
   }
 
@@ -199,5 +187,17 @@ export class DataService {
 
   savedMedia(userId) {
     return this.http.get(`api/savedMedia/${userId}`).map(res => res.json());
+  }
+
+  deleteAllUserTopicsSave(userId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(`api/allUserTopicsSave/${userId}`, options).map(res => res.json())
+  }
+
+  keepAlive(userId): Observable<any> {
+    let headers = new Headers({'content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(`api/keepAlive/${userId}`, options).map(res => res.json())
   }
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../services/data.service';
-import {CookieService} from 'angular2-cookie/core';
-
 
 @Component({
   selector: 'app-user-login',
@@ -71,10 +69,19 @@ export class UserLoginComponent implements OnInit {
   }
 
   getLatestMedia(userId = null) {
-    this.dataService.getLatestMedia(this.dataService.userDetails.data.Id || null).subscribe(media => {
+    this.dataService.getLatestMedia(userId).subscribe(media => {
       this.dataService.currentSelectedSubTopicMedia = media;
       this.dataService.setFilter('All');
     });
+  }
+
+  deleteAllUserTopicsSave(userId) {
+    this.dataService.deleteAllUserTopicsSave(userId).subscribe(result => {
+      if(result.code === 200) {
+        this.dataService.userDetails.subTopicsSaveIds.data = [];
+        localStorage.setItem('userDetails', JSON.stringify(this.dataService.userDetails));
+      }
+    })
   }
 
   ngOnInit() {

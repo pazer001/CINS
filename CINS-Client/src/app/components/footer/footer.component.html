@@ -4,6 +4,7 @@
     <button id="search" (click)="layoutService.toggleFooterButtonsActive('searchMenuActive')"><span class="mif-search fg-white"></span></button>
     <button id="add-media" (click)="layoutService.toggleFooterButtonsActive('addMediaModal')"><span class="mif-plus fg-lightBlue mif-lg"></span></button>
     <button id="saved-media" (click)="layoutService.toggleFooterButtonsActive('savedMedia')" *ngIf="dataService.userDetails"><span class="mif-floppy-disk fg-lightBlue mif-lg"></span></button>
+    <button id="clock"><app-clock></app-clock></button>
   </div>
 
   <div id="start-menu" [ngClass]="layoutService.footerButtonsActive['startMenuActive'] ? 'active' : ''">

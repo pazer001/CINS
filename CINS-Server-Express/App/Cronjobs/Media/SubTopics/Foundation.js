@@ -1,9 +1,10 @@
-const cheerio = require('cheerio');
+const cheerio   =   require('cheerio');
 const moment    =   require('moment');
-const Utils = require('../../../Utils/Utils');
+const Utils     =   require('../../../Utils/Utils');
 
 class Foundation {
     async foundation() {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             let url = `http://zurb.com/blog/archives`;
@@ -35,6 +36,7 @@ class Foundation {
     }
 
     async foundationTutorials() {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             let url = `https://foundation.zurb.com/learn/tutorials.html`;
@@ -61,6 +63,7 @@ class Foundation {
     }
 
     async tutorialsPoint() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://www.tutorialspoint.com/foundation/`;

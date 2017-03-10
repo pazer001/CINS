@@ -43,13 +43,13 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+   config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+     vb.memory = "10048"
+   end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -65,6 +65,8 @@ Vagrant.configure("2") do |config|
 	config.vm.network "private_network", type: "dhcp"
 	config.vm.network "forwarded_port", guest: 5555, host: 5555
 	config.vm.network "forwarded_port", guest: 9000, host: 9000
+	config.vm.network "forwarded_port", guest: 9200, host: 9200
+	config.vm.network "forwarded_port", guest: 5601, host: 5601
 
 
 

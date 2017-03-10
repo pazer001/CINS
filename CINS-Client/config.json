@@ -1,5 +1,5 @@
 {
-  "Development": {
+  "development": {
     "Port": 80,
     "apiServer": {
       "URL": "localhost:9000"

@@ -1,16 +1,21 @@
+const Logger        =   require('../Utils/Logger');
 const TopicsModel   =   require('../Models/TopicsModel');
 
 class TopicsController {
     async getAllTopics() {
-        let data            =   {},
-            getAllTopics    =  await TopicsModel.getAllTopics();
-        if(getAllTopics.rows) {
-            for(let subTopic of getAllTopics.rows) {
-                if(!data[subTopic.maintopics]) data[subTopic.maintopics] = [];
-                data[subTopic.maintopics].push(subTopic)
+        try {
+            let getAllTopics    =  await TopicsModel.getAllTopics();
+            let data            =   {};
+            if(getAllTopics.rows) {
+                for(let subTopic of getAllTopics.rows) {
+                    if(!data[subTopic.maintopics]) data[subTopic.maintopics] = [];
+                    data[subTopic.maintopics].push(subTopic)
+                }
             }
+            return data;
+        } catch (e) {
+            Logger.toDB(JSON.stringify(e));
         }
-        return data;
     }
 
 }

@@ -1,12 +1,13 @@
-const cheerio = require('cheerio');
-const moment = require('moment');
-const fs    =   require('fs')
-const parseString = require('xml2js').parseString;
+const cheerio       =   require('cheerio');
+const moment        =   require('moment');
+const fs            =   require('fs');
+const parseString   =   require('xml2js').parseString;
 
 const Utils = require('../../../Utils/Utils');
 
 class Cpp {
     async isocpp() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://isocpp.org/blog/category/news`;
@@ -23,7 +24,7 @@ class Cpp {
                     ImageHeight: null,
                     SubTopicsId: 5,
                     Source: 'ISO CPP',
-                    Url: $(this).find('blockquote').find('a').attr('href'),
+                    Url: $(this).find('blockquote').find('a').prop('href'),
                     Type: 'Article'
                 };
                 if (!media.Title) return;
@@ -34,6 +35,7 @@ class Cpp {
     }
 
     async msdn() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://blogs.msdn.microsoft.com/vcblog/`;
@@ -61,6 +63,7 @@ class Cpp {
     }
 
     async cppSoup() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://feeds.feedburner.com/CppSoup`;
@@ -90,6 +93,7 @@ class Cpp {
     }
 
     async cppTruth() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://cpptruths.blogspot.co.il/`;
@@ -118,60 +122,41 @@ class Cpp {
     }
 
     async oldNewThing() {
-        return new Promise(async function (resolve) {
+        Utils.printFunctionName();
+        return new Promise(async function (resolve, reject) {
             let mediaUrls = [];
             let url = `https://blogs.msdn.microsoft.com/oldnewthing/`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('#site-main').find('article').filter(function () {
-                let media = {
-                    PublishedAt: $(this).find('.entry-footer').find('.posted-on').find('time').prop('datetime'),
-                    Title: $(this).find('.entry-title').find('a').text().trim(),
-                    Description: $(this).find('.entry-content').find('p').text(),
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: 5,
-                    Source: 'The Old New Thing',
-                    Url: $(this).find('.entry-title').find('a').prop('href'),
-                    Type: 'Article'
-                }
-                if (!media.Title) return;
-                mediaUrls.push(media)
-            });
-            resolve(mediaUrls);
-        })
-    }
+            try {
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
+                $('#site-main').find('article').filter(function () {
+                    let media = {
+                        PublishedAt: $(this).find('.entry-footer').find('.posted-on').find('time').prop('datetime'),
+                        Title: $(this).find('.entry-title').find('a').text().trim(),
+                        Description: $(this).find('.entry-content').find('p').text(),
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: 5,
+                        Source: 'The Old New Thing',
+                        Url: $(this).find('.entry-title').find('a').prop('href'),
+                        Type: 'Article'
+                    }
+                    if (!media.Title) return;
+                    mediaUrls.push(media)
+                });
+                resolve(mediaUrls);
+            } catch (e) {
+                reject(e);
+            }
 
-    async cppSource() {
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `http://www.artima.com/cppsource`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.itembox').filter(function () {
-                let media = {
-                    PublishedAt: `${$(this).find('.iteminfo').text().split(',')[1].trim()}, ${$(this).find('.iteminfo').text().split(',')[2].trim()}`,
-                    Title: $(this).find('.itemtitle').find('a').text().trim(),
-                    Description: $(this).find('.itemsummary').text(),
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: 5,
-                    Source: 'The C++ Source',
-                    Url: $(this).find('.itemtitle').find('a').prop('href'),
-                    Type: 'Article'
-                };
-                if (!media.Title) return;
-                mediaUrls.push(media)
-            });
-            resolve(mediaUrls);
+
         })
     }
 
     async theViewFromAristeia() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://scottmeyers.blogspot.co.il/`;
@@ -200,6 +185,7 @@ class Cpp {
     }
 
     async herbSutter() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://herbsutter.com/`;
@@ -227,6 +213,7 @@ class Cpp {
     }
 
     async thinkingAsynchronouslyInCpp() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://blog.think-async.com/`;
@@ -254,6 +241,7 @@ class Cpp {
     }
 
     async bartoszMilewski() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://bartoszmilewski.com/`;
@@ -280,35 +268,8 @@ class Cpp {
         })
     }
 
-    async reddit() {
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://www.reddit.com/r/cpp/`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('#siteTable').find('.link').filter(function () {
-                if(!$(this).find('.entry').find('.title').find('a').attr('href').startsWith('http')) return
-                let media = {
-                    PublishedAt: moment().format(),
-                    Title: $(this).find('.entry').find('.title').find('a').first().text().trim(),
-                    Description: null,
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: 5,
-                    Source: `reddit`,
-                    Url: $(this).find('.entry').find('.title').find('a').attr('href'),
-                    Type: 'Article'
-                };
-                if (!media.Title) return;
-                mediaUrls.push(media)
-            });
-            resolve(mediaUrls);
-        })
-    }
-
     async mrEdd() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://www.mr-edd.co.uk/`;
@@ -317,7 +278,7 @@ class Cpp {
             let $ = cheerio.load(html);
             $('#lifes_too_short').find('#leftcolumn').find('li').filter(function () {
                 let media = {
-                    PublishedAt: moment($(this).find('.date').text().replace('[', '').replace(']', '')).format(),
+                    PublishedAt: $(this).find('.date').text().replace('[', '').replace(']', ''),
                     Title: $(this).find('a').text().trim(),
                     Description: null,
                     ImageUrl: null,
@@ -325,7 +286,7 @@ class Cpp {
                     ImageHeight: null,
                     SubTopicsId: 5,
                     Source: `Mr Edd`,
-                    Url: `http://www.mr-edd.co.uk/${$(this).find('a').attr('href')}`,
+                    Url: `http://www.mr-edd.co.uk${$(this).find('a').attr('href')}`,
                     Type: 'Article'
                 };
                 if (!media.Title) return;
@@ -336,6 +297,7 @@ class Cpp {
     }
 
     async ramblingComments() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://www.lenholgate.com/`;
@@ -363,6 +325,7 @@ class Cpp {
     }
 
     async attractiveChaos() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://attractivechaos.wordpress.com/`;
@@ -390,6 +353,7 @@ class Cpp {
     }
 
     async lightSleeper() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://pkisensee.wordpress.com/`;
@@ -417,6 +381,7 @@ class Cpp {
     }
 
     async theFastwareProject() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://fastwareproject.blogspot.co.il/`;
@@ -446,6 +411,7 @@ class Cpp {
     }
 
     async theACCUOverloadJournals() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://accu.org/index.php/journals/c370/`;
@@ -480,6 +446,7 @@ class Cpp {
     }
 
     async learningCpp() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://learningcppisfun.blogspot.co.il/`;

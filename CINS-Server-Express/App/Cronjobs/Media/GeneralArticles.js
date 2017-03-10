@@ -1,10 +1,11 @@
-const cheerio = require('cheerio');
-const Utils = require('../../Utils/Utils');
+const cheerio   =   require('cheerio');
+const Utils     =   require('../../Utils/Utils');
 const moment    =   require('moment');
 const fs        =   require('fs');
 
 class GeneralArticles {
     async medium(subTopics) {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
@@ -33,6 +34,7 @@ class GeneralArticles {
     }
 
     async techbeacon(subTopics) {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
@@ -61,6 +63,7 @@ class GeneralArticles {
     }
 
     async infoq(subTopics) {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let sstHtml     =   await Utils.request('https://www.infoq.com/');
             let sstHtmlParsed         =   cheerio.load(sstHtml);
@@ -74,9 +77,9 @@ class GeneralArticles {
                 // console.log(url)
                 $('.one_result').filter(function() {
                     mediaUrls.push({
-                        PublishedAt: $(this).find('p').text().split('...')[0],
+                        PublishedAt: $(this).find('p').first().text().split('...')[0],
                         Title: $(this).find('a').text(),
-                        Description: $(this).find('p').text().split('...')[2],
+                        Description: $(this).find('p').first().text().split('...')[2],
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
@@ -92,36 +95,8 @@ class GeneralArticles {
         })
     }
 
-    async rayWenderlich(subTopics) {
-        return new Promise(async function(resolve) {
-            let mediaUrls   =   [];
-            subTopics.rows.forEach(async function(subTopic) {
-                let url = `https://www.raywenderlich.com/?s=${subTopic.Name}`;
-                let html = await Utils.request(url);
-                if(!html) throw url;
-                var $ = cheerio.load(html);
-                $('#content').find('article').filter(function() {
-                    if(!subTopic.Id) return;
-                    mediaUrls.push({
-                        PublishedAt: moment().format(),
-                        Title: $(this).find('.entry-title').find('a').text(),
-                        Description: $(this).find('.search-content').text(),
-                        ImageUrl: $(this).find('.search-content').find('figure').find('img').prop('src'),
-                        ImageWidth: null,
-                        ImageHeight: null,
-                        SubTopicsId: subTopic.Id,
-                        Source: 'Ray Wenderlich',
-                        Url: $(this).find('.entry-title').find('a').prop('href'),
-                        Type: 'Article'
-                    });
-
-                });
-            });
-            setTimeout(() => {resolve(mediaUrls); }, 10000)
-        })
-    }
-
-    async frontendEront(subTopics) {
+    async frontendFront(subTopics) {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
@@ -139,7 +114,7 @@ class GeneralArticles {
                         ImageWidth: null,
                         ImageHeight: null,
                         SubTopicsId: subTopic.Id,
-                        Source: 'Frontend Front',
+                        Source: $(this).find('.story-title').find('.domain').text().trim(),
                         Url: $(this).find('h2').find('a').prop('href'),
                         Type: 'Article'
                     });
@@ -151,6 +126,7 @@ class GeneralArticles {
     }
 
     async infoWorld(subTopics) {
+        Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
@@ -178,9 +154,62 @@ class GeneralArticles {
         })
     }
 
+    async sitepoint(subTopics) {
+        Utils.printFunctionName();
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            subTopics.rows.forEach(async function(subTopic) {
+                let url = `https://www.sitepoint.com/?s=${subTopic.Name}`;
+                let html = await Utils.request(url);
+                if(!html) throw url;
+                var $ = cheerio.load(html);
+                $('.search-results-item').filter(function() {
+                    mediaUrls.push({
+                        PublishedAt: $(this).find('.article_pub-date').find('time').prop('datetime'),
+                        Title: $(this).find('.article_title').find('a').text().trim(),
+                        Description: $(this).find('.article_excerpt').text().trim(),
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: subTopic.Id,
+                        Source: 'Sitepoint',
+                        Url: $(this).find('.article_title').find('a').prop('href'),
+                        Type: 'Article'
+                    });
+                });
+            });
+            setTimeout(() => {resolve(mediaUrls); }, 10000)
+        })
+    }
 
-
-
+    async reddit(subTopics) {
+        Utils.printFunctionName();
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            subTopics.rows.forEach(async function(subTopic) {
+                if(!subTopic.Reddit) return;
+                let url = `https://www.reddit.com/r/${subTopic.Reddit}/new/`;
+                let html = await Utils.request(url);
+                if(!html) throw url;
+                var $ = cheerio.load(html);
+                $('#siteTable').find('.thing').filter(function() {
+                    mediaUrls.push({
+                        PublishedAt: $(this).find('.tagline').find('time').prop('datetime'),
+                        Title: $(this).find('.entry').find('.title').find('a').text().trim(),
+                        Description: null,
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: subTopic.Id,
+                        Source: 'Reddit',
+                        Url: $(this).find('.entry').find('.title').find('a').prop('href').startsWith('http') ? $(this).find('.entry').find('.title').find('a').prop('href') : `https://www.reddit.com${$(this).find('.entry').find('.title').find('a').prop('href')}`,
+                        Type: 'Article'
+                    });
+                });
+            });
+            setTimeout(() => {resolve(mediaUrls); }, 10000)
+        })
+    }
 }
 
 const generalArticles = new GeneralArticles();

@@ -1,10 +1,11 @@
-const cheerio = require('cheerio');
-const Utils = require('../../../Utils/Utils');
+const cheerio   =   require('cheerio');
+const Utils     =   require('../../../Utils/Utils');
 const moment    =   require('moment');
 const fs        =   require('fs');
 
 class React {
     async reactjsNews() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://reactjsnews.com/`;
@@ -31,6 +32,7 @@ class React {
     }
 
     async reactjsNewsIO() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://react.jsnews.io/`;
@@ -57,6 +59,7 @@ class React {
     }
 
     async reactjsNewsTwitter() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://twitter.com/reactjsnews?lang=en`;
@@ -82,6 +85,7 @@ class React {
     }
 
     async scotch() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://scotch.io/tag/react`;
@@ -112,6 +116,7 @@ class React {
     }
 
     async codementor() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://www.codementor.io/reactjs/tutorial`;
@@ -137,6 +142,7 @@ class React {
     }
 
     async tutorialzine() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://tutorialzine.com/?s=react`;
@@ -162,6 +168,7 @@ class React {
     }
 
     async thinkster() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://thinkster.io/topics/react`;
@@ -191,6 +198,7 @@ class React {
     }
 
     async thebluecoder() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://www.thebluecoder.com/category/react/`;
@@ -216,6 +224,7 @@ class React {
     }
 
     async hashbangweekly() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://hashbangweekly.okgrow.com/`;
@@ -242,6 +251,7 @@ class React {
     }
 
     async daveceddia() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://daveceddia.com/archives/`;

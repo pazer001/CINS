@@ -15,11 +15,12 @@ class TopicsModel {
                                 "SubTopics"."Name",
                                 "SubTopics"."SearchTerm",
                                 "SubTopics"."InfoWorld",
+                                "SubTopics"."Reddit",
                                 "MainTopics"."Icon"
                             FROM "CINS"."MainTopics"
                             JOIN "CINS"."SubTopics" ON "MainTopics"."Id" = "SubTopics"."MainTopicsId" AND "SubTopics"."Active" = 't';`;
             this.pgClient.query(query, (err, result) => {
-                if(err) console.log(err);
+                if(err) throw err;
                 resolve(result);
             })
         })

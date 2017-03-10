@@ -69,4 +69,4 @@ sudo service apache2 stop
 sudo service nginx start
 sudo apt-get install postgresql postgresql-contrib -y
 sudo postgres -p 5433
-sudo export NODE_ENV=Development
+sudo sysctl -w vm.max_map_count=262144

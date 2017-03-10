@@ -2,13 +2,9 @@
   height: 100%!important;
 }
 
-.bg-grayDark input {
-  /*background-color: #333333 !important;*/
-}
-
 button {
   margin: 0 auto;
-  /*display: block;*/
+  width: 100%;
 }
 
 .window-caption {
@@ -22,23 +18,28 @@ button {
 .window.warning {
   box-shadow: none;
 }
-.panel {
-  width: 85%;
-}
 
 .panel .input-control {
   display: block;
   width: 100%;
+
 }
 
-button {
-  width: 100%;
+.my-topics .heading {
+  display: flex;
+  -webkit-box-align: center;
+  padding: 0;
 }
 
+.my-topics .heading .icon {
+  position: inherit;
+  flex: 1;
+  cursor: pointer;
+}
 
-/*@media only screen and (min-width: 0px) and (max-width: 480px) {*/
-
-  /*.panel {*/
-    /*width: 85%;*/
-  /*}*/
-/*}*/
+.my-topics .heading .title {
+  position: inherit;
+  flex: 10;
+  margin-left: 1em;
+  line-height: 200%;
+}

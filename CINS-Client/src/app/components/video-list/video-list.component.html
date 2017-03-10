@@ -1,5 +1,5 @@
 <div class="options padding5">
-  <h2>{{dataService.currentSelectedSubTopic.Name === 'Latest Media' ? (dataService.mySubTopics.length ? 'My Media' : dataService.currentSelectedSubTopic.Name) : dataService.currentSelectedSubTopic.Name}}</h2>
+  <h2>{{dataService.currentSelectedSubTopic.Name === 'Latest Media' ? (dataService.userDetails && dataService.userDetails.subTopicsSaveIds.data.length ? 'My Media' : dataService.currentSelectedSubTopic.Name) : dataService.currentSelectedSubTopic.Name}}</h2>
   <button class="image-button"
     [ngClass]="dataService.filter === 'All' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
     (click)="dataService.setFilter('All')">All
@@ -46,26 +46,22 @@
     </span>
     <span *ngIf="dataService.userDetails" class="icon mif-floppy-disk" (click)="postUserMediaSave(dataService.userDetails.data.Id, currentSelectedSubTopicMediaFilteredItem.Id)"></span>
   </div>
-  <div class="content padding10" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">
-    <div class="flex-grid">
-      <div class="row">
-        <div class="cell colspan1 image">
+
+  <div class="content padding5" (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">
+        <div class="cell image">
           <div class="image-container">
             <div class="frame">
               <img src="assets/icons/{{currentSelectedSubTopicMediaFilteredItem.SubTopicName}}.png" />
             </div>
           </div>
         </div>
-        <div class="cell colspan11 description padding5 no-padding-top no-padding-bottom" *ngIf="currentSelectedSubTopicMediaFilteredItem.Description">
-          <h5><span class="mif-calendar"></span> {{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}</h5>
-          <div><p class="text-default">{{currentSelectedSubTopicMediaFilteredItem.Description | trim}}</p></div>
+        <div class="cell description padding5 no-padding-top no-padding-bottom">
+          <h5>
+            <span class="mif-calendar"></span> {{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}
+            <span class="mif-info margin10 no-margin-bottom no-margin-right no-margin-top"></span> {{currentSelectedSubTopicMediaFilteredItem.Source}}
+          </h5>
+          <div><p class="text-default">{{currentSelectedSubTopicMediaFilteredItem.Description || '(No Description)' | trim}}</p></div>
         </div>
-
-        <div class="cell colspan11 description padding5 no-padding-top no-padding-bottom" *ngIf="!currentSelectedSubTopicMediaFilteredItem.Description">
-          <div><p class="text-default">(No Description)</p></div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 </div>

@@ -15,6 +15,12 @@ class Utils {
             resolve(parseHtml.load(html));
         })
     }
+
+    printFunctionName() {
+        let stack = new Error().stack,
+            caller = stack.split('\n')[2].trim();
+        console.log(caller.split(' ')[1]);
+    }
 }
 
 const utils =   new Utils();

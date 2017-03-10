@@ -15,8 +15,8 @@ module.exports = {
       },
       {
           name      : "CRONJOBS",
-          cwd       : cwd,
-          script    : "cronjobs.js",
+          // cwd       : cwd,
+          script    : "Cronjobs/cronjobs.js",
           watch     : true
       },
   ],

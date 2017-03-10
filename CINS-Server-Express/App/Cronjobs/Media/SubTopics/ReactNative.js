@@ -1,10 +1,11 @@
-const cheerio = require('cheerio');
-const Utils = require('../../../Utils/Utils');
+const cheerio   =   require('cheerio');
+const Utils     =   require('../../../Utils/Utils');
 const moment    =   require('moment');
 const fs        =   require('fs');
 
 class ReactNative {
     async facebook() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `http://facebook.github.io/react-native/blog/`;
@@ -31,6 +32,7 @@ class ReactNative {
     }
 
     async reactNativeNewsTwitter() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://twitter.com/reactjsnews?lang=en`;
@@ -56,6 +58,7 @@ class ReactNative {
     }
 
     async facebookDocs() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://facebook.github.io/react-native/docs/getting-started.html`;
@@ -82,6 +85,7 @@ class ReactNative {
     }
 
     async tutorialsPoint() {
+        Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
             let url = `https://www.tutorialspoint.com/react_native/index.htm`;
