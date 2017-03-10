@@ -8,7 +8,7 @@ module.exports = {
 
     // First application
       {
-          name      : "API",
+          name      : "Server",
           script    : "app.js",
           watch     : true,
           exec_mode: 'cluster'
