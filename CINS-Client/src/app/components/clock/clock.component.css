@@ -1,0 +1,9 @@
+#time, #date {
+  font-size: calc(50% + 0.3vw);
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px){
+  #time, #date {
+    font-size: 3vw;
+  }
+}
