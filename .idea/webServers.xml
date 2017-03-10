@@ -11,7 +11,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="adc324b8-4814-4bbe-b440-30b4a7465cce" name="CINC Client" url="http://192.168.1.38">
-        <fileTransfer host="192.168.1.38" port="22" accessType="SFTP">
+        <fileTransfer host="192.168.1.38" port="22" rootFolder="/var/www/CINS/CINS-Client" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
