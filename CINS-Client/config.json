@@ -5,18 +5,17 @@
       "URL": "localhost:9000"
     }
   },
-  "Test": {
+  "test": {
     "Port": 80,
     "apiServer": {
       "URL": "192.168.172.132:9000"
     }
   },
-  "Production": {
-    "Port": 8080,
+  "production": {
+    "Port": 80,
     "apiServer": {
       "URL": "http://cincserverloadbalancer-449561112.eu-west-2.elb.amazonaws.com"
     }
-
   }
 }
 

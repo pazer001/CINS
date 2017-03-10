@@ -9,7 +9,7 @@ module.exports = {
     // First application
       {
           name      : "Client",
-          script    : "app.js",
+          script    : "app.bundle.js",
           watch     : true,
           exec_mode: 'cluster'
       }
