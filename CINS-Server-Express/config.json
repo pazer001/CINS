@@ -21,7 +21,7 @@
       "user": "CINS",
       "database": "CINS",
       "password": "c9j98y5t",
-      "host": "cins.cxx1mrm6vr5f.eu-west-2.rds.amazonaws.com",
+      "host": "192.168.1.41",
       "port": 5432,
       "max": 10,
       "idleTimeoutMillis": 30000
