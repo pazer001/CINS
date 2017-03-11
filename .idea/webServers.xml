@@ -10,8 +10,16 @@
           <option name="port" value="2222" />
         </fileTransfer>
       </webServer>
-      <webServer id="adc324b8-4814-4bbe-b440-30b4a7465cce" name="CINC Client" url="http://192.168.1.38">
+      <webServer id="adc324b8-4814-4bbe-b440-30b4a7465cce" name="CINS Client" url="http://192.168.1.38">
         <fileTransfer host="192.168.1.38" port="22" rootFolder="/var/www/CINS/CINS-Client" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="784c17b0-ae73-4454-b45a-ba27abd7aff9" name="CINS Server" url="http://192.168.1.40">
+        <fileTransfer host="192.168.1.40" port="22" rootFolder="/var/www/CINS/CINS-Server-Express" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -28,6 +28,5 @@
     "striptags": "^3.0.1",
     "xml2js": "^0.4.17",
     "youtube-node": "^1.3.0"
-  },
-  "devDependencies": {}
+  }
 }
