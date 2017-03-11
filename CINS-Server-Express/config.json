@@ -29,7 +29,7 @@
     "Servers": {
       "Backend": {
         "Url": "localhost",
-        "Port": "80"
+        "Port": "8080"
       }
     }
   }
