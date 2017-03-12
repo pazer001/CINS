@@ -146,6 +146,7 @@
 .sub-topics {
   height: 54vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
@@ -159,8 +160,10 @@
   }
 
   .v-menu li a {
-    padding: .75rem 0rem .75rem 2.5rem;
+    padding: 0rem 0rem 0rem 25%;
     min-width: 9rem;
+    height: 6vh;
+    line-height: 6vh;
     font-size: 75%;
   }
 
@@ -174,6 +177,5 @@
 
   .sub-topics {
     height: 91vh;
-    overflow-y: scroll;
   }
 }
