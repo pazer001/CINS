@@ -50,7 +50,7 @@ class MediaModel {
                     }
                 }
             }, (error, response) => {
-                if (error) throw err;
+                if (error) throw error;
                 let results =   [];
                 if(response.hits.hits.length) {
                     for(let i in response.hits.hits) {
