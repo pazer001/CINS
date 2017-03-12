@@ -54,7 +54,7 @@ app.post('/user', async function (req, res) {
 app.get('/user', async function (req, res) {
     try {
         let getUser    =   await UsersController.getUser(req.query.EMail, req.query.Password);
-        if(getUser.code === 200) {
+        if(getUser && getUser.code === 200) {
             UsersController.setUserSession(req, getUser.data.Id);
             UsersController.setUserCookie(res, getUser.data.Id);
         }
