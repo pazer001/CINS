@@ -57,8 +57,9 @@ app.get('/user', async function (req, res) {
         if(getUser && getUser.code === 200) {
             UsersController.setUserSession(req, getUser.data.Id);
             UsersController.setUserCookie(res, getUser.data.Id);
+            res.json(getUser)
         }
-        res.json(getUser)
+
     } catch (e) {
         console.log(e)
     }
