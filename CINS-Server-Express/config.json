@@ -7,7 +7,11 @@
       "host": "localhost",
       "port": 5555,
       "max": 10,
-      "idleTimeoutMillis": 30000
+      "idleTimeoutMillis": 30000 
+    },
+    "Elasticsearch": {
+      "Server": "localhost",
+      "Port": 9200
     },
     "Servers": {
       "Backend": {
