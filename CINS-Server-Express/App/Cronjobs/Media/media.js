@@ -19,6 +19,7 @@ const KoaJS             =   require('./SubTopics/KoaJS');
 const JavaScript        =   require('./SubTopics/JavaScript');
 const PHP               =   require('./SubTopics/PHP');
 const Clojure           =   require('./SubTopics/Clojure');
+const WebRTC            =   require('./SubTopics/WebRTC');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -123,6 +124,9 @@ class Media {
             this.setMedia(await Clojure.clojureNews());
             this.setMedia(await Clojure.planetClosure());
 
+            //WebRTC
+            this.setMedia(await WebRTC.webRtcWorld());
+
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
             this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
@@ -200,6 +204,6 @@ class Media {
     }
 }
 
-var cron = new Media();
-cron.init();
-// module.exports  =   new Media();
+// var cron = new Media();
+// cron.init();
+module.exports  =   new Media();

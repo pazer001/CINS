@@ -56,7 +56,7 @@ class GeneralVideos {
                     }
                 }
             }
-            // console.log(mediaUrls)
+
             resolve(mediaUrls)
         })
     }

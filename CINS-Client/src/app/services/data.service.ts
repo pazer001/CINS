@@ -164,6 +164,7 @@ export class DataService {
   }
 
   search(term): Observable<any> {
+    if(!term) return;
     return this.http.get(`api/search/${term}`).map(res => res.json())
   }
 

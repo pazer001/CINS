@@ -14,9 +14,9 @@ export class SearchComponent implements OnInit {
   }
 
   search(term) {
+    if(!term) return;
     this.dataService.search(term).subscribe(result => {
       this.searchResults  = result;
-      // this.layoutService.toggleFooterButtonsActive('startMenuActive');
     });
   }
   ngOnInit() {
