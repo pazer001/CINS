@@ -115,8 +115,8 @@ class MediaController {
                     feed.item({
                         title: media.Title,
                         description: `
-                        From: ${media.Source} 
-                        At: ${media.PublishedAt}
+                        From: ${media.Source} \n
+                        At: ${media.PublishedAt} \n
                         ${media.Description || media.Title}
                         `,
                         url: media.Url,

@@ -59,7 +59,7 @@ app.get('/user', async function (req, res) {
             UsersController.setUserCookie(res, getUser.data.Id);
             res.json(getUser)
         } else {
-            res.json({problem: 'problem'})
+            res.json({problem: 'Problem Occurred! Get Out Of HERE!!! '})
         }
 
     } catch (e) {
