@@ -58,6 +58,8 @@ app.get('/user', async function (req, res) {
             UsersController.setUserSession(req, getUser.data.Id);
             UsersController.setUserCookie(res, getUser.data.Id);
             res.json(getUser)
+        } else {
+            res.json({problem: 'problem'})
         }
 
     } catch (e) {

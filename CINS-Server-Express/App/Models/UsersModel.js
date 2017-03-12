@@ -24,7 +24,7 @@ class UsersModel {
     }
     async getUser(eMail, password) {
         return new Promise(resolve => {
-            data    =   [
+            let data    =   [
                 eMail      || '',
                 password   || ''
             ];
