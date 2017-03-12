@@ -38,6 +38,12 @@ app.get('/getLatestMedia/:userId', async function (req, res) {
     res.json(getLatestMedia);
 });
 
+app.get('/rss/:userId', async function (req, res) {
+    let rss    =   await MediaController.rss(req.params.userId);
+    res.set('Content-Type', 'application/rss+xml');
+    res.send(rss);
+});
+
 app.post('/user', async function (req, res) {
     let postUser    =   await UsersController.postUser(req.body.firstName, req.body.lastName, req.body.password, req.body.eMail);
     UsersController.setUserSession(req, postUser.data.data.Id);

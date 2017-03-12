@@ -32,6 +32,12 @@
         <span class="icon mif-minus"></span>
       </button>
     </span>
+  <a href="/api/rss/{{dataService.userDetails.data.Id}}" target="_blank" *ngIf="dataService.userDetails">
+    <button class="image-button button warning text-shadow"
+            (click)="dataService.setFilter('Video')">RSS
+      <span class="icon mif-feed3"></span>
+    </button>
+  </a>
 </div>
 
 

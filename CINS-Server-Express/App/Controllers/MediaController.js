@@ -1,3 +1,5 @@
+const RSS           =   require('rss');
+const moment        =   require('moment');
 const Logger        =   require('../Utils/Logger');
 const MediaModel    =   require('../Models/MediaModel');
 
@@ -89,9 +91,45 @@ class MediaController {
     async getLatestMedia(userId) {
         try {
             let getLatestMedia    =  await MediaModel.getLatestMedia(userId);
-            return (getLatestMedia && getLatestMedia.rowCount) ? getLatestMedia.rows : null;
+            return (getLatestMedia && getLatestMedia.rowCount) ? getLatestMedia.rows : [];
         } catch (e) {
             Logger.toDB(JSON.stringify(e))
+        }
+    }
+
+    async rss(userId) {
+        try {
+            let userMedia   =   await MediaModel.getLatestMedia(userId);
+            if(userMedia.rows) {
+                let feedOptions = {
+                    title: 'CINS - Computer Is Not Sciene',
+                    description: 'Computer is not science',
+                    webMaster: 'Paz Lazar',
+                    language: 'en',
+                    ttl: '60',
+                    pubDate: moment().format()
+                };
+                let feed = new RSS(feedOptions);
+
+                for (let media of userMedia.rows) {
+                    feed.item({
+                        title: media.Title,
+                        description: `
+                        From: ${media.Source} 
+                        At: ${media.PublishedAt}
+                        ${media.Description || media.Title}
+                        `,
+                        url: media.Url,
+                        date: media.PublishedAt
+                    })
+                }
+                // let xml = feed.xml({indent: true});
+                return feed.xml({indent: true});
+            } else {
+                return '';
+            }
+        } catch (e) {
+
         }
     }
 }

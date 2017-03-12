@@ -33,8 +33,8 @@ class MediaModel {
         })
     }
 
+    //From Elasticsearch
     search(term) {
-        //From Elasticsearch
         return new Promise(resolve => {
             DB.ESclient.search({
                 index: 'media',
@@ -60,34 +60,6 @@ class MediaModel {
                 resolve(results);
             });
         });
-
-
-
-        //From Postgres
-        // let data    =   [`%${term.toLowerCase()}%`];
-        // return new Promise(resolve => {
-        //     const query = `SELECT
-        //                         "Media"."Id",
-        //                         DATE("Media"."PublishedAt") AS "PublishedAt",
-        //                         "Media"."Title",
-        //                         "Media"."Description",
-        //                         "Media"."Source" AS "Source",
-        //                         "Media"."Url",
-        //                         "MediaRating"."RatingCount" AS "RatingCount",
-        //                         COALESCE (NULLIF ("Media"."ImageUrl", ''),"Sources"."ImageUrl") AS "ImageUrl",
-        //                         "Media"."Type"
-        //                     FROM
-        //                         "CINS"."Media"
-        //                     LEFT JOIN "CINS"."Sources" ON "Media"."Source" = "Sources"."Name"
-        //                     LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
-        //                     WHERE LOWER("Media"."Title") LIKE $1 OR LOWER("Media"."Description") LIKE $1
-        //                     ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC
-        //                     LIMIT 100`;
-        //     this.pgClient.query(query, data, (err, result) => {
-        //         if (err) throw err;
-        //         resolve(result);
-        //     })
-        // })
     }
 
     requestMedia(data) {
