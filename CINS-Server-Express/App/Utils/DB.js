@@ -26,14 +26,14 @@ class DB {
     }
 
     async ESquery(index, id, body) {
-        return new Promise(resolve => {
+        return new Promise((resolve, reject) => {
             this.ESclient.create({
                 index: index,
                 type: 'JSON',
                 id: id,
                 body: body
             }, (error, response) => {
-                if(error) console.log(error, index, id, body);
+                if(error) reject(error);
                 resolve(response);
             })
         })
