@@ -39,13 +39,10 @@
 
 #menu-tiles {
   display: none;
-  /*height: 54vh;*/
-
 }
 
 #menu-tiles.active {
   display: block;
-  overflow-y: auto;
 }
 
 #menu-tiles.active::-webkit-scrollbar {
@@ -148,6 +145,7 @@
 
 .sub-topics {
   height: 54vh;
+  overflow-y: scroll;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
@@ -172,12 +170,10 @@
     font-size: 1em;
   }
 
-  #menu-tiles.active {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+
 
   .sub-topics {
     height: 91vh;
+    overflow-y: scroll;
   }
 }
