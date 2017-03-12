@@ -8,7 +8,7 @@ class DB {
         this.pgClient   = new pg.Pool(config[process.env.NODE_ENV].PostgreSQL);
         this.pgClient.connect();
         this.ESclient = new elasticsearch.Client({
-            host: 'localhost:9200',
+            host: `${config[process.env.NODE_ENV].Elasticsearch.Server}:${config[process.env.NODE_ENV].Elasticsearch.Port}`,
             // log: 'trace'
         });
     }
