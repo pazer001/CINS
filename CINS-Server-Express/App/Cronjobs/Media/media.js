@@ -200,6 +200,6 @@ class Media {
     }
 }
 
-// var cron = new Media();
-// cron.init();
-module.exports  =   new Media();
+var cron = new Media();
+cron.init();
+// module.exports  =   new Media();
