@@ -193,6 +193,7 @@ class GeneralArticles {
                 if(!html) throw url;
                 var $ = cheerio.load(html);
                 $('#siteTable').find('.thing').filter(function() {
+                    if($(this).find('.entry').find('.title').find('a').prop('href').includes('reddit.com') || $(this).find('.entry').find('.title').find('a').prop('href').includes('stackoverflow.com')) return;
                     mediaUrls.push({
                         PublishedAt: $(this).find('.tagline').find('time').prop('datetime'),
                         Title: $(this).find('.entry').find('.title').find('a').text().trim(),
