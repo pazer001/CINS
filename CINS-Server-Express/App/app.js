@@ -52,12 +52,17 @@ app.post('/user', async function (req, res) {
 });
 
 app.get('/user', async function (req, res) {
-    let getUser    =   await UsersController.getUser(req.query.EMail, req.query.Password);
-    if(getUser.code === 200) {
-        UsersController.setUserSession(req, getUser.data.Id);
-        UsersController.setUserCookie(res, getUser.data.Id);
+    try {
+        let getUser    =   await UsersController.getUser(req.query.EMail, req.query.Password);
+        if(getUser.code === 200) {
+            UsersController.setUserSession(req, getUser.data.Id);
+            UsersController.setUserCookie(res, getUser.data.Id);
+        }
+        res.json(getUser)
+    } catch (e) {
+        console.log(e)
     }
-    res.json(getUser)
+
 });
 
 app.post('/userLogout', async function (req, res) {
