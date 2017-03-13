@@ -65,7 +65,7 @@
 
 .panel>.heading>.icon+.title {
   margin-left: 1em;
-  font-size: calc(30% + 0.75vw)!important;
+  font-size: calc(40% + 0.75vw)!important;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {

@@ -10,8 +10,8 @@
   background: transparent;
 }
 .v-menu .icon {
-  width: 2rem;
-  height: 2rem;
+  width: 25%;
+  height: 90%;
   color: #ffffff;
   background-color: #59cde2;
   max-height: 100%;
@@ -21,8 +21,11 @@
 }
 
 .v-menu li a .icon, .v-menu li a img {
-  top: 40%;
+  top: 30%;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .v-menu li {
@@ -30,7 +33,9 @@
 }
 
 .dropdown-toggle {
-  /*padding: 0 0 0 20%;*/
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .dropdown-toggle:hover {
@@ -160,10 +165,10 @@
   }
 
   .v-menu li a {
-    padding: 0rem 0rem 0rem 25%;
+    padding: 0rem 0rem 0rem 30%;
     min-width: 9rem;
-    height: 6vh;
-    line-height: 6vh;
+    height: 7vh;
+    line-height: 7vh;
     font-size: 75%;
   }
 
