@@ -9,6 +9,7 @@ app.use(express.static('dist'));
 app.use('/api', proxy(config[process.env.NODE_ENV].apiServer.URL));
 
 app.get('*', (req, res) => {
+  console.log('here', req)
   res.status(200).sendFile('index.html', { root: __dirname + '/dist'});
 });
 
