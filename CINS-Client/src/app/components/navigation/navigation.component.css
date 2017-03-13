@@ -154,6 +154,13 @@
   overflow-x: hidden;
 }
 
+.v-menu li a {
+  padding: 0rem 0rem 0rem 30%;
+  min-width: 9rem;
+  height: 4vh;
+  line-height: 4vh;
+}
+
 @media only screen and (min-width: 0px) and (max-width: 480px) {
   .main-topic-tile i {
     width: 2em!important;
@@ -165,12 +172,11 @@
   }
 
   .v-menu li a {
-    padding: 0rem 0rem 0rem 30%;
-    min-width: 9rem;
     height: 7vh;
     line-height: 7vh;
     font-size: 75%;
   }
+
 
   .main-topic-tile {
     width: inherit;
