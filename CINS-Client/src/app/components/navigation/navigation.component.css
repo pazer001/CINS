@@ -10,7 +10,7 @@
   background: transparent;
 }
 .v-menu .icon {
-  width: 25%;
+  width: 20%;
   height: 90%;
   color: #ffffff;
   background-color: #59cde2;
@@ -50,16 +50,16 @@
   display: block;
 }
 
-#menu-tiles.active::-webkit-scrollbar {
+.sub-topics::-webkit-scrollbar {
   width: 12px;
   background-color: transparent;
 }
 
-#menu-tiles.active::-webkit-scrollbar-thumb {
+.sub-topics::-webkit-scrollbar-thumb {
   background-color: #707070;
 }
 
-#menu-tiles.active::-webkit-scrollbar-track {
+.sub-topics::-webkit-scrollbar-track {
   background-color: #4c4c4c;
 }
 
@@ -145,7 +145,7 @@
 }
 
 .main-topics {
-  flex: 10;
+  flex: 3;
 }
 
 .sub-topics {
@@ -155,11 +155,16 @@
 }
 
 .v-menu li a {
-  padding: 0rem 0rem 0rem 30%;
-  min-width: 9rem;
+  padding: 0rem 0rem 0rem 25%;
   height: 4vh;
   line-height: 4vh;
+  min-width: 0;
 }
+
+.v-menu {
+  /*max-width: none;*/
+}
+
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
   .main-topic-tile i {
@@ -181,7 +186,7 @@
   .main-topic-tile {
     width: inherit;
     height: inherit;
-    font-size: 1em;
+    font-size: 3vw;
   }
 
 
