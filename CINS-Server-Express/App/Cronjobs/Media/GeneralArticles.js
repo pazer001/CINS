@@ -202,7 +202,7 @@ class GeneralArticles {
                         ImageWidth: null,
                         ImageHeight: null,
                         SubTopicsId: subTopic.Id,
-                        Source: $(this).find('.entry').find('.title').text().trim().split('(')[1].replace(')'),
+                        Source: 'Reddit',
                         Url: $(this).find('.entry').find('.title').find('a').prop('href').startsWith('http') ? $(this).find('.entry').find('.title').find('a').prop('href') : `https://www.reddit.com${$(this).find('.entry').find('.title').find('a').prop('href')}`,
                         Type: 'Article'
                     });

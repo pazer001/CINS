@@ -155,10 +155,10 @@
 }
 
 .v-menu li a {
-  padding: 0rem 0rem 0rem 25%;
+  padding: 0rem 0rem 0rem 3vw;
   height: 4vh;
   line-height: 4vh;
-  min-width: 0;
+  /*min-width: 0;*/
 }
 
 .v-menu {
@@ -177,9 +177,11 @@
   }
 
   .v-menu li a {
+    padding: 0rem 0rem 0rem 11vw;
     height: 7vh;
     line-height: 7vh;
     font-size: 75%;
+    min-width: 100%;
   }
 
 
@@ -193,5 +195,10 @@
 
   .sub-topics {
     height: 91vh;
+  }
+
+  .v-menu .icon {
+    width: 10vw;
+    height: 10vw;
   }
 }

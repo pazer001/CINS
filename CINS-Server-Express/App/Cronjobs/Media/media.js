@@ -31,7 +31,7 @@ class Media {
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
-
+        this.setMedia(await GeneralArticles.reddit(this.subTopics));return;
         try {
             console.time('COMPLETED: ');
             //C
