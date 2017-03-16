@@ -22,7 +22,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'ISO CPP',
                     Url: $(this).find('blockquote').find('a').prop('href'),
                     Type: 'Article'
@@ -50,7 +50,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'MSDN',
                     Url: $(this).find('.entry-header').find('h2').find('a').attr('href'),
                     Type: 'Article'
@@ -79,7 +79,7 @@ class Cpp {
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
-                        SubTopicsId: 5,
+                        SubTopicsId: 3,
                         Source: 'Cpp Soup',
                         Url: item.link.pop(),
                         Type: 'Article'
@@ -109,7 +109,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'C++ truths',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -138,7 +138,7 @@ class Cpp {
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
-                        SubTopicsId: 5,
+                        SubTopicsId: 3,
                         Source: 'The Old New Thing',
                         Url: $(this).find('.entry-title').find('a').prop('href'),
                         Type: 'Article'
@@ -171,7 +171,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'The View From Aristeia',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -200,7 +200,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: `Sutters Mill`,
                     Url: $(this).find('.posttitle').find('a').prop('href'),
                     Type: 'Article'
@@ -228,7 +228,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'Thinking Asynchronously in C++',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -256,7 +256,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: `Bartosz Milewski Programming Cafe`,
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -284,7 +284,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: `Mr Edd`,
                     Url: `http://www.mr-edd.co.uk${$(this).find('a').attr('href')}`,
                     Type: 'Article'
@@ -312,7 +312,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: `Rambling Comments`,
                     Url: $(this).find('.asset-header').find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -340,7 +340,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: `Attractive Chaos`,
                     Url: $(this).find('.posttitle').find('a').prop('href'),
                     Type: 'Article'
@@ -368,7 +368,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: `Light Sleeper`,
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -397,7 +397,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'The Fastware Project',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -431,7 +431,7 @@ class Cpp {
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
-                        SubTopicsId: 5,
+                        SubTopicsId: 3,
                         Source: 'The ACCU Overload journals',
                         Url: $(this).find('span').find('a').prop('href'),
                         Type: 'Article'
@@ -462,7 +462,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 5,
+                    SubTopicsId: 3,
                     Source: 'Learning C++',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').prop('href'),
                     Type: 'Article'

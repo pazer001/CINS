@@ -21,7 +21,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'Es6 Features',
                     Url: `${url}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -49,7 +49,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'Exploring Js',
                     Url: `${`http://exploringjs.com/es6/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -76,7 +76,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'Babel',
                     Url: `${`http://ccoenraets.github.io`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -103,7 +103,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'Qnimate',
                     Url: $(this).find('.qnimate-post-series-box2').find('a').prop('href'),
                     Type: 'Article'
@@ -130,7 +130,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'NCZ Online',
                     Url: `${`https://www.nczonline.net/`}${$(this).find('a').prop('href')}`,
                     Type: 'Article'
@@ -157,7 +157,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -183,7 +183,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'Mozilla',
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -209,7 +209,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'JS.next',
                     Url: `${`http://chimera.labs.oreilly.com/books/1234000001623/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -235,7 +235,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 30,
+                    SubTopicsId: 23,
                     Source: 'You Dont Know JS',
                     Url: `${`https://github.com/`}${$(this).prop('href')}`,
                     Type: 'Article'

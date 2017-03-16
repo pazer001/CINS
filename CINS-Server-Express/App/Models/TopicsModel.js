@@ -18,7 +18,7 @@ class TopicsModel {
                                 "SubTopics"."Reddit",
                                 "MainTopics"."Icon"
                             FROM "CINS"."MainTopics"
-                            JOIN "CINS"."SubTopics" ON "MainTopics"."Id" = "SubTopics"."MainTopicsId" AND "SubTopics"."Active" = 't';`;
+                            JOIN "CINS"."SubTopics" ON "MainTopics"."Id" = "SubTopics"."MainTopicsId" AND "SubTopics"."Active" = '1';`;
             this.pgClient.query(query, (err, result) => {
                 if(err) throw err;
                 resolve(result);

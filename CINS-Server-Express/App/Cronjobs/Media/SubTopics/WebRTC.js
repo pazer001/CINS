@@ -19,7 +19,7 @@ class WebRTC {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 49,
+                    SubTopicsId: 75,
                     Source: 'WebRTC World',
                     Url: $(this).find('a').prop('href'),
                     Type: 'Article'

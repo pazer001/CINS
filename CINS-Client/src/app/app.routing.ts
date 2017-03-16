@@ -23,5 +23,8 @@ export const appRoutes: Routes = [
   {path: 'COBOL', component: MainComponent, data: {subTopicName: 'COBOL'}},
   {path: 'Clojure', component: MainComponent, data: {subTopicName: 'Clojure'}},
   {path: 'WebRTC', component: MainComponent, data: {subTopicName: 'WebRTC'}},
+  {path: 'Apache Solr', component: MainComponent, data: {subTopicName: 'Apache Solr'}},
+  {path: 'HTML', component: MainComponent, data: {subTopicName: 'HTML'}},
+  {path: 'jQuery', component: MainComponent, data: {subTopicName: 'jQuery'}},
   {path: '**', component: NotFoundComponent},
 ];

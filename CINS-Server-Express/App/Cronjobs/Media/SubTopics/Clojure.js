@@ -17,7 +17,7 @@ class Clojure {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 4,
                     Source: 'Clojure News',
                     Url: news['url'],
                     Type: 'Article'
@@ -43,7 +43,7 @@ class Clojure {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: 4,
                     Source: 'Planet Closure',
                     Url: $(this).find('article').find('h2').find('a').prop('href'),
                     Type: 'Article'

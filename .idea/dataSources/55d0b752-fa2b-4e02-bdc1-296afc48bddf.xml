@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="CINS@localhost">
+<dataSource name="CINS Development">
   <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
     <root id="1"/>
     <database id="2" parent="1" name="CINS">
-      <ObjectId>16393</ObjectId>
+      <ObjectId>148009</ObjectId>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
-    <schema id="3" parent="2" name="public">
-      <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-01-21.21:41:05.243</IntrospectionTimestamp>
+    <schema id="3" parent="2" name="CINS">
+      <ObjectId>148010</ObjectId>
+      <IntrospectionTimestamp>2017-03-16.14:16:24.278</IntrospectionTimestamp>
+      <IntrospectionStateNumber>82996</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -19,93 +20,481 @@
     <schema id="5" parent="2" name="pg_toast">
       <ObjectId>99</ObjectId>
     </schema>
-    <schema id="6" parent="2" name="pg_temp_1">
-      <ObjectId>11848</ObjectId>
+    <schema id="6" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
     </schema>
-    <schema id="7" parent="2" name="pg_toast_temp_1">
-      <ObjectId>11849</ObjectId>
+    <schema id="7" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
     </schema>
-    <schema id="8" parent="2" name="information_schema">
-      <ObjectId>12113</ObjectId>
+    <schema id="8" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
     </schema>
-    <schema id="9" parent="2" name="CINS">
-      <ObjectId>16395</ObjectId>
-      <IntrospectionTimestamp>2017-01-21.21:54:41.588</IntrospectionTimestamp>
-      <IntrospectionStateNumber>577</IntrospectionStateNumber>
-      <Visible>1</Visible>
+    <schema id="9" parent="2" name="information_schema">
+      <ObjectId>12087</ObjectId>
     </schema>
-    <sequence id="10" parent="9" name="MainTopics_Id_seq">
-      <ObjectId>16406</ObjectId>
-      <StateNumber>562</StateNumber>
+    <sequence id="10" parent="3" name="&quot;SubTopics_id_seq">
+      <ObjectId>148082</ObjectId>
+      <StateNumber>80742</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <sequence id="11" parent="9" name="SubTopics_Id_seq">
-      <ObjectId>16431</ObjectId>
-      <StateNumber>577</StateNumber>
+    <sequence id="11" parent="3" name="Logger_Id_seq">
+      <ObjectId>148175</ObjectId>
+      <StateNumber>82995</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <table id="12" parent="9" name="MainTopics">
-      <ObjectId>16396</ObjectId>
-      <StateNumber>562</StateNumber>
+    <sequence id="12" parent="3" name="MainTopics_Id_seq">
+      <ObjectId>148031</ObjectId>
+      <StateNumber>80725</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="13" parent="3" name="MediaRating_Id_seq">
+      <ObjectId>148037</ObjectId>
+      <StateNumber>80727</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="14" parent="3" name="RequestMedia_Id_seq">
+      <ObjectId>148043</ObjectId>
+      <StateNumber>80728</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="15" parent="3" name="UserMediaSave_Id_seq">
+      <ObjectId>148115</ObjectId>
+      <StateNumber>80754</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="16" parent="3" name="UserTopicsSave_Id_seq">
+      <ObjectId>148106</ObjectId>
+      <StateNumber>80752</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="17" parent="3" name="Users_Id_seq">
+      <ObjectId>148088</ObjectId>
+      <StateNumber>80744</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="18" parent="3" name="media_id_seq">
+      <ObjectId>148063</ObjectId>
+      <StateNumber>80731</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <object-type id="19" parent="3" name="MediaType">
+      <ObjectId>148053</ObjectId>
+      <StateNumber>80729</StateNumber>
+      <SubKind>enum</SubKind>
+      <SubCategory>enum</SubCategory>
+      <Labels>Article
+Video</Labels>
+    </object-type>
+    <object-type id="20" parent="3" name="Types">
+      <ObjectId>148125</ObjectId>
+      <StateNumber>80757</StateNumber>
+      <SubKind>enum</SubKind>
+      <SubCategory>enum</SubCategory>
+      <Labels>Video
+Article</Labels>
+    </object-type>
+    <table id="21" parent="3" name="Logger">
+      <ObjectId>148177</ObjectId>
+      <StateNumber>82995</StateNumber>
     </table>
-    <table id="13" parent="9" name="SubTopics">
-      <ObjectId>16433</ObjectId>
-      <StateNumber>577</StateNumber>
+    <table id="22" parent="3" name="MainTopics">
+      <ObjectId>148026</ObjectId>
+      <StateNumber>80725</StateNumber>
     </table>
-    <column id="14" parent="12" name="Name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0</DataType>
-      <StateNumber>548</StateNumber>
+    <table id="23" parent="3" name="Media">
+      <ObjectId>148065</ObjectId>
+      <StateNumber>80794</StateNumber>
+    </table>
+    <table id="24" parent="3" name="MediaRating">
+      <ObjectId>148039</ObjectId>
+      <StateNumber>80727</StateNumber>
+    </table>
+    <table id="25" parent="3" name="RequestMedia">
+      <ObjectId>148045</ObjectId>
+      <StateNumber>80730</StateNumber>
+    </table>
+    <table id="26" parent="3" name="SubTopics">
+      <ObjectId>148084</ObjectId>
+      <StateNumber>80790</StateNumber>
+    </table>
+    <table id="27" parent="3" name="UserMediaSave">
+      <ObjectId>148117</ObjectId>
+      <StateNumber>80754</StateNumber>
+    </table>
+    <table id="28" parent="3" name="UserTopicsSave">
+      <ObjectId>148108</ObjectId>
+      <StateNumber>80752</StateNumber>
+    </table>
+    <table id="29" parent="3" name="Users">
+      <ObjectId>148090</ObjectId>
+      <StateNumber>80744</StateNumber>
+    </table>
+    <column id="30" parent="21" name="Id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>82995</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;Logger_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="15" parent="12" name="Id">
+    <column id="31" parent="21" name="Error">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>82995</StateNumber>
+    </column>
+    <column id="32" parent="21" name="Query">
       <Position>3</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>82995</StateNumber>
+    </column>
+    <column id="33" parent="21" name="Data">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>82995</StateNumber>
+    </column>
+    <index id="34" parent="21" name="&quot;Logger&quot;_&quot;Id&quot;_uindex">
+      <ObjectId>148184</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <column id="35" parent="22" name="Name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <StateNumber>80721</StateNumber>
+    </column>
+    <column id="36" parent="22" name="Icon">
+      <Position>3</Position>
+      <DataType>varchar(10)|0</DataType>
+      <StateNumber>80721</StateNumber>
+    </column>
+    <column id="37" parent="22" name="Id">
+      <Position>4</Position>
       <DataType>smallint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>562</StateNumber>
-      <DefaultExpression>nextval(&apos;&quot;CINS&quot;.&quot;MainTopics_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <StateNumber>80725</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;MainTopics_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <index id="16" parent="12" name="UNQ_MainTopics_Name">
-      <ObjectId>16401</ObjectId>
-      <ColNames>Name</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="17" parent="12" name="IDX_MainTopics_Id">
-      <ObjectId>16415</ObjectId>
+    <index id="38" parent="22" name="MainTopics_Id_uindex">
+      <ObjectId>148100</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="18" parent="12" name="MainTopics_pkey">
-      <ObjectId>16413</ObjectId>
+    <index id="39" parent="22" name="maintopics_id_pk">
+      <ObjectId>148101</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="19" parent="12" name="MainTopics_pkey">
-      <ObjectId>16414</ObjectId>
+    <key id="40" parent="22" name="maintopics_id_pk">
+      <ObjectId>148102</ObjectId>
       <ColNames>Id</ColNames>
-      <UnderlyingIndexName>MainTopics_pkey</UnderlyingIndexName>
+      <UnderlyingIndexName>maintopics_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="20" parent="12" name="UNQ_MainTopics_Name">
-      <ObjectId>16402</ObjectId>
-      <ColNames>Name</ColNames>
-      <UnderlyingIndexName>UNQ_MainTopics_Name</UnderlyingIndexName>
+    <column id="41" parent="23" name="Id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80733</StateNumber>
+      <DefaultExpression>nextval(&apos;media_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="42" parent="23" name="PublishedAt">
+      <Position>2</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80734</StateNumber>
+    </column>
+    <column id="43" parent="23" name="Title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80735</StateNumber>
+    </column>
+    <column id="44" parent="23" name="Description">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>80736</StateNumber>
+    </column>
+    <column id="45" parent="23" name="Source">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>80737</StateNumber>
+    </column>
+    <column id="46" parent="23" name="Url">
+      <Position>6</Position>
+      <DataType>varchar(500)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80738</StateNumber>
+    </column>
+    <column id="47" parent="23" name="Type">
+      <Position>7</Position>
+      <DataType>&quot;MediaType&quot;|0</DataType>
+      <StateNumber>80740</StateNumber>
+    </column>
+    <column id="48" parent="23" name="SubTopicsId">
+      <Position>8</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>80794</StateNumber>
+    </column>
+    <index id="49" parent="23" name="media_pkey">
+      <ObjectId>148072</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="50" parent="23" name="Media_Url_uindex">
+      <ObjectId>148129</ObjectId>
+      <ColNames>Url</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="23" name="media_pkey">
+      <ObjectId>148073</ObjectId>
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>media_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
     </key>
-    <column id="21" parent="13" name="Id">
+    <column id="52" parent="24" name="Id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80727</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;MediaRating_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="53" parent="24" name="RatedAt">
+      <Position>2</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>80727</StateNumber>
+    </column>
+    <column id="54" parent="24" name="RatingCount">
+      <Position>3</Position>
+      <DataType>smallint|0</DataType>
+      <StateNumber>80727</StateNumber>
+    </column>
+    <column id="55" parent="24" name="MediaId">
+      <Position>4</Position>
+      <DataType>smallint|0</DataType>
+      <StateNumber>80727</StateNumber>
+    </column>
+    <index id="56" parent="24" name="MediaRating_Id_uindex">
+      <ObjectId>148097</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="57" parent="24" name="mediarating_id_pk">
+      <ObjectId>148098</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="58" parent="24" name="mediarating_id_pk">
+      <ObjectId>148099</ObjectId>
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>mediarating_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="59" parent="25" name="Id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80728</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;RequestMedia_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="60" parent="25" name="PublishedAt">
+      <Position>2</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>80728</StateNumber>
+    </column>
+    <column id="61" parent="25" name="Title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>80728</StateNumber>
+    </column>
+    <column id="62" parent="25" name="Description">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>80728</StateNumber>
+    </column>
+    <column id="63" parent="25" name="SubTopicsId">
+      <Position>5</Position>
+      <DataType>smallint|0</DataType>
+      <StateNumber>80728</StateNumber>
+    </column>
+    <column id="64" parent="25" name="Source">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>80728</StateNumber>
+    </column>
+    <column id="65" parent="25" name="Url">
+      <Position>7</Position>
+      <DataType>varchar(500)|0</DataType>
+      <StateNumber>80728</StateNumber>
+    </column>
+    <column id="66" parent="25" name="Type">
+      <Position>8</Position>
+      <DataType>&quot;MediaType&quot;|0</DataType>
+      <StateNumber>80730</StateNumber>
+    </column>
+    <column id="67" parent="26" name="Id">
       <Position>1</Position>
       <DataType>smallint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>577</StateNumber>
-      <DefaultExpression>nextval(&apos;&quot;CINS&quot;.&quot;SubTopics_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <StateNumber>80783</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;&quot;&quot;SubTopics_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="22" parent="13" name="Name">
+    <column id="68" parent="26" name="Name">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <StateNumber>577</StateNumber>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>80742</StateNumber>
     </column>
-    <column id="23" parent="13" name="MainTopicsId">
+    <column id="69" parent="26" name="SearchTerm">
       <Position>3</Position>
-      <DataType>smallint|0</DataType>
-      <StateNumber>577</StateNumber>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>80742</StateNumber>
     </column>
+    <column id="70" parent="26" name="InfoWorld">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>80742</StateNumber>
+    </column>
+    <column id="71" parent="26" name="Reddit">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>80784</StateNumber>
+    </column>
+    <column id="72" parent="26" name="MainTopicsId">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>80786</StateNumber>
+    </column>
+    <column id="73" parent="26" name="Active">
+      <Position>7</Position>
+      <DataType>bit|0</DataType>
+      <StateNumber>80790</StateNumber>
+    </column>
+    <index id="74" parent="26" name="SubTopics_id_uindex">
+      <ObjectId>148103</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="75" parent="26" name="subtopics_id_pk">
+      <ObjectId>148104</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="26" name="subtopics_id_pk">
+      <ObjectId>148105</ObjectId>
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>subtopics_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="77" parent="27" name="Id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80754</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;UserMediaSave_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="78" parent="27" name="UserId">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80754</StateNumber>
+    </column>
+    <column id="79" parent="27" name="MediaId">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80754</StateNumber>
+    </column>
+    <index id="80" parent="27" name="&quot;UserMediaSave&quot;_&quot;Id&quot;_uindex">
+      <ObjectId>148123</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="81" parent="27" name="UserMediaSave_pkey">
+      <ObjectId>148121</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="82" parent="27" name="UserMediaSave_pkey">
+      <ObjectId>148122</ObjectId>
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>UserMediaSave_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="83" parent="28" name="Id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80752</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;UserTopicsSave_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="84" parent="28" name="UserId">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80752</StateNumber>
+    </column>
+    <column id="85" parent="28" name="SubTopicId">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80752</StateNumber>
+    </column>
+    <index id="86" parent="28" name="&quot;UserTopicsSave&quot;_&quot;Id&quot;_uindex">
+      <ObjectId>148114</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="87" parent="28" name="UserTopicsSave_pkey">
+      <ObjectId>148112</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="88" parent="28" name="UserTopicsSave_pkey">
+      <ObjectId>148113</ObjectId>
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>UserTopicsSave_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="89" parent="29" name="Id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>80744</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;Users_Id_seq&quot;&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="90" parent="29" name="FirstName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>80744</StateNumber>
+    </column>
+    <column id="91" parent="29" name="LastName">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>80744</StateNumber>
+    </column>
+    <column id="92" parent="29" name="Password">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <StateNumber>80744</StateNumber>
+    </column>
+    <column id="93" parent="29" name="EMail">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>80744</StateNumber>
+    </column>
+    <index id="94" parent="29" name="&quot;Users&quot;_&quot;Id&quot;_uindex">
+      <ObjectId>148096</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="95" parent="29" name="Users_pkey">
+      <ObjectId>148094</ObjectId>
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="96" parent="29" name="Users_pkey">
+      <ObjectId>148095</ObjectId>
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>Users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

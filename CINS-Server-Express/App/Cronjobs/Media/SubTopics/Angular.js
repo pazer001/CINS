@@ -20,9 +20,9 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 20,
+                    SubTopicsId: 16,
                     Source: 'Angular',
-                    Url: $(this).find('.title').find('a').attr('href'),
+                    Url: $(this).find('.title').find('a').prop('href'),
                     Type: 'Article'
                 })
             });
@@ -47,7 +47,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 20,
+                    SubTopicsId: 16,
                     Source: 'Angular Twitter',
                     Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
                     Type: 'Article'
@@ -74,7 +74,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 20,
+                    SubTopicsId: 16,
                     Source: `Blogspot`,
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -104,7 +104,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 20,
+                    SubTopicsId: 16,
                     Source: 'Angular News',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -133,7 +133,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 20,
+                    SubTopicsId: 16,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -160,7 +160,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 20,
+                    SubTopicsId: 16,
                     Source: 'Thoughtram',
                     Url: `https://blog.thoughtram.io/${$(this).find('a').prop('href')}`,
                     Type: 'Article'

@@ -20,6 +20,7 @@ const JavaScript        =   require('./SubTopics/JavaScript');
 const PHP               =   require('./SubTopics/PHP');
 const Clojure           =   require('./SubTopics/Clojure');
 const WebRTC            =   require('./SubTopics/WebRTC');
+const jQuery            =   require('./SubTopics/jQuery');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -158,9 +159,6 @@ class Media {
             media.PublishedAt,
             striptags(media.Title),
             striptags(media.Description),
-            media.ImageUrl || null,
-            media.ImageWidth || null,
-            media.ImageHeight || null,
             media.SubTopicsId,
             media.Source,
             media.Url,
@@ -181,8 +179,8 @@ class Media {
         if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
 
         const query = `INSERT INTO "CINS"."Media"
-                                        ("PublishedAt", "Title", "Description", "ImageUrl", "ImageWidth", "ImageHeight", "SubTopicsId", "Source", "Url", "Type")
-                                        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
+                                        ("PublishedAt", "Title", "Description", "SubTopicsId", "Source", "Url", "Type")
+                                        VALUES($1, $2, $3, $4, $5, $6, $7) 
                                         ON CONFLICT ("Url") DO NOTHING returning *;`;
         try {
             let queryResult =   await DB.query(query, data);

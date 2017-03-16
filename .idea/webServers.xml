@@ -27,7 +27,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="fbb93824-59c6-41cc-8d4a-1ea2abaac5cf" name="CINS PostgreSQL" url="http://192.168.1.41">
-        <fileTransfer host="192.168.1.41" port="22" rootFolder="/var/www/CINS/CINS-Server-Express" accessType="SFTP">
+        <fileTransfer host="192.168.1.41" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

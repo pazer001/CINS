@@ -21,7 +21,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Reactjs News',
                     Url: `${url}${$(this).find('a').first().attr('href')}`,
                     Type: 'Article'
@@ -48,7 +48,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'ReactJS News IO',
                     Url: $(this).find('.entry-title').find('a').attr('href'),
                     Type: 'Article'
@@ -74,7 +74,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'ReactJS News Twitter',
                     Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
                     Type: 'Article'
@@ -105,7 +105,7 @@ class React {
                     ImageUrl: $$('.container').find('.single-wrap').find('.featured-image-guts').find('img').first().data('cfsrc'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Scotch',
                     Url: url,
                     Type: 'Article'
@@ -131,7 +131,7 @@ class React {
                     ImageUrl: $(this).find('.image').prop('src'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Code Mentor',
                     Url: `https://www.codementor.io${$(this).prop('href')}`,
                     Type: 'Article'
@@ -157,7 +157,7 @@ class React {
                     ImageUrl: $(this).find('h3').find('img').prop('src'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Tutorial Zine',
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -187,7 +187,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Thinkster',
                     Url: url,
                     Type: 'Article'
@@ -213,7 +213,7 @@ class React {
                     ImageUrl: $(this).find('h3').find('img').prop('src'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'The Blue Coder',
                     Url: $(this).find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -240,7 +240,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Hashbang Weekly',
                     Url: $(this).find('p').first().find('a').prop('href'),
                     Type: 'Article'
@@ -270,7 +270,7 @@ class React {
                     ImageUrl: $$('.entry-content').find('img').first().prop('src') || null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 44,
+                    SubTopicsId: 27,
                     Source: 'Dave Ceddia',
                     Url: url,
                     Type: 'Article'

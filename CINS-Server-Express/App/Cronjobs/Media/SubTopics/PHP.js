@@ -20,7 +20,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 51,
+                    SubTopicsId: 69,
                     Source: $(this).find('.right').find('.link').find('a').find('small').text().replace('(', '').replace(')', ''),
                     Url: `https://www.phptoday.org${$(this).find('.right').find('.link').find('a').prop('href')}`,
                     Type: 'Article'
@@ -46,7 +46,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 51,
+                    SubTopicsId: 69,
                     Source: 'Planet PHP',
                     Url: $(this).find('.blogTitle').prop('href'),
                     Type: 'Article'
@@ -70,7 +70,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 51,
+                    SubTopicsId: 69,
                     Source: 'ZEND',
                     Url: `http://www.zend.com${v.link}`,
                     Type: 'Article'
@@ -96,7 +96,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 51,
+                    SubTopicsId: 69,
                     Source: 'All Top',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -122,7 +122,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 51,
+                    SubTopicsId: 69,
                     Source: 'PHP Builder',
                     Url: `http://www.phpbuilder.com/${$(this).find('.homepageFeature').find('a').prop('href')}`,
                     Type: 'Article'
@@ -149,7 +149,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 51,
+                    SubTopicsId: 69,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'

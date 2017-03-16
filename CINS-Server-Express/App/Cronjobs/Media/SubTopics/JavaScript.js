@@ -20,7 +20,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 36,
+                    SubTopicsId: 25,
                     Source: 'JavaScript.com',
                     Url: `https://www.javascript.com${$(this).find('p').find('a').prop('href')}`,
                     Type: 'Article'
@@ -46,7 +46,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 36,
+                    SubTopicsId: 25,
                     Source: $(this).find('address').text().replace('at', '').trim(),
                     Url: $(this).find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -72,7 +72,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 36,
+                    SubTopicsId: 25,
                     Source: $(this).find('.meta').find('.host').text() || 'JS.ORG',
                     Url: $(this).find('.head').find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -98,7 +98,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 36,
+                    SubTopicsId: 25,
                     Source: $(this).find('.source').text().trim() || 'JS Live',
                     Url: $(this).find('.body').find('h1').find('a').prop('href'),
                     Type: 'Article'

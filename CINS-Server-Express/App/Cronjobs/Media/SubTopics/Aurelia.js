@@ -20,7 +20,7 @@ class Aurelia {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 21,
+                    SubTopicsId: 17,
                     Source: 'Aurelia',
                     Url: `${url}${$(this).find('h1').find('a').prop('href')}`,
                     Type: 'Article'
@@ -47,7 +47,7 @@ class Aurelia {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 21,
+                    SubTopicsId: 17,
                     Source: 'Tutorials Dojo',
                     Url: $(this).find('a').prop('href'),
                     Type: 'Article'
@@ -74,7 +74,7 @@ class Aurelia {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 21,
+                    SubTopicsId: 17,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -100,7 +100,7 @@ class Aurelia {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 21,
+                    SubTopicsId: 17,
                     Source: 'Tut Aurelia',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'

@@ -21,7 +21,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 103,
+                    SubTopicsId: 64,
                     Source: 'Facebook',
                     Url: `${`http://facebook.github.io/`}${$(this).find('header').find('h1').find('a').attr('href')}`,
                     Type: 'Article'
@@ -47,7 +47,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 103,
+                    SubTopicsId: 64,
                     Source: 'React Native News Twitter',
                     Url: $(this).find('.js-tweet-text-container').find('p').find('a').prop('href'),
                     Type: 'Article'
@@ -74,7 +74,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 103,
+                    SubTopicsId: 64,
                     Source: 'Facebook Docs',
                     Url: `${`https://facebook.github.io/react-native/`}${$(this).find('a').attr('href')}`,
                     Type: 'Article'
@@ -101,7 +101,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 103,
+                    SubTopicsId: 64,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'

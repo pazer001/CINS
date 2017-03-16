@@ -25,6 +25,7 @@ import { TrimPipe } from './pipes/trim.pipe';
 import { AddMediaComponent } from './components/add-media/add-media.component';
 import { SavedMediaComponent } from './components/saved-media/saved-media.component';
 import { ClockComponent } from './components/clock/clock.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ClockComponent } from './components/clock/clock.component';
     TrimPipe,
     AddMediaComponent,
     SavedMediaComponent,
-    ClockComponent
+    ClockComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

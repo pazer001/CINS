@@ -25,7 +25,7 @@ class Foundation {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 31,
+                    SubTopicsId: 76,
                     Source: 'Foundation',
                     Url: $(this).find('.title').find('a').prop('href'),
                     Type: 'Article'
@@ -52,7 +52,7 @@ class Foundation {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 31,
+                    SubTopicsId: 76,
                     Source: 'Foundation Tutorials',
                     Url: `https://foundation.zurb.com/learn/${$(this).find('a').prop('href')}`,
                     Type: 'Article'
@@ -79,7 +79,7 @@ class Foundation {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 31,
+                    SubTopicsId: 76,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'

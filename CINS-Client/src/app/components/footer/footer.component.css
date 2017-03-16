@@ -42,7 +42,7 @@
   width: 52%;
   height: 0%;
   position: fixed;
-  bottom: 5%;
+  bottom: calc(5% - 1px);
   background: rgba(51, 51, 51, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -62,7 +62,7 @@
   width: 52%;
   height: 0%;
   position: fixed;
-  bottom: 5%;
+  bottom: calc(5% - 1px);
   background: rgba(51, 51, 51, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
