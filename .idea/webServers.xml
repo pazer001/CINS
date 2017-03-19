@@ -42,6 +42,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="81ec8442-b622-4438-a410-6bf1410bb255" name="CINS Backup" url="http://192.168.1.48">
+        <fileTransfer host="192.168.1.48" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

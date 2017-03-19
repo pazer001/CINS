@@ -1,5 +1,5 @@
 <div class="options padding5">
-  <h2>{{dataService.currentSelectedSubTopic.Name === 'Latest Media' ? (dataService.userDetails && dataService.userDetails.subTopicsSaveIds.data.length ? 'My Media' : dataService.currentSelectedSubTopic.Name) : dataService.currentSelectedSubTopic.Name}}</h2>
+  <h2 class="fg-white">{{dataService.currentSelectedSubTopic.Name === 'Latest Media' ? (dataService.userDetails && dataService.userDetails.subTopicsSaveIds.data.length ? 'My Media' : dataService.currentSelectedSubTopic.Name) : dataService.currentSelectedSubTopic.Name}}</h2>
   <button class="image-button"
     [ngClass]="dataService.filter === 'All' ? 'button primary block-shadow-info  text-shadow' : 'button primary'"
     (click)="dataService.setFilter('All')">All

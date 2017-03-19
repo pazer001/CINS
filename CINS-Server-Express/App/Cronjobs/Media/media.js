@@ -56,7 +56,7 @@ class Media {
             this.setMedia(await Cpp.bartoszMilewski());
 
             //React
-            this.setMedia(await React.reactjsNews());
+            // this.setMedia(await React.reactjsNews());
             this.setMedia(await React.reactjsNewsIO());
             this.setMedia(await React.reactjsNewsTwitter());
             this.setMedia(await React.scotch());
@@ -88,7 +88,7 @@ class Media {
             this.setMedia(await Angular.angular());
             this.setMedia(await Angular.angualrTwitter());
             this.setMedia(await Angular.blogspot());
-            this.setMedia(await Angular.angularNews());
+            // this.setMedia(await Angular.angularNews());
             this.setMedia(await Angular.tutorialsPoint());
             this.setMedia(await Angular.thoughtram());
 

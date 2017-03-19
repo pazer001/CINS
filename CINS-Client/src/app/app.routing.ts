@@ -4,7 +4,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const appRoutes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'React', component: MainComponent, data: {subTopicName: 'React'}},
+  {path: 'ReactJS', component: MainComponent, data: {subTopicName: 'ReactJS'}},
   {path: 'ES6', component: MainComponent, data: {subTopicName: 'ES6'}},
   {path: 'Angular', component: MainComponent, data: {subTopicName: 'Angular'}},
   {path: 'MySQL', component: MainComponent, data: {subTopicName: 'Angular'}},
@@ -13,11 +13,9 @@ export const appRoutes: Routes = [
   {path: 'C++', component: MainComponent, data: {subTopicName: 'C++'}},
   {path: 'Foundation', component: MainComponent, data: {subTopicName: 'Foundation'}},
   {path: 'Aurelia', component: MainComponent, data: {subTopicName: 'Aurelia'}},
-  {path: 'Grunt', component: MainComponent, data: {subTopicName: 'Grunt'}},
   {path: 'KoaJS', component: MainComponent, data: {subTopicName: 'KoaJS'}},
   {path: 'JavaScript', component: MainComponent, data: {subTopicName: 'JavaScript'}},
   {path: 'Phalcon', component: MainComponent, data: {subTopicName: 'Phalcon'}},
-  {path: 'LESS', component: MainComponent, data: {subTopicName: 'LESS'}},
   {path: 'Elixir', component: MainComponent, data: {subTopicName: 'Elixir'}},
   {path: 'PHP', component: MainComponent, data: {subTopicName: 'PHP'}},
   {path: 'COBOL', component: MainComponent, data: {subTopicName: 'COBOL'}},

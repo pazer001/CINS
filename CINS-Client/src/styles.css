@@ -1,3 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~metro-dist/css/metro.min.css";
 @import "~metro-dist/css/metro-icons.min.css";
+
+body::-webkit-scrollbar {
+  width: 0.75vw;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #707070;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #4c4c4c;
+}
