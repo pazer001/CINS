@@ -21,6 +21,7 @@ const PHP               =   require('./SubTopics/PHP');
 const Clojure           =   require('./SubTopics/Clojure');
 const WebRTC            =   require('./SubTopics/WebRTC');
 const jQuery            =   require('./SubTopics/jQuery');
+const Erlang            =   require('./SubTopics/Erlang');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -32,6 +33,7 @@ class Media {
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
+        this.setMedia(await Erlang.erlang());return
         try {
             console.time('COMPLETED: ');
             //C
