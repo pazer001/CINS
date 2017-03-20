@@ -19,7 +19,7 @@
 }
 
 #bar #divider {
-  flex: 5;
+  flex: 4;
 }
 
 #bar button:hover {
@@ -80,9 +80,8 @@
 }
 
 #clock {
-  /*width: 8%!important;*/
-  /*float: right;*/
   cursor: inherit;
+  flex: 2;
 }
 
 #clock:hover {
@@ -99,9 +98,4 @@
   #start-menu.active, #search-menu.active {
     height: 95%;
   }
-
-  #clock {
-    width: 18%!important;
-  }
-
 }

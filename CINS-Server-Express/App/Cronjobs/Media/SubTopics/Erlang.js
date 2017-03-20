@@ -14,7 +14,7 @@ class Erlang {
             $('.panel').filter(function() {
                 mediaUrls.push({
                     PublishedAt: moment().format(),
-                    Title: $(this).find('.panel-heading').find('a').text(),
+                    Title: $(this).find('.panel-heading').find('a').first().text(),
                     Description: null,
                     ImageUrl: null,
                     ImageWidth: null,
