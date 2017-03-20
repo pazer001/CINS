@@ -58,8 +58,8 @@ export class NavigationComponent implements OnInit {
       this.dataService.setMySubTopics(data);
 
       //Get latest media by route
-      if (this.dataService.routeSnapshotData.subTopicName) {
-        let routeSubTopic = this.dataService.subTopics.filter(subTopic => subTopic.Name === this.dataService.routeSnapshotData.subTopicName);
+      if (this.dataService.currentSubTopicName) {
+        let routeSubTopic = this.dataService.subTopics.filter(subTopic => subTopic.Name === this.dataService.currentSubTopicName);
         if (routeSubTopic) {
           this.dataService.setCurrentSelectedSubTopic(routeSubTopic[0])
         }

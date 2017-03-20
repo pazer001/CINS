@@ -21,7 +21,7 @@ export class DataService {
   mySubTopics: Array<string>;
   subTopicsIds: Array<string>;
   subTopics: any;
-  routeSnapshotData: any;
+  currentSubTopicName: string | null;
   savedMediaData: Array<any>;
 
   constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService) {
@@ -36,7 +36,7 @@ export class DataService {
     this.mySubTopics              = [];
     this.subTopicsIds             = [];
     this.subTopics                = [];
-    this.routeSnapshotData        = null;
+    this.currentSubTopicName        = null;
     this.savedMediaData           = [];
   }
 

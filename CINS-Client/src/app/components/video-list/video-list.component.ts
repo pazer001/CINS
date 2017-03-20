@@ -55,7 +55,7 @@ export class VideoListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!this.dataService.routeSnapshotData) {
+    if(!this.dataService.currentSelectedSubTopic) {
       this.getLatestMedia(this.dataService.userDetails.data.Id || null);
     }
   }
