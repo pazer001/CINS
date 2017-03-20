@@ -24,5 +24,6 @@ export const appRoutes: Routes = [
   {path: 'Apache Solr', component: MainComponent},
   {path: 'HTML', component: MainComponent},
   {path: 'jQuery', component: MainComponent},
+  {path: 'Erlang', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];

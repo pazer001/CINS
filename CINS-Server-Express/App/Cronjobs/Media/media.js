@@ -33,7 +33,7 @@ class Media {
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
-        this.setMedia(await Erlang.erlang());return
+
         try {
             console.time('COMPLETED: ');
             //C
@@ -128,6 +128,9 @@ class Media {
 
             //WebRTC
             this.setMedia(await WebRTC.webRtcWorld());
+
+            //Erlang
+            this.setMedia(await Erlang.erlang());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
