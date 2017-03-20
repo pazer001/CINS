@@ -25,8 +25,6 @@ class Erlang {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
-
             resolve(mediaUrls);
         })
     }
