@@ -186,6 +186,8 @@ class GeneralArticles {
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
+            //Ugly patch to add angular 2 media from reddit
+            subTopics.rows.push({Reddit: 'Angular2', Id:16});
             subTopics.rows.forEach(async function(subTopic) {
                 if(!subTopic.Reddit) return;
                 let url = `https://www.reddit.com/r/${subTopic.Reddit}/new/`;
