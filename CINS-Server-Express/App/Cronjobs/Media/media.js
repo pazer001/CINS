@@ -22,6 +22,7 @@ const Clojure           =   require('./SubTopics/Clojure');
 const WebRTC            =   require('./SubTopics/WebRTC');
 const jQuery            =   require('./SubTopics/jQuery');
 const Erlang            =   require('./SubTopics/Erlang');
+const Android            =   require('./SubTopics/Android');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -33,104 +34,131 @@ class Media {
     }
     async init() {
         this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
+        let android     =   new Android(this.subTopics.rows);
+        let c           =   new C(this.subTopics.rows);
+        let cpp         =   new Cpp(this.subTopics.rows);
+        let react       =   new React(this.subTopics.rows);
+        let reactNative =   new ReactNative(this.subTopics.rows);
+        let es6         =   new ES6(this.subTopics.rows);
+        let angular     =   new Angular(this.subTopics.rows);
+        let foundation  =   new Foundation(this.subTopics.rows);
+        let aurelia     =   new Aurelia(this.subTopics.rows);
+        let koaJS       =   new KoaJS(this.subTopics.rows);
+        let javaScript  =   new JavaScript(this.subTopics.rows);
+        let php         =   new PHP(this.subTopics.rows);
+        let clojure     =   new Clojure(this.subTopics.rows);
+        let webRTC      =   new WebRTC(this.subTopics.rows);
+        let jquery      =   new jQuery(this.subTopics.rows);
+        let erlang      =   new Erlang(this.subTopics.rows);
 
         try {
+
             console.time('COMPLETED: ');
+
             //C
-            this.setMedia(await C.drdobbs());
+            this.setMedia(await c.drdobbs());
 
             //C++
-            this.setMedia(await Cpp.isocpp());
-            this.setMedia(await Cpp.msdn());
-            this.setMedia(await Cpp.cppSoup());
-            this.setMedia(await Cpp.cppTruth());
-            this.setMedia(await Cpp.oldNewThing());
-            this.setMedia(await Cpp.theViewFromAristeia());
-            this.setMedia(await Cpp.herbSutter());
-            this.setMedia(await Cpp.thinkingAsynchronouslyInCpp());
-            this.setMedia(await Cpp.mrEdd());
-            this.setMedia(await Cpp.ramblingComments());
-            this.setMedia(await Cpp.attractiveChaos());
-            this.setMedia(await Cpp.lightSleeper());
-            this.setMedia(await Cpp.theFastwareProject());
-            this.setMedia(await Cpp.theACCUOverloadJournals());
-            this.setMedia(await Cpp.learningCpp());
-            this.setMedia(await Cpp.bartoszMilewski());
+            this.setMedia(await cpp.isocpp());
+            this.setMedia(await cpp.msdn());
+            this.setMedia(await cpp.cppSoup());
+            this.setMedia(await cpp.cppTruth());
+            this.setMedia(await cpp.oldNewThing());
+            this.setMedia(await cpp.theViewFromAristeia());
+            this.setMedia(await cpp.herbSutter());
+            this.setMedia(await cpp.thinkingAsynchronouslyInCpp());
+            this.setMedia(await cpp.mrEdd());
+            this.setMedia(await cpp.ramblingComments());
+            this.setMedia(await cpp.attractiveChaos());
+            this.setMedia(await cpp.lightSleeper());
+            this.setMedia(await cpp.theFastwareProject());
+            this.setMedia(await cpp.theACCUOverloadJournals());
+            this.setMedia(await cpp.learningCpp());
+            this.setMedia(await cpp.bartoszMilewski());
 
             //React
             // this.setMedia(await React.reactjsNews());
-            this.setMedia(await React.reactjsNewsIO());
-            this.setMedia(await React.reactjsNewsTwitter());
-            this.setMedia(await React.scotch());
-            this.setMedia(await React.codementor());
-            this.setMedia(await React.tutorialzine());
-            this.setMedia(await React.thinkster());
-            this.setMedia(await React.thebluecoder());
-            this.setMedia(await React.hashbangweekly());
-            this.setMedia(await React.daveceddia());
+            this.setMedia(await react.reactjsNewsIO());
+            this.setMedia(await react.reactjsNewsTwitter());
+            this.setMedia(await react.scotch());
+            this.setMedia(await react.codementor());
+            this.setMedia(await react.tutorialzine());
+            this.setMedia(await react.thinkster());
+            this.setMedia(await react.thebluecoder());
+            this.setMedia(await react.hashbangweekly());
+            this.setMedia(await react.daveceddia());
 
             //React Native
-            this.setMedia(await ReactNative.facebook());
-            this.setMedia(await ReactNative.reactNativeNewsTwitter());
-            this.setMedia(await ReactNative.facebookDocs());
-            this.setMedia(await ReactNative.tutorialsPoint());
+            this.setMedia(await reactNative.facebook());
+            this.setMedia(await reactNative.reactNativeNewsTwitter());
+            this.setMedia(await reactNative.facebookDocs());
+            this.setMedia(await reactNative.tutorialsPoint());
 
             //ES6
-            this.setMedia(await ES6.es6Features());
-            this.setMedia(await ES6.exploringjs());
-            this.setMedia(await ES6.babel());
-            this.setMedia(await ES6.qnimate());
-            this.setMedia(await ES6.nczOnline());
-            this.setMedia(await ES6.tutorialsPoint());
-            this.setMedia(await ES6.mozilla());
-            this.setMedia(await ES6.jsNext());
-            this.setMedia(await ES6.youDontKnowJS());
+            this.setMedia(await es6.es6Features());
+            this.setMedia(await es6.exploringjs());
+            this.setMedia(await es6.babel());
+            this.setMedia(await es6.qnimate());
+            this.setMedia(await es6.nczOnline());
+            this.setMedia(await es6.tutorialsPoint());
+            this.setMedia(await es6.mozilla());
+            this.setMedia(await es6.jsNext());
+            this.setMedia(await es6.youDontKnowJS());
 
             //Angular
-            this.setMedia(await Angular.angular());
-            this.setMedia(await Angular.angualrTwitter());
-            this.setMedia(await Angular.blogspot());
-            // this.setMedia(await Angular.angularNews());
-            this.setMedia(await Angular.tutorialsPoint());
-            this.setMedia(await Angular.thoughtram());
+            this.setMedia(await angular.angular());
+            this.setMedia(await angular.angualrTwitter());
+            this.setMedia(await angular.blogspot());
+            // this.setMedia(await angular.angularNews());
+            this.setMedia(await angular.tutorialsPoint());
+            this.setMedia(await angular.thoughtram());
 
             //Foundation
-            this.setMedia(await Foundation.foundation());
-            this.setMedia(await Foundation.foundationTutorials());
-            this.setMedia(await Foundation.tutorialsPoint());
+            this.setMedia(await foundation.foundation());
+            this.setMedia(await foundation.foundationTutorials());
+            this.setMedia(await foundation.tutorialsPoint());
 
             // Aurelia
-            this.setMedia(await Aurelia.aurelia());
-            this.setMedia(await Aurelia.tutorialsDojo());
-            this.setMedia(await Aurelia.tutorialsPoint());
-            this.setMedia(await Aurelia.tutAurelia());
+            this.setMedia(await aurelia.aurelia());
+            this.setMedia(await aurelia.tutorialsDojo());
+            this.setMedia(await aurelia.tutorialsPoint());
+            this.setMedia(await aurelia.tutAurelia());
 
             // KoaJS
-            this.setMedia(await KoaJS.tutorialsPoint());
+            this.setMedia(await koaJS.tutorialsPoint());
 
             //JavaScript
-            this.setMedia(await JavaScript.javascript());
-            this.setMedia(await JavaScript.echoJs());
-            this.setMedia(await JavaScript.jsOrg());
-            this.setMedia(await JavaScript.jsLive());
+            this.setMedia(await javaScript.javascript());
+            this.setMedia(await javaScript.echoJs());
+            this.setMedia(await javaScript.jsOrg());
+            this.setMedia(await javaScript.jsLive());
 
             //PHP
-            this.setMedia(await PHP.phpToday());
-            this.setMedia(await PHP.planetPHP());
-            this.setMedia(await PHP.zend());
-            this.setMedia(await PHP.alltop());
-            this.setMedia(await PHP.phpbuilder());
-            this.setMedia(await PHP.tutorialsPoint());
+            this.setMedia(await php.phpToday());
+            this.setMedia(await php.planetPHP());
+            this.setMedia(await php.zend());
+            this.setMedia(await php.alltop());
+            this.setMedia(await php.phpbuilder());
+            this.setMedia(await php.tutorialsPoint());
 
             //Clojure
-            this.setMedia(await Clojure.clojureNews());
-            this.setMedia(await Clojure.planetClosure());
+            this.setMedia(await clojure.clojureNews());
+            this.setMedia(await clojure.planetClosure());
 
             //WebRTC
-            this.setMedia(await WebRTC.webRtcWorld());
+            this.setMedia(await webRTC.webRtcWorld());
+
+            //jQuery
+            this.setMedia(await jquery.jqueryRain());
 
             //Erlang
-            this.setMedia(await Erlang.erlang());
+            this.setMedia(await erlang.erlang());
+
+            //Android
+            this.setMedia(await android.androidDeveloperNews());
+            this.setMedia(await android.andevcon());
+            this.setMedia(await android.androidHeadlines());
+            this.setMedia(await android.androidPolice());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
@@ -206,6 +234,6 @@ class Media {
     }
 }
 
-// var cron = new Media();
-// cron.init();
-module.exports  =   new Media();
+var cron = new Media();
+cron.init();
+// module.exports  =   new Media();

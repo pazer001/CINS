@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class jQuery {
+    constructor(subTopics) {
+        this.topicName  =   'jQuery';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async jqueryRain() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -19,7 +24,7 @@ class jQuery {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 26,
+                    SubTopicsId: self.id,
                     Source: 'jQuery Rain',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -30,5 +35,4 @@ class jQuery {
     }
 }
 
-const jquery = new jQuery();
-module.exports = jquery;
+module.exports = jQuery;

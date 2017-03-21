@@ -4,7 +4,12 @@ const moment    =   require('moment');
 const fs        =   require('fs');
 
 class React {
+    constructor(subTopics) {
+        this.topicName  =   'ReactJS';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async reactjsNews() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -21,7 +26,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Reactjs News',
                     Url: `${url}${$(this).find('a').first().attr('href')}`,
                     Type: 'Article'
@@ -32,6 +37,7 @@ class React {
     }
 
     async reactjsNewsIO() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -48,7 +54,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'ReactJS News IO',
                     Url: $(this).find('.entry-title').find('a').attr('href'),
                     Type: 'Article'
@@ -59,6 +65,7 @@ class React {
     }
 
     async reactjsNewsTwitter() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -74,7 +81,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'ReactJS News Twitter',
                     Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
                     Type: 'Article'
@@ -85,6 +92,7 @@ class React {
     }
 
     async scotch() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -105,7 +113,7 @@ class React {
                     ImageUrl: $$('.container').find('.single-wrap').find('.featured-image-guts').find('img').first().data('cfsrc'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Scotch',
                     Url: url,
                     Type: 'Article'
@@ -116,6 +124,7 @@ class React {
     }
 
     async codementor() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -131,7 +140,7 @@ class React {
                     ImageUrl: $(this).find('.image').prop('src'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Code Mentor',
                     Url: `https://www.codementor.io${$(this).prop('href')}`,
                     Type: 'Article'
@@ -142,6 +151,7 @@ class React {
     }
 
     async tutorialzine() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -157,7 +167,7 @@ class React {
                     ImageUrl: $(this).find('h3').find('img').prop('src'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Tutorial Zine',
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -168,6 +178,7 @@ class React {
     }
 
     async thinkster() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -187,7 +198,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Thinkster',
                     Url: url,
                     Type: 'Article'
@@ -198,6 +209,7 @@ class React {
     }
 
     async thebluecoder() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -213,7 +225,7 @@ class React {
                     ImageUrl: $(this).find('h3').find('img').prop('src'),
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'The Blue Coder',
                     Url: $(this).find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -224,6 +236,7 @@ class React {
     }
 
     async hashbangweekly() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -240,7 +253,7 @@ class React {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Hashbang Weekly',
                     Url: $(this).find('p').first().find('a').prop('href'),
                     Type: 'Article'
@@ -251,6 +264,7 @@ class React {
     }
 
     async daveceddia() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -270,7 +284,7 @@ class React {
                     ImageUrl: $$('.entry-content').find('img').first().prop('src') || null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 27,
+                    SubTopicsId: self.id,
                     Source: 'Dave Ceddia',
                     Url: url,
                     Type: 'Article'
@@ -281,5 +295,4 @@ class React {
     }
 }
 
-const react = new React();
-module.exports = react;
+module.exports = React;

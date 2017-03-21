@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class KoaJS {
+    constructor(subTopics) {
+        this.topicName  =   'KoaJS';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async tutorialsPoint() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -20,7 +25,7 @@ class KoaJS {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 77,
+                    SubTopicsId: self.id,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -31,5 +36,4 @@ class KoaJS {
     }
 }
 
-const koaJs = new KoaJS();
-module.exports = koaJs;
+module.exports = KoaJS;

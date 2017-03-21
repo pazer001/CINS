@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class JavaScript {
+    constructor(subTopics) {
+        this.topicName  =   'JavaScript';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async javascript() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -20,7 +25,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 25,
+                    SubTopicsId: self.id,
                     Source: 'JavaScript.com',
                     Url: `https://www.javascript.com${$(this).find('p').find('a').prop('href')}`,
                     Type: 'Article'
@@ -31,6 +36,7 @@ class JavaScript {
     }
 
     async echoJs() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -46,7 +52,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 25,
+                    SubTopicsId: self.id,
                     Source: $(this).find('address').text().replace('at', '').trim(),
                     Url: $(this).find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -57,6 +63,7 @@ class JavaScript {
     }
 
     async jsOrg() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -72,7 +79,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 25,
+                    SubTopicsId: self.id,
                     Source: $(this).find('.meta').find('.host').text() || 'JS.ORG',
                     Url: $(this).find('.head').find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -83,6 +90,7 @@ class JavaScript {
     }
 
     async jsLive() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -98,7 +106,7 @@ class JavaScript {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 25,
+                    SubTopicsId: self.id,
                     Source: $(this).find('.source').text().trim() || 'JS Live',
                     Url: $(this).find('.body').find('h1').find('a').prop('href'),
                     Type: 'Article'
@@ -110,5 +118,4 @@ class JavaScript {
 
 }
 
-const javaScript = new JavaScript();
-module.exports = javaScript;
+module.exports = JavaScript;

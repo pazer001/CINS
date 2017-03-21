@@ -2,32 +2,31 @@ const cheerio   =   require('cheerio');
 const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
-class Aurelia {
+class Android {
     constructor(subTopics) {
-        this.topicName  =   'Aurelia';
+        this.topicName  =   'Android';
         this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
     }
-    async aurelia() {
+    async androidDeveloperNews() {
         let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
-            let url = `http://blog.aurelia.io/`;
+            let url = `https://appdevelopermagazine.com/Android`;
             let html = await Utils.request(url);
             if(!html) throw url;
             let $   =   cheerio.load(html);
-            $('.post').filter(function() {
-                if(!$(this).text()) return;
+            $('.newsbox_new').filter(function() {
                 mediaUrls.push({
-                    PublishedAt: $(this).find('time').prop('datetime'),
-                    Title: $(this).find('h1').find('a').text(),
-                    Description: $(this).find('p').text(),
+                    PublishedAt: moment().format(),
+                    Title: $(this).find('a').first().find('.newstitle').text(),
+                    Description: null,
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
                     SubTopicsId: self.id,
-                    Source: 'Aurelia',
-                    Url: `${url}${$(this).find('h1').find('a').prop('href')}`,
+                    Source: 'Android Developer News',
+                    Url: `https://appdevelopermagazine.com${$(this).find('a').first().prop('href')}`,
                     Type: 'Article'
                 })
             });
@@ -35,16 +34,43 @@ class Aurelia {
         })
     }
 
-    async tutorialsDojo() {
+    async andevcon() {
         let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
-            let url = `http://tutorialsdojo.com/aurelia/`;
+            let url = `http://www.andevcon.com/news`;
             let html = await Utils.request(url);
             if(!html) throw url;
             let $   =   cheerio.load(html);
-            $('.mega-menu').find('li').filter(function() {
+            $('.post-item').filter(function() {
+                mediaUrls.push({
+                    PublishedAt: moment().format(),
+                    Title: $(this).find('.post-header').find('h2').find('a').text(),
+                    Description: $(this).find('.post-body').find('p').text(),
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: self.id,
+                    Source: 'Andevcon',
+                    Url: $(this).find('.post-header').find('h2').find('a').prop('href'),
+                    Type: 'Article'
+                })
+            });
+            resolve(mediaUrls);
+        })
+    }
+
+    async androidHeadlines() {
+        let self    =   this;
+        Utils.printFunctionName();
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            let url = `https://www.androidheadlines.com/category/app/android-developer-news`;
+            let html = await Utils.request(url);
+            if(!html) throw url;
+            let $   =   cheerio.load(html);
+            $('.latest-story').filter(function() {
                 mediaUrls.push({
                     PublishedAt: moment().format(),
                     Title: $(this).find('a').text(),
@@ -53,7 +79,7 @@ class Aurelia {
                     ImageWidth: null,
                     ImageHeight: null,
                     SubTopicsId: self.id,
-                    Source: 'Tutorials Dojo',
+                    Source: 'Android Headlines',
                     Url: $(this).find('a').prop('href'),
                     Type: 'Article'
                 })
@@ -62,54 +88,26 @@ class Aurelia {
         })
     }
 
-    async tutorialsPoint() {
+    async androidPolice() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `http://www.tutorialspoint.com/aurelia/`;
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            let url = `http://www.androidpolice.com/topics/dev-development/`;
             let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.sidebar .nav.left-menu').find('a').filter(function () {
-                if ($(this).closest('ul').hasClass('push-bottom')) return;
+            if(!html) throw url;
+            let $   =   cheerio.load(html);
+            $('.post').filter(function() {
                 mediaUrls.push({
-                    PublishedAt: moment().format(),
-                    Title: $(this).text().trim(),
-                    Description: null,
+                    PublishedAt: $(this).find('.timeago').prop('datetime'),
+                    Title: $(this).find('.post-header').find('h2').find('a').text(),
+                    Description: $(this).find('.post-content').text().replace('Read More', ''),
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
                     SubTopicsId: self.id,
-                    Source: 'Tutorials Point',
-                    Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
-                    Type: 'Article'
-                })
-            });
-            resolve(mediaUrls);
-        })
-    }
-
-    async tutAurelia() {
-        let self    =   this;
-        Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `http://tutaurelia.net/`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.post-loop-content').filter(function () {
-                mediaUrls.push({
-                    PublishedAt: $(this).find('.posted-on').find('a').find('time').prop('datetime'),
-                    Title: $(this).find('.entry-title').find('a').text().trim(),
-                    Description: $(this).find('.entry-content').find('p').first().text(),
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Tut Aurelia',
-                    Url: $(this).find('.entry-title').find('a').prop('href'),
+                    Source: 'Android Police',
+                    Url: $(this).find('.post-header').find('h2').find('a').prop('href'),
                     Type: 'Article'
                 })
             });
@@ -118,4 +116,4 @@ class Aurelia {
     }
 }
 
-module.exports = Aurelia;
+module.exports = Android;

@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class WebRTC {
+    constructor(subTopics) {
+        this.topicName  =   'WebRTC';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async webRtcWorld() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -19,7 +24,7 @@ class WebRTC {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 75,
+                    SubTopicsId: self.id,
                     Source: 'WebRTC World',
                     Url: $(this).find('a').prop('href'),
                     Type: 'Article'
@@ -30,5 +35,4 @@ class WebRTC {
     }
 }
 
-const webRTC = new WebRTC();
-module.exports = webRTC;
+module.exports = WebRTC;

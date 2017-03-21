@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class Foundation {
+    constructor(subTopics) {
+        this.topicName  =   'Foundation';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async foundation() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -25,7 +30,7 @@ class Foundation {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 76,
+                    SubTopicsId: self.id,
                     Source: 'Foundation',
                     Url: $(this).find('.title').find('a').prop('href'),
                     Type: 'Article'
@@ -36,6 +41,7 @@ class Foundation {
     }
 
     async foundationTutorials() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -52,7 +58,7 @@ class Foundation {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 76,
+                    SubTopicsId: self.id,
                     Source: 'Foundation Tutorials',
                     Url: `https://foundation.zurb.com/learn/${$(this).find('a').prop('href')}`,
                     Type: 'Article'
@@ -63,6 +69,7 @@ class Foundation {
     }
 
     async tutorialsPoint() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -79,7 +86,7 @@ class Foundation {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 76,
+                    SubTopicsId: self.id,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -90,5 +97,4 @@ class Foundation {
     }
 }
 
-const foundation = new Foundation();
-module.exports = foundation;
+module.exports = Foundation;

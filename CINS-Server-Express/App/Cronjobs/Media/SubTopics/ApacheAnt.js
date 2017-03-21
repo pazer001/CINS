@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class ApacheAnt {
+    constructor(subTopics) {
+        this.topicName  =   this.constructor.name;
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async apacheAnt() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -20,7 +25,7 @@ class ApacheAnt {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 109,
+                    SubTopicsId: self.id,
                     Source: 'Angular',
                     Url: $(this).find('.title').find('a').attr('href'),
                     Type: 'Article'
@@ -32,5 +37,4 @@ class ApacheAnt {
     }
 }
 
-const apacheAnt = new ApacheAnt();
-module.exports = apacheAnt;
+module.exports = ApacheAnt;

@@ -2,7 +2,12 @@ const cheerio   =   require('cheerio');
 const Utils     =   require('../../../Utils/Utils');
 
 class C {
+    constructor(subTopics) {
+        this.topicName  =   'C';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async drdobbs() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -19,7 +24,7 @@ class C {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 2,
+                    SubTopicsId: self.id,
                     Source: 'Dr. Bobbs',
                     Url: `${`http://www.drdobbs.com`}${$(this).find('a').attr('href')}`,
                     Type: 'Article'
@@ -31,5 +36,4 @@ class C {
     }
 }
 
-const c = new C();
-module.exports = c;
+module.exports = C;

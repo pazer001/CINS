@@ -4,7 +4,12 @@ const moment    =   require('moment');
 const fs        =   require('fs');
 
 class ES6 {
+    constructor(subTopics) {
+        this.topicName  =   'ES6';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async es6Features() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -21,7 +26,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'Es6 Features',
                     Url: `${url}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -33,6 +38,7 @@ class ES6 {
     }
 
     async exploringjs() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -49,7 +55,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'Exploring Js',
                     Url: `${`http://exploringjs.com/es6/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -60,6 +66,7 @@ class ES6 {
     }
 
     async babel() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -76,7 +83,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'Babel',
                     Url: `${`http://ccoenraets.github.io`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -87,6 +94,7 @@ class ES6 {
     }
 
     async qnimate() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -103,7 +111,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'Qnimate',
                     Url: $(this).find('.qnimate-post-series-box2').find('a').prop('href'),
                     Type: 'Article'
@@ -114,6 +122,7 @@ class ES6 {
     }
 
     async nczOnline() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -130,7 +139,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'NCZ Online',
                     Url: `${`https://www.nczonline.net/`}${$(this).find('a').prop('href')}`,
                     Type: 'Article'
@@ -141,6 +150,7 @@ class ES6 {
     }
 
     async tutorialsPoint() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -157,7 +167,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -168,6 +178,7 @@ class ES6 {
     }
 
     async mozilla() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -183,7 +194,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'Mozilla',
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -194,6 +205,7 @@ class ES6 {
     }
 
     async jsNext() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -209,7 +221,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'JS.next',
                     Url: `${`http://chimera.labs.oreilly.com/books/1234000001623/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -220,6 +232,7 @@ class ES6 {
     }
 
     async youDontKnowJS() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -235,7 +248,7 @@ class ES6 {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 23,
+                    SubTopicsId: self.id,
                     Source: 'You Dont Know JS',
                     Url: `${`https://github.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -247,5 +260,4 @@ class ES6 {
     }
 }
 
-const es6 = new ES6();
-module.exports = es6;
+module.exports = ES6;

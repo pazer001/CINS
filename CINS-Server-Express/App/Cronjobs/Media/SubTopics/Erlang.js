@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class Erlang {
+    constructor(subTopics) {
+        this.topicName  =   'Erlang';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async erlang() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -19,7 +24,7 @@ class Erlang {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 7,
+                    SubTopicsId: self.id,
                     Source: 'Erlang',
                     Url: `http://www.erlang.org${$(this).find('.panel-heading').find('a').prop('href')}`,
                     Type: 'Article'
@@ -30,5 +35,4 @@ class Erlang {
     }
 }
 
-const erlang = new Erlang();
-module.exports = erlang;
+module.exports = Erlang;

@@ -4,7 +4,12 @@ const moment    =   require('moment');
 const fs        =   require('fs');
 
 class ReactNative {
+    constructor(subTopics) {
+        this.topicName  =   'React Native';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async facebook() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -21,7 +26,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 64,
+                    SubTopicsId: self.id,
                     Source: 'Facebook',
                     Url: `${`http://facebook.github.io/`}${$(this).find('header').find('h1').find('a').attr('href')}`,
                     Type: 'Article'
@@ -32,6 +37,7 @@ class ReactNative {
     }
 
     async reactNativeNewsTwitter() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -47,7 +53,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 64,
+                    SubTopicsId: self.id,
                     Source: 'React Native News Twitter',
                     Url: $(this).find('.js-tweet-text-container').find('p').find('a').prop('href'),
                     Type: 'Article'
@@ -58,6 +64,7 @@ class ReactNative {
     }
 
     async facebookDocs() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -74,7 +81,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 64,
+                    SubTopicsId: self.id,
                     Source: 'Facebook Docs',
                     Url: `${`https://facebook.github.io/react-native/`}${$(this).find('a').attr('href')}`,
                     Type: 'Article'
@@ -85,6 +92,7 @@ class ReactNative {
     }
 
     async tutorialsPoint() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -101,7 +109,7 @@ class ReactNative {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 64,
+                    SubTopicsId: self.id,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -112,5 +120,4 @@ class ReactNative {
     }
 }
 
-const reactNative = new ReactNative();
-module.exports = reactNative;
+module.exports = ReactNative;

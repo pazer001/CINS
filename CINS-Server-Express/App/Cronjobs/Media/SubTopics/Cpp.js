@@ -6,7 +6,12 @@ const parseString   =   require('xml2js').parseString;
 const Utils = require('../../../Utils/Utils');
 
 class Cpp {
+    constructor(subTopics) {
+        this.topicName  =   'C++';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async isocpp() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -22,7 +27,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'ISO CPP',
                     Url: $(this).find('blockquote').find('a').prop('href'),
                     Type: 'Article'
@@ -35,6 +40,7 @@ class Cpp {
     }
 
     async msdn() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -50,7 +56,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'MSDN',
                     Url: $(this).find('.entry-header').find('h2').find('a').attr('href'),
                     Type: 'Article'
@@ -63,6 +69,7 @@ class Cpp {
     }
 
     async cppSoup() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -79,7 +86,7 @@ class Cpp {
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
-                        SubTopicsId: 3,
+                        SubTopicsId: self.id,
                         Source: 'Cpp Soup',
                         Url: item.link.pop(),
                         Type: 'Article'
@@ -93,6 +100,7 @@ class Cpp {
     }
 
     async cppTruth() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -109,7 +117,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'C++ truths',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -122,6 +130,7 @@ class Cpp {
     }
 
     async oldNewThing() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve, reject) {
             let mediaUrls = [];
@@ -138,7 +147,7 @@ class Cpp {
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
-                        SubTopicsId: 3,
+                        SubTopicsId: self.id,
                         Source: 'The Old New Thing',
                         Url: $(this).find('.entry-title').find('a').prop('href'),
                         Type: 'Article'
@@ -156,6 +165,7 @@ class Cpp {
     }
 
     async theViewFromAristeia() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -171,7 +181,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'The View From Aristeia',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -185,6 +195,7 @@ class Cpp {
     }
 
     async herbSutter() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -200,7 +211,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: `Sutters Mill`,
                     Url: $(this).find('.posttitle').find('a').prop('href'),
                     Type: 'Article'
@@ -213,6 +224,7 @@ class Cpp {
     }
 
     async thinkingAsynchronouslyInCpp() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -228,7 +240,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'Thinking Asynchronously in C++',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -241,6 +253,7 @@ class Cpp {
     }
 
     async bartoszMilewski() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -256,7 +269,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: `Bartosz Milewski Programming Cafe`,
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -269,6 +282,7 @@ class Cpp {
     }
 
     async mrEdd() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -284,7 +298,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: `Mr Edd`,
                     Url: `http://www.mr-edd.co.uk${$(this).find('a').attr('href')}`,
                     Type: 'Article'
@@ -297,6 +311,7 @@ class Cpp {
     }
 
     async ramblingComments() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -312,7 +327,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: `Rambling Comments`,
                     Url: $(this).find('.asset-header').find('h2').find('a').prop('href'),
                     Type: 'Article'
@@ -325,6 +340,7 @@ class Cpp {
     }
 
     async attractiveChaos() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -340,7 +356,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: `Attractive Chaos`,
                     Url: $(this).find('.posttitle').find('a').prop('href'),
                     Type: 'Article'
@@ -353,6 +369,7 @@ class Cpp {
     }
 
     async lightSleeper() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -368,7 +385,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: `Light Sleeper`,
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -381,6 +398,7 @@ class Cpp {
     }
 
     async theFastwareProject() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -397,7 +415,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'The Fastware Project',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').attr('href'),
                     Type: 'Article'
@@ -411,6 +429,7 @@ class Cpp {
     }
 
     async theACCUOverloadJournals() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -431,7 +450,7 @@ class Cpp {
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
-                        SubTopicsId: 3,
+                        SubTopicsId: self.id,
                         Source: 'The ACCU Overload journals',
                         Url: $(this).find('span').find('a').prop('href'),
                         Type: 'Article'
@@ -446,6 +465,7 @@ class Cpp {
     }
 
     async learningCpp() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -462,7 +482,7 @@ class Cpp {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 3,
+                    SubTopicsId: self.id,
                     Source: 'Learning C++',
                     Url: $(this).find('.date-posts').find('.post-outer').find('.post-title').find('a').prop('href'),
                     Type: 'Article'
@@ -477,6 +497,5 @@ class Cpp {
 
 }
 
-const cpp = new Cpp();
-module.exports = cpp;
+module.exports = Cpp;
 

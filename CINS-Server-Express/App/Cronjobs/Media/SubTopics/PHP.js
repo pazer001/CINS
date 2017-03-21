@@ -4,7 +4,12 @@ const Utils     =   require('../../../Utils/Utils');
 const fs        =   require('fs');
 
 class PHP {
+    constructor(subTopics) {
+        this.topicName  =   'PHP';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async phpToday() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -20,7 +25,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 69,
+                    SubTopicsId: self.id,
                     Source: $(this).find('.right').find('.link').find('a').find('small').text().replace('(', '').replace(')', ''),
                     Url: `https://www.phptoday.org${$(this).find('.right').find('.link').find('a').prop('href')}`,
                     Type: 'Article'
@@ -31,6 +36,7 @@ class PHP {
     }
 
     async planetPHP() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -46,7 +52,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 69,
+                    SubTopicsId: self.id,
                     Source: 'Planet PHP',
                     Url: $(this).find('.blogTitle').prop('href'),
                     Type: 'Article'
@@ -57,6 +63,7 @@ class PHP {
     }
 
     async zend() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -70,7 +77,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 69,
+                    SubTopicsId: self.id,
                     Source: 'ZEND',
                     Url: `http://www.zend.com${v.link}`,
                     Type: 'Article'
@@ -81,6 +88,7 @@ class PHP {
     }
 
     async alltop() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -96,7 +104,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 69,
+                    SubTopicsId: self.id,
                     Source: 'All Top',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -107,6 +115,7 @@ class PHP {
     }
 
     async phpbuilder() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -122,7 +131,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 69,
+                    SubTopicsId: self.id,
                     Source: 'PHP Builder',
                     Url: `http://www.phpbuilder.com/${$(this).find('.homepageFeature').find('a').prop('href')}`,
                     Type: 'Article'
@@ -133,6 +142,7 @@ class PHP {
     }
 
     async tutorialsPoint() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -149,7 +159,7 @@ class PHP {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 69,
+                    SubTopicsId: self.id,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -160,5 +170,4 @@ class PHP {
     }
 }
 
-const php = new PHP();
-module.exports = php;
+module.exports = PHP;

@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class Angular {
+    constructor(subTopics) {
+        this.topicName  =   'Angular';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async angular() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -20,7 +25,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 16,
+                    SubTopicsId: self.id,
                     Source: 'Angular',
                     Url: $(this).find('.title').find('a').prop('href'),
                     Type: 'Article'
@@ -32,6 +37,7 @@ class Angular {
     }
 
     async angualrTwitter() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -47,7 +53,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 16,
+                    SubTopicsId: self.id,
                     Source: 'Angular Twitter',
                     Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
                     Type: 'Article'
@@ -59,6 +65,7 @@ class Angular {
     }
 
     async blogspot() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -74,7 +81,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 16,
+                    SubTopicsId: self.id,
                     Source: `Blogspot`,
                     Url: $(this).find('h3').find('a').prop('href'),
                     Type: 'Article'
@@ -88,6 +95,7 @@ class Angular {
     }
 
     async angularNews() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -104,7 +112,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 16,
+                    SubTopicsId: self.id,
                     Source: 'Angular News',
                     Url: $(this).find('.entry-title').find('a').prop('href'),
                     Type: 'Article'
@@ -117,6 +125,7 @@ class Angular {
     }
 
     async tutorialsPoint() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -133,7 +142,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 16,
+                    SubTopicsId: self.id,
                     Source: 'Tutorials Point',
                     Url: `${`https://www.tutorialspoint.com/`}${$(this).prop('href')}`,
                     Type: 'Article'
@@ -145,6 +154,7 @@ class Angular {
     }
 
     async thoughtram() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
             let mediaUrls = [];
@@ -160,7 +170,7 @@ class Angular {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 16,
+                    SubTopicsId: self.id,
                     Source: 'Thoughtram',
                     Url: `https://blog.thoughtram.io/${$(this).find('a').prop('href')}`,
                     Type: 'Article'
@@ -171,5 +181,4 @@ class Angular {
     }
 }
 
-const angular = new Angular();
-module.exports = angular;
+module.exports = Angular;

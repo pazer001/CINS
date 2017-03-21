@@ -3,7 +3,12 @@ const moment    =   require('moment');
 const Utils     =   require('../../../Utils/Utils');
 
 class Clojure {
+    constructor(subTopics) {
+        this.topicName  =   'Clojure';
+        this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
+    }
     async clojureNews() {
+        let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
             let mediaUrls   =   [];
@@ -17,7 +22,7 @@ class Clojure {
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,
-                    SubTopicsId: 4,
+                    SubTopicsId: self.id,
                     Source: 'Clojure News',
                     Url: news['url'],
                     Type: 'Article'
@@ -55,5 +60,4 @@ class Clojure {
     }
 }
 
-const clojure = new Clojure();
-module.exports = clojure;
+module.exports = Clojure;
