@@ -193,7 +193,7 @@ class GeneralArticles {
                 if(!html) throw url;
                 var $ = cheerio.load(html);
                 $('#siteTable').find('.thing').filter(function() {
-                    if($(this).find('.entry').find('.title').find('a').prop('href').includes('reddit.com') || $(this).find('.entry').find('.title').find('a').prop('href').includes('stackoverflow.com')) return;
+                    if(!$(this).find('.entry').find('.title').find('a').prop('href').includes('http') || $(this).find('.entry').find('.title').find('a').prop('href').includes('stackoverflow.com')) return;
                     mediaUrls.push({
                         PublishedAt: $(this).find('.tagline').find('time').prop('datetime'),
                         Title: $(this).find('.entry').find('.title').text().trim().split('(')[0],
@@ -203,7 +203,7 @@ class GeneralArticles {
                         ImageHeight: null,
                         SubTopicsId: subTopic.Id,
                         Source: $(this).find('.entry').find('.title').find('a').prop('href').replace('http://', '').replace('https://', '').replace('www.', '').split('/')[0],
-                        Url: $(this).find('.entry').find('.title').find('a').prop('href').startsWith('http') ? $(this).find('.entry').find('.title').find('a').prop('href') : `https://www.reddit.com${$(this).find('.entry').find('.title').find('a').prop('href')}`,
+                        Url: $(this).find('.entry').find('.title').find('a').prop('href'),
                         Type: 'Article'
                     });
                 });
