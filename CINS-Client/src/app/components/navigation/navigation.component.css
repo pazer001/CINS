@@ -132,25 +132,21 @@
 }
 
 .topics {
-  flex: 1;
+  flex: 3;
   display: flex;
 }
 
-.sub-topics, .user-login, .no-navigation {
-  flex: 2;
+.sub-topics, .user-login, .no-navigation, .main-topics {
+  flex: 3;
 }
 
 .user {
   flex: 1;
 }
 
-.main-topics {
-  flex: 3;
-}
-
 .sub-topics {
   height: 54vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
