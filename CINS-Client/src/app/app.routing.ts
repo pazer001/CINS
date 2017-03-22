@@ -28,5 +28,7 @@ export const appRoutes: Routes = [
   {path: 'Erlang', component: MainComponent},
   {path: 'Apache Flume', component: MainComponent},
   {path: 'Apache Solr', component: MainComponent},
+  {path: 'Apache Kafka', component: MainComponent},
+  {path: 'Android', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
