@@ -53,6 +53,7 @@ class Media {
 
         try {
 
+
             console.time('COMPLETED: ');
 
             //C
@@ -159,6 +160,8 @@ class Media {
             this.setMedia(await android.andevcon());
             this.setMedia(await android.androidHeadlines());
             this.setMedia(await android.androidPolice());
+            this.setMedia(await android.androidDevelopers());
+            this.setMedia(await android.electronicsWeekly());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));

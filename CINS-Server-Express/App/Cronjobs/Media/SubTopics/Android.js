@@ -114,6 +114,61 @@ class Android {
             resolve(mediaUrls);
         })
     }
+
+    async androidDevelopers() {
+        let self    =   this;
+        Utils.printFunctionName();
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            let url = `https://android-developers.googleblog.com/`;
+            let html = await Utils.request(url);
+            if(!html) throw url;
+            let $   =   cheerio.load(html);
+            $('.date-outer').filter(function() {
+                mediaUrls.push({
+                    PublishedAt: $(this).find('h2').find('span').text(),
+                    Title: $(this).find('.date-posts').find('h3').find('a').text(),
+                    Description: null,
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: self.id,
+                    Source: 'Android Developers',
+                    Url: $(this).find('h3').find('a').prop('href'),
+                    Type: 'Article'
+                })
+            });
+            resolve(mediaUrls);
+        })
+    }
+
+    async electronicsWeekly() {
+        let self    =   this;
+        Utils.printFunctionName();
+        return new Promise(async function(resolve) {
+            let mediaUrls   =   [];
+            let url = `http://www.electronicsweekly.com/blogs/eyes-on-android/`;
+            let html = await Utils.request(url);
+            if(!html) throw url;
+            let $   =   cheerio.load(html);
+            $('.post-listing').find('article').filter(function() {
+                mediaUrls.push({
+                    PublishedAt: $(this).find('.post-meta').find('.tie-date').text(),
+                    Title: $(this).find('h2').find('a').text(),
+                    Description: $(this).find('.entry').find('p').text(),
+                    ImageUrl: null,
+                    ImageWidth: null,
+                    ImageHeight: null,
+                    SubTopicsId: self.id,
+                    Source: 'Electronics Weekly',
+                    Url: $(this).find('h2').find('a').prop('href'),
+                    Type: 'Article'
+                })
+            });
+            console.log(mediaUrls)
+            resolve(mediaUrls);
+        })
+    }
 }
 
 module.exports = Android;
