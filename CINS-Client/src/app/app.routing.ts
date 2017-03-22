@@ -11,6 +11,7 @@ export const appRoutes: Routes = [
   {path: 'React Native', component: MainComponent},
   {path: 'C', component: MainComponent},
   {path: 'C++', component: MainComponent},
+  {path: 'C Sharp', component: MainComponent},
   {path: 'Foundation', component: MainComponent},
   {path: 'Aurelia', component: MainComponent},
   {path: 'KoaJS', component: MainComponent},
@@ -25,5 +26,7 @@ export const appRoutes: Routes = [
   {path: 'HTML', component: MainComponent},
   {path: 'jQuery', component: MainComponent},
   {path: 'Erlang', component: MainComponent},
+  {path: 'Apache Flume', component: MainComponent},
+  {path: 'Apache Solr', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
