@@ -33,28 +33,25 @@ class Media {
         this.media      =   [];
     }
     async init() {
-        this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
-        let android     =   new Android(this.subTopics.rows);
-        let c           =   new C(this.subTopics.rows);
-        let cpp         =   new Cpp(this.subTopics.rows);
-        let react       =   new React(this.subTopics.rows);
-        let reactNative =   new ReactNative(this.subTopics.rows);
-        let es6         =   new ES6(this.subTopics.rows);
-        let angular     =   new Angular(this.subTopics.rows);
-        let foundation  =   new Foundation(this.subTopics.rows);
-        let aurelia     =   new Aurelia(this.subTopics.rows);
-        let koaJS       =   new KoaJS(this.subTopics.rows);
-        let javaScript  =   new JavaScript(this.subTopics.rows);
-        let php         =   new PHP(this.subTopics.rows);
-        let clojure     =   new Clojure(this.subTopics.rows);
-        let webRTC      =   new WebRTC(this.subTopics.rows);
-        let jquery      =   new jQuery(this.subTopics.rows);
-        let erlang      =   new Erlang(this.subTopics.rows);
-
+        console.time('COMPLETED: ');
         try {
-
-
-            console.time('COMPLETED: ');
+            this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
+            let android     =   new Android(this.subTopics.rows);
+            let c           =   new C(this.subTopics.rows);
+            let cpp         =   new Cpp(this.subTopics.rows);
+            let react       =   new React(this.subTopics.rows);
+            let reactNative =   new ReactNative(this.subTopics.rows);
+            let es6         =   new ES6(this.subTopics.rows);
+            let angular     =   new Angular(this.subTopics.rows);
+            let foundation  =   new Foundation(this.subTopics.rows);
+            let aurelia     =   new Aurelia(this.subTopics.rows);
+            let koaJS       =   new KoaJS(this.subTopics.rows);
+            let javaScript  =   new JavaScript(this.subTopics.rows);
+            let php         =   new PHP(this.subTopics.rows);
+            let clojure     =   new Clojure(this.subTopics.rows);
+            let webRTC      =   new WebRTC(this.subTopics.rows);
+            let jquery      =   new jQuery(this.subTopics.rows);
+            let erlang      =   new Erlang(this.subTopics.rows);
 
             //C
             this.setMedia(await c.drdobbs());
@@ -79,7 +76,7 @@ class Media {
 
             //React
             // this.setMedia(await React.reactjsNews());
-            this.setMedia(await react.reactjsNewsIO());
+            // this.setMedia(await react.reactjsNewsIO());
             this.setMedia(await react.reactjsNewsTwitter());
             this.setMedia(await react.scotch());
             this.setMedia(await react.codementor());
