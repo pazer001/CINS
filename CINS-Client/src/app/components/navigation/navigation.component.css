@@ -85,7 +85,7 @@
 }
 
 .tile-wide {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .tile-wide img {
@@ -132,11 +132,11 @@
 }
 
 .topics {
-  flex: 3;
+  flex: 1;
   display: flex;
 }
 
-.sub-topics, .user-login, .no-navigation, .main-topics {
+.sub-topics, .user-login, .no-navigation {
   flex: 3;
 }
 
@@ -154,11 +154,10 @@
   padding: 0rem 0rem 0rem 3vw;
   height: 4vh;
   line-height: 4vh;
-  /*min-width: 0;*/
 }
 
 .v-menu {
-  /*max-width: none;*/
+  width: 100%;
 }
 
 
@@ -196,5 +195,14 @@
   .v-menu .icon {
     width: 10vw;
     height: 10vw;
+  }
+
+  .topics {
+    flex: 3;
+    display: flex;
+  }
+
+  .sub-topics, .user-login, .no-navigation, .main-topics {
+    flex: 3;
   }
 }
