@@ -107,7 +107,7 @@ class GeneralArticles {
                 var $ = cheerio.load(html);
                 $('.stories').find('li').filter(function() {
                     mediaUrls.push({
-                        PublishedAt: moment().format(),
+                        PublishedAt: $(this).find('.meta').find('time').prop('datetime'),
                         Title: $(this).find('h2').find('a').text(),
                         Description: null,
                         ImageUrl: null,
@@ -137,7 +137,7 @@ class GeneralArticles {
                 var $ = cheerio.load(html);
                 $('.post-cont').filter(function() {
                     mediaUrls.push({
-                        PublishedAt:moment().format(),
+                        PublishedAt: $(this).find('.byline').text().split(',')[2] || null,
                         Title: $(this).find('h3').find('a').text(),
                         Description: $(this).find('.summary').text(),
                         ImageUrl: null,

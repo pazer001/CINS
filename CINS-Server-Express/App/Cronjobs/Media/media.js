@@ -198,6 +198,11 @@ class Media {
             media.Type
         ];
 
+        let notAllowedSites =   ['imgur', 'giphy'];
+        for(let word of notAllowedSites) {
+            if(media.Url.includes(word)) return;
+        }
+
         //Check for good parameters
         if(!media.Url || !media.Title || moment(new Date(media.PublishedAt)).format() == 'Invalid date' || media.Title.length > 100) {
             // console.log(media);
