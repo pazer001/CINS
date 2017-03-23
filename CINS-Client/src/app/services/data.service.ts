@@ -1,6 +1,6 @@
 import {Injectable}     from '@angular/core';
 import {Observable}     from 'rxjs/Observable';
-import {Http, Response, Headers, RequestOptions, URLSearchParams, RequestOptionsArgs} from '@angular/http';
+import {Http, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import {DomSanitizer} from "@angular/platform-browser";
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';

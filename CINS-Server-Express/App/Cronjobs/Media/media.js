@@ -205,7 +205,6 @@ class Media {
 
         //Check for good parameters
         if(!media.Url || !media.Title || moment(new Date(media.PublishedAt)).format() == 'Invalid date' || media.Title.length > 100) {
-            // console.log(media);
             return;
         };
 

@@ -9,9 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "buildserve": "babel appdev.js -o app.js",
-    "serve": "concurrently --kill-others \"ng build --watch\" \"nodemon app.js\"",
-    "buildprod": "ng build --environment=prod"
+    "buildserve": "babel app.js -o app.bundle.js",
+    "serve": "concurrently --kill-others \"ng build --watch\" \"webpack -w\" \"nodemon app.bundle.js\"",
+    "buildprod": "ng build --environment=prod --prod && webpack"
   },
   "private": true,
   "dependencies": {
