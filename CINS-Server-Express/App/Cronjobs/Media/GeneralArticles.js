@@ -16,7 +16,7 @@ class GeneralArticles {
                 $('.js-postListHandle').find('.js-block').find('.postArticle').filter(function() {
                     mediaUrls.push({
                         PublishedAt: $(this).find('.postMetaInline').find('time').prop('datetime'),
-                        Title: $(this).find('h3').text(),
+                        Title: $(this).find('h3').text().replace('Article', ''),
                         Description: $(this).find('.graf').text(),
                         ImageUrl: $(this).find('figure').find('img').first().prop('src') || null,
                         ImageWidth: null,
