@@ -14,7 +14,6 @@ export class DataService {
   selectedVideo: any;
   isVideoModalOpen: boolean;
   isUserLoginModalOpen: boolean;
-  userLoggedIn: boolean;
   filter: string;
   userDetails: any;
   ratedMedia: any;
@@ -24,11 +23,10 @@ export class DataService {
   currentSubTopicName: string | null;
   savedMediaData: Array<any>;
 
-  constructor(private http: Http, private domSanitizer: DomSanitizer, private layoutService: LayoutService) {
+  constructor(public http: Http, private domSanitizer: DomSanitizer, public layoutService: LayoutService) {
     this.selectedVideo            = null;
     this.isVideoModalOpen         = false;
     this.isUserLoginModalOpen     = false;
-    this.userLoggedIn             = false;
     this.currentSelectedSubTopic  = {Name: 'Latest Media'};
     this.filter                   = 'All';
     this.userDetails              = null;
@@ -36,7 +34,7 @@ export class DataService {
     this.mySubTopics              = [];
     this.subTopicsIds             = [];
     this.subTopics                = [];
-    this.currentSubTopicName        = null;
+    this.currentSubTopicName      = null;
     this.savedMediaData           = [];
   }
 

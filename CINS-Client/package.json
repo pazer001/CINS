@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "buildserve": "babel app.js -o app.bundle.js",
-    "serve": "concurrently --kill-others \"nodemon app.js\" \"ng build --watch\"",
+    "serve": "concurrently --kill-others \"node app.js\" \"ng build --watch\"",
     "buildprod": "ng build --environment=prod --prod && webpack -p",
     "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
@@ -24,7 +24,6 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "angular2-cookie": "^1.2.6",
     "body-parser": "^1.17.1",
     "core-js": "^2.4.1",
     "express": "^4.15.2",

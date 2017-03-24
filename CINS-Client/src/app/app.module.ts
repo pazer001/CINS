@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 
 import {DataService} from './services/data.service';
 import {LayoutService} from './services/layout.service';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
@@ -52,7 +51,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     RouterModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService, CookieService, LayoutService],
+  providers: [DataService, LayoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
