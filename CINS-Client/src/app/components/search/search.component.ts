@@ -9,8 +9,10 @@ import {LayoutService} from "../../services/layout.service";
 })
 export class SearchComponent implements OnInit {
   searchResults: any;
-  constructor(private dataService: DataService, private layoutService: LayoutService) {
+  term: string;
+  constructor(public dataService: DataService, public layoutService: LayoutService) {
     this.searchResults  = [];
+    this.term           = null;
   }
 
   search(term) {

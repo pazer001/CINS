@@ -8,7 +8,7 @@ import {LayoutService} from "../../services/layout.service";
   styleUrls: ['./saved-media.component.css']
 })
 export class SavedMediaComponent implements OnInit {
-  constructor(private dataService: DataService, private layoutService: LayoutService) {}
+  constructor(public dataService: DataService, public layoutService: LayoutService) {}
 
   deleteUserMediaSave(userId, mediaId) {
     this.dataService.deleteUserMediaSave(userId, mediaId).subscribe(result => {

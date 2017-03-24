@@ -15,7 +15,7 @@ export class UserLoginComponent implements OnInit {
   loginEMail: string;
   loginPassword: string;
 
-  constructor(private dataService: DataService) {
+  constructor(public dataService: DataService) {
 
   }
 

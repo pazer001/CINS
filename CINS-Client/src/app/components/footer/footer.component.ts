@@ -8,7 +8,7 @@ import {DataService} from "../../services/data.service";
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  constructor(private layoutService: LayoutService, private dataService: DataService) {
+  constructor(public layoutService: LayoutService, public dataService: DataService) {
 
   }
 

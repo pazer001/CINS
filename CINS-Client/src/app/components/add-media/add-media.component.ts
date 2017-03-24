@@ -17,7 +17,7 @@ export class AddMediaComponent implements OnInit {
   errors: Array<boolean>;
   requestMediaResult: boolean;
 
-  constructor(private layoutService: LayoutService, private dataService: DataService) {
+  constructor(public layoutService: LayoutService, public dataService: DataService) {
     this.title                = null;
     this.description          = null;
     this.source               = null;
