@@ -27,8 +27,8 @@
     </schema>
     <schema id="9" parent="2" name="CINS">
       <ObjectId>24694</ObjectId>
-      <IntrospectionTimestamp>2017-03-25.13:15:32.986</IntrospectionTimestamp>
-      <IntrospectionStateNumber>39982</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-03-25.13:32:34.671</IntrospectionTimestamp>
+      <IntrospectionStateNumber>40092</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -194,48 +194,48 @@ Article</Labels>
       <UnderlyingIndexName>maintopics_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="40" parent="22" name="id">
+    <column id="40" parent="22" name="Id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40085</StateNumber>
       <SequenceName>Media_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;Media_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="41" parent="22" name="publishedat">
+    <column id="41" parent="22" name="PublishedAt">
       <Position>2</Position>
       <DataType>timestamp|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40086</StateNumber>
     </column>
-    <column id="42" parent="22" name="title">
+    <column id="42" parent="22" name="Title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40087</StateNumber>
     </column>
-    <column id="43" parent="22" name="description">
+    <column id="43" parent="22" name="Description">
       <Position>4</Position>
       <DataType>text|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40088</StateNumber>
     </column>
-    <column id="44" parent="22" name="source">
+    <column id="44" parent="22" name="Source">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40089</StateNumber>
     </column>
-    <column id="45" parent="22" name="url">
+    <column id="45" parent="22" name="Url">
       <Position>6</Position>
       <DataType>varchar(500)|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40090</StateNumber>
     </column>
-    <column id="46" parent="22" name="type">
+    <column id="46" parent="22" name="Type">
       <Position>7</Position>
       <DataType>text|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40091</StateNumber>
     </column>
-    <column id="47" parent="22" name="subtopicsid">
+    <column id="47" parent="22" name="SubTopicsId">
       <Position>8</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>39894</StateNumber>
+      <StateNumber>40092</StateNumber>
     </column>
     <column id="48" parent="23" name="Id">
       <Position>1</Position>
