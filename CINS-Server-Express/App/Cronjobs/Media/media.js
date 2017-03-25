@@ -149,7 +149,7 @@ class Media {
 
             //WebRTC
             this.setMedia(await webRTC.webRtcWorld());
-            
+
             //Erlang
             this.setMedia(await erlang.erlang());
 

@@ -26,7 +26,7 @@ class GeneralArticles {
                     });
                 });
             });
-            setTimeout(() => {console.log(mediaUrls); }, 10000)
+            setTimeout(() => {resolve(mediaUrls); }, 10000)
         })
     }
 
