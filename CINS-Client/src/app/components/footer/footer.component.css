@@ -16,6 +16,7 @@
   outline: none;
   background-color: transparent;
   flex: 1;
+  max-width: 3.5em;
 }
 
 #bar button:hover {
@@ -82,10 +83,15 @@
 #clock {
   cursor: inherit;
   flex: 2;
+  max-width: 6em!important;
 }
 
 #clock:hover {
   background: transparent!important;
+}
+
+#divider {
+  flex: 2;
 }
 
 
