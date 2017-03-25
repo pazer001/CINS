@@ -208,7 +208,7 @@ class Media {
         if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
 
         //Replace media type for youtube to video
-        if(media.Url.includes('youtube')) media.Type = 'Video';
+        if(media.Url.includes('youtube.com')) media.Type = 'Video';
 
         //Reformat date
         media.PublishedAt   =   media.PublishedAt || moment().format()
