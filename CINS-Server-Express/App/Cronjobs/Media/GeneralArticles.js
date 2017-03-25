@@ -6,7 +6,7 @@ const fs        =   require('fs');
 class GeneralArticles {
     async medium(subTopics) {
         Utils.printFunctionName();
-        return new Promise(async function() {
+        return new Promise(async function(resolve) {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
                 if(!subTopic.Medium) return;
