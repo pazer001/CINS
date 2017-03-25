@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="CINS Development">
-  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.1">
     <root id="1"/>
     <database id="2" parent="1" name="CINS">
       <ObjectId>148009</ObjectId>
@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="CINS">
       <ObjectId>148010</ObjectId>
-      <IntrospectionTimestamp>2017-03-19.13:38:26.334</IntrospectionTimestamp>
-      <IntrospectionStateNumber>82996</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-03-25.12:49:16.815</IntrospectionTimestamp>
+      <IntrospectionStateNumber>98478</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -36,6 +36,7 @@
       <ObjectId>148082</ObjectId>
       <StateNumber>80742</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
     <sequence id="11" parent="3" name="Logger_Id_seq">
       <ObjectId>148175</ObjectId>
@@ -115,7 +116,7 @@ Article</Labels>
     </table>
     <table id="26" parent="3" name="SubTopics">
       <ObjectId>148084</ObjectId>
-      <StateNumber>80790</StateNumber>
+      <StateNumber>98478</StateNumber>
     </table>
     <table id="27" parent="3" name="UserMediaSave">
       <ObjectId>148117</ObjectId>
@@ -335,6 +336,7 @@ Article</Labels>
       <DataType>smallint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80783</StateNumber>
+      <SequenceName>&quot;SubTopics_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;&quot;&quot;SubTopics_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
     <column id="68" parent="26" name="Name">
@@ -367,130 +369,140 @@ Article</Labels>
       <DataType>bit|0</DataType>
       <StateNumber>80790</StateNumber>
     </column>
-    <index id="74" parent="26" name="SubTopics_id_uindex">
+    <column id="74" parent="26" name="Infoq">
+      <Position>9</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>98244</StateNumber>
+    </column>
+    <column id="75" parent="26" name="Medium">
+      <Position>10</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>98478</StateNumber>
+    </column>
+    <index id="76" parent="26" name="SubTopics_id_uindex">
       <ObjectId>148103</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="75" parent="26" name="subtopics_id_pk">
+    <index id="77" parent="26" name="subtopics_id_pk">
       <ObjectId>148104</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="76" parent="26" name="subtopics_id_pk">
+    <key id="78" parent="26" name="subtopics_id_pk">
       <ObjectId>148105</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>subtopics_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="77" parent="27" name="Id">
+    <column id="79" parent="27" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80754</StateNumber>
       <DefaultExpression>nextval(&apos;&quot;UserMediaSave_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="78" parent="27" name="UserId">
+    <column id="80" parent="27" name="UserId">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80754</StateNumber>
     </column>
-    <column id="79" parent="27" name="MediaId">
+    <column id="81" parent="27" name="MediaId">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80754</StateNumber>
     </column>
-    <index id="80" parent="27" name="&quot;UserMediaSave&quot;_&quot;Id&quot;_uindex">
+    <index id="82" parent="27" name="&quot;UserMediaSave&quot;_&quot;Id&quot;_uindex">
       <ObjectId>148123</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="81" parent="27" name="UserMediaSave_pkey">
+    <index id="83" parent="27" name="UserMediaSave_pkey">
       <ObjectId>148121</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="82" parent="27" name="UserMediaSave_pkey">
+    <key id="84" parent="27" name="UserMediaSave_pkey">
       <ObjectId>148122</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>UserMediaSave_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="83" parent="28" name="Id">
+    <column id="85" parent="28" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80752</StateNumber>
       <DefaultExpression>nextval(&apos;&quot;UserTopicsSave_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="84" parent="28" name="UserId">
+    <column id="86" parent="28" name="UserId">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80752</StateNumber>
     </column>
-    <column id="85" parent="28" name="SubTopicId">
+    <column id="87" parent="28" name="SubTopicId">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80752</StateNumber>
     </column>
-    <index id="86" parent="28" name="&quot;UserTopicsSave&quot;_&quot;Id&quot;_uindex">
+    <index id="88" parent="28" name="&quot;UserTopicsSave&quot;_&quot;Id&quot;_uindex">
       <ObjectId>148114</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="87" parent="28" name="UserTopicsSave_pkey">
+    <index id="89" parent="28" name="UserTopicsSave_pkey">
       <ObjectId>148112</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="88" parent="28" name="UserTopicsSave_pkey">
+    <key id="90" parent="28" name="UserTopicsSave_pkey">
       <ObjectId>148113</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>UserTopicsSave_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="89" parent="29" name="Id">
+    <column id="91" parent="29" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>80744</StateNumber>
       <DefaultExpression>nextval(&apos;&quot;Users_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="90" parent="29" name="FirstName">
+    <column id="92" parent="29" name="FirstName">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>80744</StateNumber>
     </column>
-    <column id="91" parent="29" name="LastName">
+    <column id="93" parent="29" name="LastName">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>80744</StateNumber>
     </column>
-    <column id="92" parent="29" name="Password">
+    <column id="94" parent="29" name="Password">
       <Position>4</Position>
       <DataType>varchar(20)|0</DataType>
       <StateNumber>80744</StateNumber>
     </column>
-    <column id="93" parent="29" name="EMail">
+    <column id="95" parent="29" name="EMail">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>80744</StateNumber>
     </column>
-    <index id="94" parent="29" name="&quot;Users&quot;_&quot;Id&quot;_uindex">
+    <index id="96" parent="29" name="&quot;Users&quot;_&quot;Id&quot;_uindex">
       <ObjectId>148096</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="95" parent="29" name="Users_pkey">
+    <index id="97" parent="29" name="Users_pkey">
       <ObjectId>148094</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="96" parent="29" name="Users_pkey">
+    <key id="98" parent="29" name="Users_pkey">
       <ObjectId>148095</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>Users_pkey</UnderlyingIndexName>

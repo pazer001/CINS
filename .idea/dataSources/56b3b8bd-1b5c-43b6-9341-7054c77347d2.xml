@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="CINS Production">
-  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.1">
     <root id="1"/>
     <database id="2" parent="1" name="CINS">
       <ObjectId>16385</ObjectId>
@@ -27,55 +27,64 @@
     </schema>
     <schema id="9" parent="2" name="CINS">
       <ObjectId>24694</ObjectId>
-      <IntrospectionTimestamp>2017-03-17.16:09:51.722</IntrospectionTimestamp>
-      <IntrospectionStateNumber>14679</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-03-25.13:04:22.302</IntrospectionTimestamp>
+      <IntrospectionStateNumber>39894</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <sequence id="10" parent="9" name="&quot;SubTopics_id_seq">
+    <sequence id="10" parent="9" name="Media_id_seq">
+      <ObjectId>25018</ObjectId>
+      <StateNumber>39894</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="11" parent="9" name="&quot;SubTopics_id_seq">
       <ObjectId>24710</ObjectId>
       <StateNumber>14618</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="11" parent="9" name="Logger_Id_seq">
+    <sequence id="12" parent="9" name="Logger_Id_seq">
       <ObjectId>24718</ObjectId>
       <StateNumber>14621</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="12" parent="9" name="MainTopics_Id_seq">
+    <sequence id="13" parent="9" name="MainTopics_Id_seq">
       <ObjectId>24723</ObjectId>
       <StateNumber>14624</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="13" parent="9" name="MediaRating_Id_seq">
+    <sequence id="14" parent="9" name="MediaRating_Id_seq">
       <ObjectId>24734</ObjectId>
       <StateNumber>14628</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="14" parent="9" name="RequestMedia_Id_seq">
+    <sequence id="15" parent="9" name="RequestMedia_Id_seq">
       <ObjectId>24742</ObjectId>
       <StateNumber>14631</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="15" parent="9" name="UserMediaSave_Id_seq">
+    <sequence id="16" parent="9" name="UserMediaSave_Id_seq">
       <ObjectId>24747</ObjectId>
       <StateNumber>14634</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="16" parent="9" name="UserTopicsSave_Id_seq">
+    <sequence id="17" parent="9" name="UserTopicsSave_Id_seq">
       <ObjectId>24752</ObjectId>
       <StateNumber>14637</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="17" parent="9" name="Users_Id_seq">
+    <sequence id="18" parent="9" name="Users_Id_seq">
       <ObjectId>24757</ObjectId>
       <StateNumber>14640</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-    </sequence>
-    <sequence id="18" parent="9" name="media_id_seq">
-      <ObjectId>24759</ObjectId>
-      <StateNumber>14642</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
     </sequence>
     <object-type id="19" parent="9" name="MediaType">
       <ObjectId>24696</ObjectId>
@@ -95,45 +104,46 @@ Article</Labels>
     </object-type>
     <table id="21" parent="9" name="Logger">
       <ObjectId>24712</ObjectId>
-      <StateNumber>14620</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="22" parent="9" name="MainTopics">
       <ObjectId>24720</ObjectId>
-      <StateNumber>14623</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="23" parent="9" name="Media">
-      <ObjectId>24725</ObjectId>
-      <StateNumber>14626</StateNumber>
+      <ObjectId>25020</ObjectId>
+      <StateNumber>39894</StateNumber>
     </table>
     <table id="24" parent="9" name="MediaRating">
       <ObjectId>24731</ObjectId>
-      <StateNumber>14627</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="25" parent="9" name="RequestMedia">
       <ObjectId>24736</ObjectId>
-      <StateNumber>14630</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="26" parent="9" name="SubTopics">
       <ObjectId>24707</ObjectId>
-      <StateNumber>14617</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="27" parent="9" name="UserMediaSave">
       <ObjectId>24744</ObjectId>
-      <StateNumber>14633</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="28" parent="9" name="UserTopicsSave">
       <ObjectId>24749</ObjectId>
-      <StateNumber>14636</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <table id="29" parent="9" name="Users">
       <ObjectId>24754</ObjectId>
-      <StateNumber>14639</StateNumber>
+      <StateNumber>24154</StateNumber>
     </table>
     <column id="30" parent="21" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14644</StateNumber>
+      <SequenceName>Logger_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;Logger_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
     <column id="31" parent="21" name="Error">
@@ -171,6 +181,7 @@ Article</Labels>
       <DataType>smallint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14645</StateNumber>
+      <SequenceName>MainTopics_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;MainTopics_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
     <index id="38" parent="22" name="MainTopics_Id_uindex">
@@ -189,308 +200,296 @@ Article</Labels>
       <UnderlyingIndexName>maintopics_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="41" parent="23" name="Id">
+    <column id="41" parent="23" name="id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>14646</StateNumber>
-      <DefaultExpression>nextval(&apos;media_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>39894</StateNumber>
+      <SequenceName>Media_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;&quot;Media_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="42" parent="23" name="PublishedAt">
+    <column id="42" parent="23" name="publishedat">
       <Position>2</Position>
       <DataType>timestamp|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>14626</StateNumber>
+      <StateNumber>39894</StateNumber>
     </column>
-    <column id="43" parent="23" name="Title">
+    <column id="43" parent="23" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>14626</StateNumber>
+      <StateNumber>39894</StateNumber>
     </column>
-    <column id="44" parent="23" name="Description">
+    <column id="44" parent="23" name="description">
       <Position>4</Position>
       <DataType>text|0</DataType>
-      <StateNumber>14626</StateNumber>
+      <StateNumber>39894</StateNumber>
     </column>
-    <column id="45" parent="23" name="Source">
+    <column id="45" parent="23" name="source">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
-      <StateNumber>14626</StateNumber>
+      <StateNumber>39894</StateNumber>
     </column>
-    <column id="46" parent="23" name="Url">
+    <column id="46" parent="23" name="url">
       <Position>6</Position>
       <DataType>varchar(500)|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>14626</StateNumber>
+      <StateNumber>39894</StateNumber>
     </column>
-    <column id="47" parent="23" name="Type">
+    <column id="47" parent="23" name="type">
       <Position>7</Position>
-      <DataType>&quot;MediaType&quot;|0</DataType>
-      <StateNumber>14626</StateNumber>
+      <DataType>text|0</DataType>
+      <StateNumber>39894</StateNumber>
     </column>
-    <column id="48" parent="23" name="SubTopicsId">
+    <column id="48" parent="23" name="subtopicsid">
       <Position>8</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>14626</StateNumber>
+      <StateNumber>39894</StateNumber>
     </column>
-    <index id="49" parent="23" name="media_pkey">
-      <ObjectId>24817</ObjectId>
-      <ColNames>Id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="50" parent="23" name="Media_Url_uindex">
-      <ObjectId>24829</ObjectId>
-      <ColNames>Url</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="51" parent="23" name="media_pkey">
-      <ObjectId>24818</ObjectId>
-      <ColNames>Id</ColNames>
-      <UnderlyingIndexName>media_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="52" parent="24" name="Id">
+    <column id="49" parent="24" name="Id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14647</StateNumber>
+      <SequenceName>MediaRating_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;MediaRating_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="53" parent="24" name="RatedAt">
+    <column id="50" parent="24" name="RatedAt">
       <Position>2</Position>
       <DataType>timestamp|0</DataType>
       <StateNumber>14627</StateNumber>
     </column>
-    <column id="54" parent="24" name="RatingCount">
+    <column id="51" parent="24" name="RatingCount">
       <Position>3</Position>
       <DataType>smallint|0</DataType>
       <StateNumber>14627</StateNumber>
     </column>
-    <column id="55" parent="24" name="MediaId">
+    <column id="52" parent="24" name="MediaId">
       <Position>4</Position>
       <DataType>smallint|0</DataType>
       <StateNumber>14627</StateNumber>
     </column>
-    <index id="56" parent="24" name="MediaRating_Id_uindex">
+    <index id="53" parent="24" name="MediaRating_Id_uindex">
       <ObjectId>24828</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="57" parent="24" name="mediarating_id_pk">
+    <index id="54" parent="24" name="mediarating_id_pk">
       <ObjectId>24819</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="58" parent="24" name="mediarating_id_pk">
+    <key id="55" parent="24" name="mediarating_id_pk">
       <ObjectId>24820</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>mediarating_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="59" parent="25" name="Id">
+    <column id="56" parent="25" name="Id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14648</StateNumber>
+      <SequenceName>RequestMedia_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;RequestMedia_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="60" parent="25" name="PublishedAt">
+    <column id="57" parent="25" name="PublishedAt">
       <Position>2</Position>
       <DataType>timestamp|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="61" parent="25" name="Title">
+    <column id="58" parent="25" name="Title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="62" parent="25" name="Description">
+    <column id="59" parent="25" name="Description">
       <Position>4</Position>
       <DataType>text|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="63" parent="25" name="SubTopicsId">
+    <column id="60" parent="25" name="SubTopicsId">
       <Position>5</Position>
       <DataType>smallint|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="64" parent="25" name="Source">
+    <column id="61" parent="25" name="Source">
       <Position>6</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="65" parent="25" name="Url">
+    <column id="62" parent="25" name="Url">
       <Position>7</Position>
       <DataType>varchar(500)|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="66" parent="25" name="Type">
+    <column id="63" parent="25" name="Type">
       <Position>8</Position>
       <DataType>&quot;MediaType&quot;|0</DataType>
       <StateNumber>14630</StateNumber>
     </column>
-    <column id="67" parent="26" name="Id">
+    <column id="64" parent="26" name="Id">
       <Position>1</Position>
       <DataType>smallint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14649</StateNumber>
+      <SequenceName>&quot;SubTopics_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;&quot;&quot;SubTopics_id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="68" parent="26" name="Name">
+    <column id="65" parent="26" name="Name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <StateNumber>14617</StateNumber>
     </column>
-    <column id="69" parent="26" name="SearchTerm">
+    <column id="66" parent="26" name="SearchTerm">
       <Position>3</Position>
       <DataType>varchar(30)|0</DataType>
       <StateNumber>14617</StateNumber>
     </column>
-    <column id="70" parent="26" name="InfoWorld">
+    <column id="67" parent="26" name="InfoWorld">
       <Position>4</Position>
       <DataType>varchar(30)|0</DataType>
       <StateNumber>14617</StateNumber>
     </column>
-    <column id="71" parent="26" name="Reddit">
+    <column id="68" parent="26" name="Reddit">
       <Position>5</Position>
       <DataType>varchar(30)|0</DataType>
       <StateNumber>14617</StateNumber>
     </column>
-    <column id="72" parent="26" name="MainTopicsId">
+    <column id="69" parent="26" name="MainTopicsId">
       <Position>6</Position>
       <DataType>integer|0</DataType>
       <StateNumber>14617</StateNumber>
     </column>
-    <column id="73" parent="26" name="Active">
+    <column id="70" parent="26" name="Active">
       <Position>7</Position>
       <DataType>bit|0</DataType>
       <StateNumber>14617</StateNumber>
     </column>
-    <index id="74" parent="26" name="SubTopics_id_uindex">
+    <index id="71" parent="26" name="SubTopics_id_uindex">
       <ObjectId>24830</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="75" parent="26" name="subtopics_id_pk">
+    <index id="72" parent="26" name="subtopics_id_pk">
       <ObjectId>24821</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="76" parent="26" name="subtopics_id_pk">
+    <key id="73" parent="26" name="subtopics_id_pk">
       <ObjectId>24822</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>subtopics_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="77" parent="27" name="Id">
+    <column id="74" parent="27" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14650</StateNumber>
+      <SequenceName>UserMediaSave_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;UserMediaSave_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="78" parent="27" name="UserId">
+    <column id="75" parent="27" name="UserId">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14633</StateNumber>
     </column>
-    <column id="79" parent="27" name="MediaId">
+    <column id="76" parent="27" name="MediaId">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14633</StateNumber>
     </column>
-    <index id="80" parent="27" name="&quot;UserMediaSave&quot;_&quot;Id&quot;_uindex">
+    <index id="77" parent="27" name="&quot;UserMediaSave&quot;_&quot;Id&quot;_uindex">
       <ObjectId>24824</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="81" parent="27" name="UserMediaSave_pkey">
+    <index id="78" parent="27" name="UserMediaSave_pkey">
       <ObjectId>24809</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="82" parent="27" name="UserMediaSave_pkey">
+    <key id="79" parent="27" name="UserMediaSave_pkey">
       <ObjectId>24810</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>UserMediaSave_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="83" parent="28" name="Id">
+    <column id="80" parent="28" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14651</StateNumber>
+      <SequenceName>UserTopicsSave_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;UserTopicsSave_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="84" parent="28" name="UserId">
+    <column id="81" parent="28" name="UserId">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14636</StateNumber>
     </column>
-    <column id="85" parent="28" name="SubTopicId">
+    <column id="82" parent="28" name="SubTopicId">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14636</StateNumber>
     </column>
-    <index id="86" parent="28" name="&quot;UserTopicsSave&quot;_&quot;Id&quot;_uindex">
+    <index id="83" parent="28" name="&quot;UserTopicsSave&quot;_&quot;Id&quot;_uindex">
       <ObjectId>24825</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="87" parent="28" name="UserTopicsSave_pkey">
+    <index id="84" parent="28" name="UserTopicsSave_pkey">
       <ObjectId>24811</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="88" parent="28" name="UserTopicsSave_pkey">
+    <key id="85" parent="28" name="UserTopicsSave_pkey">
       <ObjectId>24812</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>UserTopicsSave_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="89" parent="29" name="Id">
+    <column id="86" parent="29" name="Id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>14652</StateNumber>
+      <SequenceName>Users_Id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;&quot;Users_Id_seq&quot;&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="90" parent="29" name="FirstName">
+    <column id="87" parent="29" name="FirstName">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>14639</StateNumber>
     </column>
-    <column id="91" parent="29" name="LastName">
+    <column id="88" parent="29" name="LastName">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>14639</StateNumber>
     </column>
-    <column id="92" parent="29" name="Password">
+    <column id="89" parent="29" name="Password">
       <Position>4</Position>
       <DataType>varchar(20)|0</DataType>
       <StateNumber>14639</StateNumber>
     </column>
-    <column id="93" parent="29" name="EMail">
+    <column id="90" parent="29" name="EMail">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
       <StateNumber>14639</StateNumber>
     </column>
-    <index id="94" parent="29" name="&quot;Users&quot;_&quot;Id&quot;_uindex">
+    <index id="91" parent="29" name="&quot;Users&quot;_&quot;Id&quot;_uindex">
       <ObjectId>24826</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="95" parent="29" name="Users_pkey">
+    <index id="92" parent="29" name="Users_pkey">
       <ObjectId>24813</ObjectId>
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="96" parent="29" name="Users_pkey">
+    <key id="93" parent="29" name="Users_pkey">
       <ObjectId>24814</ObjectId>
       <ColNames>Id</ColNames>
       <UnderlyingIndexName>Users_pkey</UnderlyingIndexName>

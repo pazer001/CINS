@@ -6,30 +6,27 @@ const fs        =   require('fs');
 class GeneralArticles {
     async medium(subTopics) {
         Utils.printFunctionName();
-        return new Promise(async function(resolve) {
+        return new Promise(async function() {
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
-                let url = `https://medium.com/search?q=${subTopic.SearchTerm || subTopic.Name}`;
+                if(!subTopic.Medium) return;
+                let url = `https://medium.com/tag/${subTopic.Medium}`;
                 let html = await Utils.request(url);
                 if(!html) throw url;
                 var $ = cheerio.load(html);
-                $('.js-postListHandle').find('.js-block').find('.postArticle').filter(function() {
+                $('.streamItem-card').filter(function() {
                     mediaUrls.push({
-                        PublishedAt: $(this).find('.postMetaInline').find('time').prop('datetime'),
-                        Title: $(this).find('h3').text().replace('Article', ''),
-                        Description: $(this).find('.graf').text(),
-                        ImageUrl: $(this).find('figure').find('img').first().prop('src') || null,
-                        ImageWidth: null,
-                        ImageHeight: null,
+                        PublishedAt: $(this).find('.postMetaInline-authorLockup').find('time').prop('datetime'),
+                        Title: $(this).find('.section-inner').find('h3').text(),
+                        Description: $(this).find('.section-inner').find('p').text(),
                         SubTopicsId: subTopic.Id,
-                        Source: 'Medium',
-                        Url: $(this).find('.postArticle-content').find('a').first().attr('href'),
+                        Source: $(this).find('.postMetaInline-authorLockup').find('a').eq(1).text() || 'Medium',
+                        Url: $(this).find('.postArticle-readMore').find('a').prop('href'),
                         Type: 'Article'
                     });
-
                 });
             });
-            setTimeout(() => {resolve(mediaUrls)}, 5000)
+            setTimeout(() => {console.log(mediaUrls); }, 10000)
         })
     }
 
@@ -65,35 +62,48 @@ class GeneralArticles {
     async infoq(subTopics) {
         Utils.printFunctionName();
         return new Promise(async function(resolve) {
-            let sstHtml     =   await Utils.request('https://www.infoq.com/');
-            let sstHtmlParsed         =   cheerio.load(sstHtml);
-            let sst     =   sstHtmlParsed('#search').find('[name="sst"]').val();
             let mediaUrls   =   [];
             subTopics.rows.forEach(async function(subTopic) {
-                let url = `https://www.infoq.com/search.action?queryString=${subTopic.Name}&page=1&searchOrder=date&sst=${sst}`;
+                if(!subTopic.Infoq) return;
+                let url = `https://www.infoq.com/${subTopic.Infoq}`;
                 let html = await Utils.request(url);
                 if(!html) throw url;
                 var $ = cheerio.load(html);
-                // console.log(url)
-                $('.one_result').filter(function() {
+                $('.articles').find('p').filter(function() {
                     mediaUrls.push({
-                        PublishedAt: $(this).find('p').first().text().split('...')[0],
-                        Title: $(this).find('a').text(),
-                        Description: $(this).find('p').first().text().split('...')[2],
+                        PublishedAt: $(this).find('.about_general').text().trim().split(' on\n')[1].trim().split('\n')[0],
+                        Title: $(this).find('.art_title').text(),
+                        Description: null,
                         ImageUrl: null,
                         ImageWidth: null,
                         ImageHeight: null,
                         SubTopicsId: subTopic.Id,
-                        Source: 'InfoQ',
-                        Url: $(this).find('a').prop('href'),
+                        Source: $(this).find('.story-title').find('.domain').text().trim(),
+                        Url: `https://www.infoq.com/${$(this).find('.art_title').prop('href')}`,
                         Type: 'Article'
                     });
+                });
 
+                $('.news').find('span').filter(function() {
+                    if(!$(this).find('.about_general').text()) return;
+                    mediaUrls.push({
+                        PublishedAt: $(this).find('.about_general').text().trim().split(' on\n')[1].trim().split('\n')[0],
+                        Title: $(this).find('.art_title').text(),
+                        Description: null,
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: subTopic.Id,
+                        Source: $(this).find('.story-title').find('.domain').text().trim(),
+                        Url: `https://www.infoq.com/${$(this).find('.art_title').prop('href')}`,
+                        Type: 'Article'
+                    });
                 });
             });
             setTimeout(() => {resolve(mediaUrls); }, 10000)
         })
     }
+
 
     async frontendFront(subTopics) {
         Utils.printFunctionName();

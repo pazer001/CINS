@@ -22,7 +22,7 @@ const Clojure           =   require('./SubTopics/Clojure');
 const WebRTC            =   require('./SubTopics/WebRTC');
 const jQuery            =   require('./SubTopics/jQuery');
 const Erlang            =   require('./SubTopics/Erlang');
-const Android            =   require('./SubTopics/Android');
+const Android           =   require('./SubTopics/Android');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -35,7 +35,7 @@ class Media {
     async init() {
         console.time('COMPLETED: ');
         try {
-            this.subTopics  = this.subTopics || await TopicsModel.getAllTopics();
+            this.subTopics  = this.subTopics || await TopicsModel.cronSubTopics();
             let android     =   new Android(this.subTopics.rows);
             let c           =   new C(this.subTopics.rows);
             let cpp         =   new Cpp(this.subTopics.rows);
@@ -52,6 +52,7 @@ class Media {
             let webRTC      =   new WebRTC(this.subTopics.rows);
             let jquery      =   new jQuery(this.subTopics.rows);
             let erlang      =   new Erlang(this.subTopics.rows);
+
 
             //C
             this.setMedia(await c.drdobbs());
@@ -125,6 +126,9 @@ class Media {
             // KoaJS
             this.setMedia(await koaJS.tutorialsPoint());
 
+            //jQuery
+            this.setMedia(await jquery.jqueryRain());
+
             //JavaScript
             this.setMedia(await javaScript.javascript());
             this.setMedia(await javaScript.echoJs());
@@ -145,10 +149,7 @@ class Media {
 
             //WebRTC
             this.setMedia(await webRTC.webRtcWorld());
-
-            //jQuery
-            this.setMedia(await jquery.jqueryRain());
-
+            
             //Erlang
             this.setMedia(await erlang.erlang());
 
@@ -186,8 +187,32 @@ class Media {
         }
     }
 
-    async insertMedia(media) {
+    fixMedia(media) {
+        //Check for good parameters
+        if(!media.Url || !media.Title || moment(new Date(media.PublishedAt)).format() == 'Invalid date' || media.Title.length > 100) {
+            return;
+        };
+
+        //Filter images
+        let notAllowedSites =   ['imgur', 'giphy'];
+        for(let word of notAllowedSites) {
+            if(media.Url.includes(word)) return;
+        }
+
+        //Filter english characters
+        let lngDetector             =   new LanguageDetect(),
+            languageDetect          =   lngDetector.detect(media.Title),
+            languageDetectFilter    =   languageDetect.filter(languageDetail => languageDetail[0] === 'english');
+
+
+        if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
+
+        //Replace media type for youtube to video
+        if(media.Url.includes('youtube')) media.Type = 'Video';
+
+        //Reformat date
         media.PublishedAt   =   media.PublishedAt || moment().format()
+
         let data = [
             media.PublishedAt,
             striptags(media.Title),
@@ -198,22 +223,12 @@ class Media {
             media.Type
         ];
 
-        let notAllowedSites =   ['imgur', 'giphy'];
-        for(let word of notAllowedSites) {
-            if(media.Url.includes(word)) return;
-        }
+        return data;
+    }
 
-        //Check for good parameters
-        if(!media.Url || !media.Title || moment(new Date(media.PublishedAt)).format() == 'Invalid date' || media.Title.length > 100) {
-            return;
-        };
-
-        let lngDetector             =   new LanguageDetect(),
-            languageDetect          =   lngDetector.detect(media.Title),
-            languageDetectFilter    =   languageDetect.filter(languageDetail => languageDetail[0] === 'english');
-
-        //Filter english characters
-        if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
+    async insertMedia(media) {
+        let data    =   this.fixMedia(media);
+        if(!data) return;
 
         const query = `INSERT INTO "CINS"."Media"
                                         ("PublishedAt", "Title", "Description", "SubTopicsId", "Source", "Url", "Type")

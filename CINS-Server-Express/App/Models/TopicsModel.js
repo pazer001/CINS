@@ -16,9 +16,29 @@ class TopicsModel {
                                 "SubTopics"."SearchTerm",
                                 "SubTopics"."InfoWorld",
                                 "SubTopics"."Reddit",
+                                "SubTopics"."Infoq",
                                 "MainTopics"."Icon"
                             FROM "CINS"."MainTopics"
                             JOIN "CINS"."SubTopics" ON "MainTopics"."Id" = "SubTopics"."MainTopicsId" AND "SubTopics"."Active" = '1';`;
+            this.pgClient.query(query, (err, result) => {
+                if(err) throw err;
+                resolve(result);
+            })
+        })
+    }
+
+    async cronSubTopics() {
+        return new Promise(resolve => {
+            const query     =   `SELECT 
+                                "SubTopics"."Id", 
+                                "SubTopics"."Name",
+                                "SubTopics"."SearchTerm",
+                                "SubTopics"."InfoWorld",
+                                "SubTopics"."Reddit",
+                                "SubTopics"."Infoq",
+                                "SubTopics"."Medium"
+                            FROM "CINS"."SubTopics"
+                            WHERE "SubTopics"."Active" = '1';`;
             this.pgClient.query(query, (err, result) => {
                 if(err) throw err;
                 resolve(result);
