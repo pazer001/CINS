@@ -42,6 +42,8 @@
   background: rgba(51, 51, 51, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
+  border-left: none;
   z-index: 2;
   transition: all .2s ease-in-out;
   overflow: hidden;
@@ -62,6 +64,8 @@
   background: rgba(51, 51, 51, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
+  border-left: none;
   z-index: 2;
   transition: all .2s ease-in-out;
   overflow: hidden;
