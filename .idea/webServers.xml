@@ -50,6 +50,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="af6c7030-da7a-4dfa-ac66-a4f513da8470" name="CINS Server Root" url="http://192.168.1.40">
+        <fileTransfer host="192.168.1.40" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

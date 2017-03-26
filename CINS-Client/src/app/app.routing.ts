@@ -4,6 +4,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const appRoutes: Routes = [
   {path: '', component: MainComponent},
+  {path: 'Assembly', component: MainComponent},
   {path: 'ReactJS', component: MainComponent},
   {path: 'ES6', component: MainComponent},
   {path: 'Angular', component: MainComponent},
@@ -30,5 +31,6 @@ export const appRoutes: Routes = [
   {path: 'Apache Solr', component: MainComponent},
   {path: 'Apache Kafka', component: MainComponent},
   {path: 'Android', component: MainComponent},
+  {path: 'Memcached', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];

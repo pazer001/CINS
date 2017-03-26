@@ -67,86 +67,98 @@ class React {
     async reactjsNewsTwitter() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://twitter.com/reactjsnews?lang=en`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.stream-container').find('.stream').find('ol').find('li').find('.tweet').find('.content').filter(function () {
-                mediaUrls.push({
-                    PublishedAt: `${$(this).find('.stream-item-header').find('.time').find('a').find('span').text()}, ${new Date().getFullYear()}`,
-                    Title: $(this).find('.js-tweet-text-container').find('p').text().split('http')[0],
-                    Description: null,
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'ReactJS News Twitter',
-                    Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
-                    Type: 'Article'
-                })
-            });
-            resolve(mediaUrls);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `https://twitter.com/reactjsnews?lang=en`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
+                $('.stream-container').find('.stream').find('ol').find('li').find('.tweet').find('.content').filter(function () {
+                    mediaUrls.push({
+                        PublishedAt: `${$(this).find('.stream-item-header').find('.time').find('a').find('span').text()}, ${new Date().getFullYear()}`,
+                        Title: $(this).find('.js-tweet-text-container').find('p').text().split('http')[0],
+                        Description: null,
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'ReactJS News Twitter',
+                        Url: $(this).find('.js-media-container').find('div').first().prop('data-card-url'),
+                        Type: 'Article'
+                    })
+                });
+                resolve(mediaUrls);
+            } catch (e) {
+                reject(e)
+            }
         })
     }
 
     async scotch() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://scotch.io/tag/react`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `https://scotch.io/tag/react`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
 
-            $('.loopy-loop').find('.card').find('a').each(async function () {
-                let url = $(this).prop('href');
-                let html2 = await Utils.request(url);
-                let $$ = cheerio.load(html2);
-                if(!$$('.container').find('.row').find('header').find('h1').text()) return;
-                mediaUrls.push({
-                    PublishedAt: $$('.container').find('.row').find('.meta-info').find('span').eq(2).text(),
-                    Title: $$('.container').find('.row').find('header').find('h1').text(),
-                    Description: $$('.container').find('.row').find('header').find('p').text(),
-                    ImageUrl: $$('.container').find('.single-wrap').find('.featured-image-guts').find('img').first().data('cfsrc'),
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Scotch',
-                    Url: url,
-                    Type: 'Article'
-                })
-            });
-            setTimeout(() => resolve(mediaUrls), 5000);
+                $('.loopy-loop').find('.card').find('a').each(async function () {
+                    let url = $(this).prop('href');
+                    let html2 = await Utils.request(url);
+                    let $$ = cheerio.load(html2);
+                    if (!$$('.container').find('.row').find('header').find('h1').text()) return;
+                    mediaUrls.push({
+                        PublishedAt: $$('.container').find('.row').find('.meta-info').find('span').eq(2).text(),
+                        Title: $$('.container').find('.row').find('header').find('h1').text(),
+                        Description: $$('.container').find('.row').find('header').find('p').text(),
+                        ImageUrl: $$('.container').find('.single-wrap').find('.featured-image-guts').find('img').first().data('cfsrc'),
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'Scotch',
+                        Url: url,
+                        Type: 'Article'
+                    })
+                });
+                setTimeout(() => resolve(mediaUrls), 5000);
+            } catch (e) {
+                reject(e)
+            }
         })
     }
 
     async codementor() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://www.codementor.io/reactjs/tutorial`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.content-block').find('.post-link').filter(function () {
-                mediaUrls.push({
-                    PublishedAt: $(this).find('.article-time').text().replace('&nbsp', '').replace('●', '').trim(),
-                    Title: $(this).find('.post-title').text().trim(),
-                    Description: $(this).find('.description').text().trim(),
-                    ImageUrl: $(this).find('.image').prop('src'),
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Code Mentor',
-                    Url: `https://www.codementor.io${$(this).prop('href')}`,
-                    Type: 'Article'
-                })
-            });
-            resolve(mediaUrls);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `https://www.codementor.io/reactjs/tutorial`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
+                $('.content-block').find('.post-link').filter(function () {
+                    mediaUrls.push({
+                        PublishedAt: $(this).find('.article-time').text().replace('&nbsp', '').replace('●', '').trim(),
+                        Title: $(this).find('.post-title').text().trim(),
+                        Description: $(this).find('.description').text().trim(),
+                        ImageUrl: $(this).find('.image').prop('src'),
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'Code Mentor',
+                        Url: `https://www.codementor.io${$(this).prop('href')}`,
+                        Type: 'Article'
+                    })
+                });
+                resolve(mediaUrls);
+            } catch (e) {
+                reject(e);
+            }
         })
     }
 
@@ -154,143 +166,167 @@ class React {
         let self    =   this;
         Utils.printFunctionName();
         return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `http://tutorialzine.com/?s=react`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.postHolder').find('.post-item').filter(function () {
-                mediaUrls.push({
-                    PublishedAt: $(this).find('time').prop('datetime'),
-                    Title: $(this).find('h3').find('a').find('span').text().trim(),
-                    Description: $(this).find('p').text().trim(),
-                    ImageUrl: $(this).find('h3').find('img').prop('src'),
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Tutorial Zine',
-                    Url: $(this).find('h3').find('a').prop('href'),
-                    Type: 'Article'
-                })
-            });
-            resolve(mediaUrls);
+            try {
+                let mediaUrls = [];
+                let url = `http://tutorialzine.com/?s=react`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
+                $('.postHolder').find('.post-item').filter(function () {
+                    mediaUrls.push({
+                        PublishedAt: $(this).find('time').prop('datetime'),
+                        Title: $(this).find('h3').find('a').find('span').text().trim(),
+                        Description: $(this).find('p').text().trim(),
+                        ImageUrl: $(this).find('h3').find('img').prop('src'),
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'Tutorial Zine',
+                        Url: $(this).find('h3').find('a').prop('href'),
+                        Type: 'Article'
+                    })
+                });
+                resolve(mediaUrls);
+            } catch (e) {
+                reject(e);
+            }
         })
     }
 
     async thinkster() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://thinkster.io/topics/react`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `https://thinkster.io/topics/react`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
 
-            $('.ischapter').find('a').each(async function () {
-                let url = `https://thinkster.io/${$(this).prop('href')}`;
-                let html2 = await Utils.request(url);
-                let $$ = cheerio.load(html2);
-                mediaUrls.push({
-                    PublishedAt: moment().format(),
-                    Title: $$('h1').first().text(),
-                    Description: $$('.content').find('p').first().text(),
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Thinkster',
-                    Url: url,
-                    Type: 'Article'
-                })
-            });
-            setTimeout(() => {resolve(mediaUrls)}, 5000);
+                $('.ischapter').find('a').each(async function () {
+                    let url = `https://thinkster.io/${$(this).prop('href')}`;
+                    let html2 = await Utils.request(url);
+                    let $$ = cheerio.load(html2);
+                    mediaUrls.push({
+                        PublishedAt: moment().format(),
+                        Title: $$('h1').first().text(),
+                        Description: $$('.content').find('p').first().text(),
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'Thinkster',
+                        Url: url,
+                        Type: 'Article'
+                    })
+                });
+                setTimeout(() => {
+                    resolve(mediaUrls)
+                }, 5000);
+            } catch (e) {
+                reject(e);
+            }
         })
     }
 
     async thebluecoder() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://www.thebluecoder.com/category/react/`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('.blog_post').find('.post_info_wrapper').filter(function () {
-                mediaUrls.push({
-                    PublishedAt: $(this).find('time').prop('datetime'),
-                    Title: $(this).find('h2').find('a').text().trim(),
-                    Description: $(this).find('.entry-content').find('p').text().trim(),
-                    ImageUrl: $(this).find('h3').find('img').prop('src'),
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'The Blue Coder',
-                    Url: $(this).find('h2').find('a').prop('href'),
-                    Type: 'Article'
-                })
-            });
-            resolve(mediaUrls);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `https://www.thebluecoder.com/category/react/`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
+                $('.blog_post').find('.post_info_wrapper').filter(function () {
+                    mediaUrls.push({
+                        PublishedAt: $(this).find('time').prop('datetime'),
+                        Title: $(this).find('h2').find('a').text().trim(),
+                        Description: $(this).find('.entry-content').find('p').text().trim(),
+                        ImageUrl: $(this).find('h3').find('img').prop('src'),
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'The Blue Coder',
+                        Url: $(this).find('h2').find('a').prop('href'),
+                        Type: 'Article'
+                    })
+                });
+                resolve(mediaUrls);
+            } catch(e) {
+                reject(e);
+            }
         })
     }
 
     async hashbangweekly() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `http://hashbangweekly.okgrow.com/`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
-            $('td').filter(function () {
-                if(!$(this).find('p').first().find('a').text().trim()) return;
-                mediaUrls.push({
-                    PublishedAt: moment().format(),
-                    Title: $(this).find('p').first().find('a').text().trim(),
-                    Description: $(this).find('p').eq(1).text(),
-                    ImageUrl: null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Hashbang Weekly',
-                    Url: $(this).find('p').first().find('a').prop('href'),
-                    Type: 'Article'
-                })
-            });
-            resolve(mediaUrls);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `http://hashbangweekly.okgrow.com/`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
+                $('td').filter(function () {
+                    if (!$(this).find('p').first().find('a').text().trim()) return;
+                    mediaUrls.push({
+                        PublishedAt: moment().format(),
+                        Title: $(this).find('p').first().find('a').text().trim(),
+                        Description: $(this).find('p').eq(1).text(),
+                        ImageUrl: null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'Hashbang Weekly',
+                        Url: $(this).find('p').first().find('a').prop('href'),
+                        Type: 'Article'
+                    })
+                });
+                resolve(mediaUrls);
+            } catch (e) {
+                reject(e);
+            }
         })
     }
 
     async daveceddia() {
         let self    =   this;
         Utils.printFunctionName();
-        return new Promise(async function (resolve) {
-            let mediaUrls = [];
-            let url = `https://daveceddia.com/archives/`;
-            let html = await Utils.request(url);
-            if (!html) throw url;
-            let $ = cheerio.load(html);
+        return new Promise(async function (resolve, reject) {
+            try {
+                let mediaUrls = [];
+                let url = `https://daveceddia.com/archives/`;
+                let html = await Utils.request(url);
+                if (!html) throw url;
+                let $ = cheerio.load(html);
 
-            $('#archive').find('a').each(async function () {
-                let url = `https://daveceddia.com/${$(this).prop('href')}`;
-                let html2 = await Utils.request(url);
-                let $$ = cheerio.load(html2);
-                mediaUrls.push({
-                    PublishedAt: $$('.entry-date').find('time').prop('datetime'),
-                    Title: $$('.entry-title').text(),
-                    Description: `${$$('.entry-content').find('p').first().text()} ${$$('.entry-content').find('p').eq(2).text()}`,
-                    ImageUrl: $$('.entry-content').find('img').first().prop('src') || null,
-                    ImageWidth: null,
-                    ImageHeight: null,
-                    SubTopicsId: self.id,
-                    Source: 'Dave Ceddia',
-                    Url: url,
-                    Type: 'Article'
-                })
-            });
-            setTimeout(() => {resolve(mediaUrls)}, 5000);
+                $('#archive').find('a').each(async function () {
+                    let url = `https://daveceddia.com/${$(this).prop('href')}`;
+                    let html2 = await Utils.request(url);
+                    let $$ = cheerio.load(html2);
+                    mediaUrls.push({
+                        PublishedAt: $$('.entry-date').find('time').prop('datetime'),
+                        Title: $$('.entry-title').text(),
+                        Description: `${$$('.entry-content').find('p').first().text()} ${$$('.entry-content').find('p').eq(2).text()}`,
+                        ImageUrl: $$('.entry-content').find('img').first().prop('src') || null,
+                        ImageWidth: null,
+                        ImageHeight: null,
+                        SubTopicsId: self.id,
+                        Source: 'Dave Ceddia',
+                        Url: url,
+                        Type: 'Article'
+                    })
+                });
+                setTimeout(() => {
+                    resolve(mediaUrls)
+                }, 5000);
+            } catch (e) {
+                reject(e);
+            }
         })
     }
 }
