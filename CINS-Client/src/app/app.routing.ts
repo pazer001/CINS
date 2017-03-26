@@ -32,5 +32,6 @@ export const appRoutes: Routes = [
   {path: 'Apache Kafka', component: MainComponent},
   {path: 'Android', component: MainComponent},
   {path: 'Memcached', component: MainComponent},
+  {path: 'DocumentDB', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
