@@ -33,5 +33,7 @@ export const appRoutes: Routes = [
   {path: 'Android', component: MainComponent},
   {path: 'Memcached', component: MainComponent},
   {path: 'DocumentDB', component: MainComponent},
+  {path: 'H2', component: MainComponent},
+  {path: 'MariaDB', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
