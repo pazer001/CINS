@@ -208,7 +208,7 @@ class GeneralArticles {
                     if(!$(this).find('.entry').find('.title').find('a').prop('href').includes('http') || $(this).find('.entry').find('.title').find('a').prop('href').includes('stackoverflow.com')) return;
                     mediaUrls.push({
                         PublishedAt: $(this).find('.tagline').find('time').prop('datetime'),
-                        Title: $(this).find('.entry').find('.title').find('a').text().trim().split('(')[0],
+                        Title: $(this).find('.entry').find('.title').find('a.title').text().trim().split('(')[0],
                         Description: null,
                         ImageUrl: null,
                         ImageWidth: null,
