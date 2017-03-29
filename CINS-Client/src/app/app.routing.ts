@@ -35,5 +35,6 @@ export const appRoutes: Routes = [
   {path: 'DocumentDB', component: MainComponent},
   {path: 'H2', component: MainComponent},
   {path: 'MariaDB', component: MainComponent},
+  {path: 'MongoDB', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];

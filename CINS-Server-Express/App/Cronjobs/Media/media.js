@@ -23,6 +23,7 @@ const WebRTC            =   require('./SubTopics/WebRTC');
 const jQuery            =   require('./SubTopics/jQuery');
 const Erlang            =   require('./SubTopics/Erlang');
 const Android           =   require('./SubTopics/Android');
+const MongoDB           =   require('./SubTopics/MongoDB');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -52,6 +53,8 @@ class Media {
             let webRTC      =   new WebRTC(this.subTopics.rows);
             let jquery      =   new jQuery(this.subTopics.rows);
             let erlang      =   new Erlang(this.subTopics.rows);
+            let mongoDB      =   new MongoDB(this.subTopics.rows);
+
 
 
             //C
@@ -128,6 +131,9 @@ class Media {
 
             //jQuery
             this.setMedia(await jquery.jqueryRain());
+
+            //MongoDB
+            this.setMedia(await mongoDB.mongoDB());
 
             //JavaScript
             this.setMedia(await javaScript.javascript());
