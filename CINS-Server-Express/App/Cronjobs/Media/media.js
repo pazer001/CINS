@@ -24,6 +24,7 @@ const jQuery            =   require('./SubTopics/jQuery');
 const Erlang            =   require('./SubTopics/Erlang');
 const Android           =   require('./SubTopics/Android');
 const MongoDB           =   require('./SubTopics/MongoDB');
+const Neo4j             =   require('./SubTopics/Neo4j');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -53,8 +54,8 @@ class Media {
             let webRTC      =   new WebRTC(this.subTopics.rows);
             let jquery      =   new jQuery(this.subTopics.rows);
             let erlang      =   new Erlang(this.subTopics.rows);
-            let mongoDB      =   new MongoDB(this.subTopics.rows);
-
+            let mongoDB     =   new MongoDB(this.subTopics.rows);
+            let neo4j     =   new Neo4j(this.subTopics.rows);
 
 
             //C
@@ -159,6 +160,9 @@ class Media {
             //Erlang
             this.setMedia(await erlang.erlang());
 
+            //Neo4j
+            this.setMedia(await neo4j.neo4jNews());
+
             //Android
             this.setMedia(await android.androidDeveloperNews());
             this.setMedia(await android.andevcon());
@@ -259,6 +263,6 @@ class Media {
     }
 }
 
-// var cron = new Media();
-// cron.init();
-module.exports  =   new Media();
+var cron = new Media();
+cron.init();
+// module.exports  =   new Media();

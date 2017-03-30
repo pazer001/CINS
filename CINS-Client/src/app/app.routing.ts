@@ -36,5 +36,6 @@ export const appRoutes: Routes = [
   {path: 'H2', component: MainComponent},
   {path: 'MariaDB', component: MainComponent},
   {path: 'MongoDB', component: MainComponent},
+  {path: 'Neo4j', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
