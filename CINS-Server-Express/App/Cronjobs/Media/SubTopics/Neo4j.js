@@ -21,7 +21,7 @@ class Neo4j {
                 mediaUrls.push({
                     PublishedAt: $(this).find('.byline').text(),
                     Title: $(this).find('h3').find('a').text(),
-                    Description: $(this).find('p').text(),
+                    Description: $(this).find('p').text().replace('Learn More →', '').replace('Learn More', ''),
                     ImageUrl: null,
                     ImageWidth: null,
                     ImageHeight: null,

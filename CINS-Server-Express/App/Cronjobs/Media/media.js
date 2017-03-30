@@ -204,7 +204,7 @@ class Media {
         };
 
         //Filter images
-        let notAllowedSites =   ['imgur', 'giphy'];
+        let notAllowedSites =   ['imgur', 'giphy', 'ofcode'];
         for(let word of notAllowedSites) {
             if(media.Url.includes(word)) return;
         }
@@ -218,7 +218,7 @@ class Media {
         if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
 
         //Replace media type for youtube to video
-        if(media.Url.includes('youtube.com')) media.Type = 'Video';
+        if(media.Url.includes('youtu')) media.Type = 'Video';
 
         //Reformat date
         media.PublishedAt   =   media.PublishedAt || moment().format()
