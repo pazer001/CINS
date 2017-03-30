@@ -37,5 +37,6 @@ export const appRoutes: Routes = [
   {path: 'MariaDB', component: MainComponent},
   {path: 'MongoDB', component: MainComponent},
   {path: 'Neo4j', component: MainComponent},
+  {path: 'NodeJS', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
