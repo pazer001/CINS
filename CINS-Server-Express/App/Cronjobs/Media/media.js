@@ -25,6 +25,7 @@ const Erlang            =   require('./SubTopics/Erlang');
 const Android           =   require('./SubTopics/Android');
 const MongoDB           =   require('./SubTopics/MongoDB');
 const Neo4j             =   require('./SubTopics/Neo4j');
+const NodeJS            =   require('./SubTopics/NodeJS');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -55,7 +56,8 @@ class Media {
             let jquery      =   new jQuery(this.subTopics.rows);
             let erlang      =   new Erlang(this.subTopics.rows);
             let mongoDB     =   new MongoDB(this.subTopics.rows);
-            let neo4j     =   new Neo4j(this.subTopics.rows);
+            let neo4j       =   new Neo4j(this.subTopics.rows);
+            let nodeJS      =   new NodeJS(this.subTopics.rows);
 
 
             //C
@@ -135,6 +137,9 @@ class Media {
 
             //MongoDB
             this.setMedia(await mongoDB.mongoDB());
+
+            //NodeJS
+            this.setMedia(await nodeJS.risingstack());
 
             //JavaScript
             this.setMedia(await javaScript.javascript());
@@ -218,10 +223,13 @@ class Media {
         if(!languageDetect || !languageDetectFilter || !languageDetectFilter[0] || !languageDetectFilter[0][1] > 0.1) return;
 
         //Replace media type for youtube to video
-        if(media.Url.includes('youtu')) media.Type = 'Video';
+        let videoReplaceStrings =   ['youtu'];
+        for(let string of videoReplaceStrings) {
+            if(media.Url.includes(string)) media.Type = 'Video';
+        }
 
         //Reformat date
-        media.PublishedAt   =   media.PublishedAt || moment().format()
+        media.PublishedAt   =   media.PublishedAt || moment().format();
 
         let data = [
             media.PublishedAt,
@@ -263,6 +271,6 @@ class Media {
     }
 }
 
-var cron = new Media();
-cron.init();
-// module.exports  =   new Media();
+// var cron = new Media();
+// cron.init();
+module.exports  =   new Media();
