@@ -25,7 +25,7 @@ class NodeJS {
                     ImageWidth: null,
                     ImageHeight: null,
                     SubTopicsId: self.id,
-                    Source: $(this).find('address').text().replace('at').trim(),
+                    Source: $(this).find('address').text().replace('at', '').trim(),
                     Url: $(this).find('h2').find('a').prop('href'),
                     Type: 'Article'
                 })
