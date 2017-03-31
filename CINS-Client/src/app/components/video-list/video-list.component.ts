@@ -31,12 +31,15 @@ export class VideoListComponent implements OnInit {
 
   rateMedia(mediaId) {
     this.dataService.rateMedia(mediaId).subscribe(data => {
-      this.dataService.ratedMedia[mediaId]  = data;
+      this.dataService.ratedMedia[mediaId]  = data.ratedMediaCount;
     })
   }
 
   getLatestMedia(userId = null) {
     this.dataService.getLatestMedia(userId).subscribe(media => {
+      media.forEach(media => {
+        this.dataService.ratedMedia[media.Id]   = media.RatingCount
+      });
       this.dataService.currentSelectedSubTopicMedia = media;
       this.dataService.setFilter('All');
     });
@@ -56,7 +59,7 @@ export class VideoListComponent implements OnInit {
 
   ngOnInit() {
     if(!this.dataService.currentSelectedSubTopic) {
-      this.getLatestMedia(this.dataService.userDetails.data.Id || null);
+      this.getLatestMedia(this.dataService.userDetails ? this.dataService.userDetails.data.Id : null);
     }
   }
 }

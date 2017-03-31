@@ -120,7 +120,7 @@ class MediaModel {
                                 LEFT JOIN "CINS"."MediaRating" ON "Media"."Id" = "MediaRating"."MediaId"
                                 LEFT JOIN "CINS"."SubTopics" ON "Media"."SubTopicsId" = "SubTopics"."Id"
                                 ${userTopicsSaveIds.length ? `WHERE "Media"."SubTopicsId" IN(${userTopicsSaveIds.join(',')})` : ``}
-                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" DESC, "Media"."PublishedAt" DESC
+                                ORDER BY DATE("Media"."PublishedAt") DESC, "MediaRating"."RatingCount" ASC, "Media"."PublishedAt" DESC
                                 LIMIT 100`;
             this.pgClient.query(query, (err, result) => {
                 if(err) throw err;

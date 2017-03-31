@@ -27,7 +27,7 @@ export class DataService {
     this.selectedVideo            = null;
     this.isVideoModalOpen         = false;
     this.isUserLoginModalOpen     = false;
-    this.currentSelectedSubTopic  = {Name: 'Latest Media'};
+    this.currentSelectedSubTopic  = null;
     this.filter                   = 'All';
     this.userDetails              = null;
     this.ratedMedia               = {};
@@ -64,7 +64,12 @@ export class DataService {
   }
 
   getLatestMedia(userId = null): Observable<any> {
-    return this.http.get(`api/getLatestMedia/${userId || 0}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
+    return this.http.get(`api/getLatestMedia/${userId || 0}`)
+        .map(res => res.json())
+        .map(data => {
+          data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY'));
+          return data;
+        })
   }
 
   openMedia(currentSelectedSubTopicVideo) {

@@ -30,7 +30,6 @@ class NodeJS {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }
