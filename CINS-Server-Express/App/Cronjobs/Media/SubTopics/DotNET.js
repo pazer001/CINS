@@ -4,7 +4,7 @@ const Utils     =   require('../../../Utils/Utils');
 
 class DotNET {
     constructor(subTopics) {
-        this.topicName  =   '.NET';
+        this.topicName  =   'DotNET';
         this.id         =   subTopics.filter(subTopic => subTopic.Name === this.topicName)[0].Id;
     }
     async azureWebsites() {

@@ -38,7 +38,7 @@ export const appRoutes: Routes = [
   {path: 'MongoDB', component: MainComponent},
   {path: 'Neo4j', component: MainComponent},
   {path: 'NodeJS', component: MainComponent},
-  {path: '.NET', component: MainComponent},
+  {path: 'DotNET', component: MainComponent},
   {path: 'AWS', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
