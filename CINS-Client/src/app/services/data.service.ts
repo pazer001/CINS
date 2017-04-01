@@ -100,7 +100,7 @@ export class DataService {
   }
 
   setCurrentSelectedSubTopic(subTopic) {
-    this.currentSelectedSubTopic = subTopic;
+    this.currentSelectedSubTopic = subTopic.Name;
     this.getMedia(subTopic.Id).subscribe(media => {
       this.currentSelectedSubTopicMedia = media;
       this.setFilter('All');
