@@ -59,7 +59,7 @@ export class DataService {
     return this.http.get(`api/allTopics`).map(res => res.json())
   }
 
-  getMedia(Id): Observable<any> {
+  getMedia(Id = null): Observable<any> {
     return this.http.get(`api/getMedia/${Id}`).map(res => res.json()).map(data => {data.map(video => video.PublishedAt = moment(video.PublishedAt).format('DD/MM/YYYY')); return data;})
   }
 
@@ -100,11 +100,24 @@ export class DataService {
   }
 
   setCurrentSelectedSubTopic(subTopic) {
-    this.currentSelectedSubTopic = subTopic.Name;
-    this.getMedia(subTopic.Id).subscribe(media => {
-      this.currentSelectedSubTopicMedia = media;
-      this.setFilter('All');
-    })
+    if(subTopic) {
+      this.currentSelectedSubTopic = subTopic.Name;
+      this.getMedia(subTopic ? subTopic.Id : null).subscribe(media => {
+        this.currentSelectedSubTopicMedia = media;
+        this.setFilter('All');
+      })
+    } else {
+      this.currentSelectedSubTopic  = null;
+      this.getLatestMedia(this.userDetails ? this.userDetails.data.Id : null).subscribe(media => {
+        media.forEach(media => {
+          this.ratedMedia[media.Id]   = media.RatingCount
+        });
+        this.currentSelectedSubTopicMedia = media;
+        this.setFilter('All');
+      });
+    }
+
+
   }
 
   getUser(getUser): Observable<any> {

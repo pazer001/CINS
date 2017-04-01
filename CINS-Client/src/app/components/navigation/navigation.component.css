@@ -160,6 +160,10 @@
   width: 100%;
 }
 
+.all {
+  font-size: 1vw!important;
+}
+
 
 @media only screen and (min-width: 0px) and (max-width: 480px) {
   .main-topic-tile i {
@@ -205,4 +209,8 @@
   .sub-topics, .user-login, .no-navigation, .main-topics {
     flex: 3;
   }
+  .all {
+    font-size: 4vw!important;
+  }
+
 }

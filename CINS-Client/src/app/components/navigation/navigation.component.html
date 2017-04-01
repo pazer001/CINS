@@ -17,9 +17,12 @@
               </div>
             </div>
       </div>
+
       <div class="cell no-navigation" *ngIf="!navigation"></div>
+
       <div class="cell sub-topics" *ngIf="navigation === 'subTopics'">
         <div id="menu-tiles" class="tile-container" [ngClass]="activeNavigationMainTopic ? 'active' : ''">
+            <a [routerLink]="['']" class="main-topic-tile padding5 no-padding-left no-padding-right fg-white bg-blue all" (click)="setCurrentSelectedSubTopic(null)">Reset All</a>
           <a [routerLink]="[subTopic.Name]" class="main-topic-tile padding5 no-padding-left no-padding-right fg-white"
                [ngClass]="[tilesTypes[i % tilesTypes.length], tilesColors[i % tilesColors.length]]" data-role="tile"
                *ngFor="let subTopic of allTopics[activeNavigationMainTopic]; let i = index"
