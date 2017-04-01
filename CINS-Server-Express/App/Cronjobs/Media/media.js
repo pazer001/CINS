@@ -26,6 +26,8 @@ const Android           =   require('./SubTopics/Android');
 const MongoDB           =   require('./SubTopics/MongoDB');
 const Neo4j             =   require('./SubTopics/Neo4j');
 const NodeJS            =   require('./SubTopics/NodeJS');
+const DotNET               =   require('./SubTopics/DotNET');
+const AWS               =   require('./SubTopics/AWS');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -58,6 +60,8 @@ class Media {
             let mongoDB     =   new MongoDB(this.subTopics.rows);
             let neo4j       =   new Neo4j(this.subTopics.rows);
             let nodeJS      =   new NodeJS(this.subTopics.rows);
+            let dotNET      =   new DotNET(this.subTopics.rows);
+            let aws         =   new AWS(this.subTopics.rows);
 
 
             //C
@@ -176,6 +180,13 @@ class Media {
             this.setMedia(await android.androidDevelopers());
             this.setMedia(await android.electronicsWeekly());
 
+            //.NET
+            this.setMedia(await dotNET.azureWebsites());
+
+            //AWS
+            this.setMedia(await aws.aws());
+            this.setMedia(await aws.awsBlogs());
+
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
             this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
@@ -231,6 +242,8 @@ class Media {
         //Reformat date
         media.PublishedAt   =   media.PublishedAt || moment().format();
 
+        media.Title.replace("\n", '');
+
         let data = [
             media.PublishedAt,
             striptags(media.Title),
@@ -271,6 +284,6 @@ class Media {
     }
 }
 
-// var cron = new Media();
-// cron.init();
-module.exports  =   new Media();
+var cron = new Media();
+cron.init();
+// module.exports  =   new Media();
