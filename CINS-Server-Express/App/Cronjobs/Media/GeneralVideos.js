@@ -10,7 +10,6 @@ const YOUTUBE_SETTINGS = {
     relevanceLanguage: 'en',
     order: 'relevance',
     type: 'video',
-    videoEmbeddable: 'true',
     publishedAfter: moment.utc().subtract(1, 'months').format()
 };
 
@@ -26,17 +25,14 @@ class GeneralVideos {
         })
     }
 
-    async youtube() {
+    async youtube(subTopics) {
         Utils.printFunctionName();
         var self = this;
         return new Promise(async function (resolve) {
-
             let mediaUrls = [];
 
-            var getAllTopics = await TopicsModel.getAllTopics();
-
-            if (getAllTopics.rows) {
-                for (let subTopic of getAllTopics.rows) {
+            if (subTopics.rows) {
+                for (let subTopic of subTopics.rows) {
                     if (subTopic.SearchTerm) {
                         let result = await self.youtubeSearch(subTopic.SearchTerm, YOUTUBE_SETTINGS, YOUTUBE_KEY);
                         result.items.forEach(item => {
@@ -56,7 +52,6 @@ class GeneralVideos {
                     }
                 }
             }
-
             resolve(mediaUrls)
         })
     }
