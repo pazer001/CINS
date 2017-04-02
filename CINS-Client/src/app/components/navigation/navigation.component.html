@@ -1,9 +1,14 @@
 <nav id="topics-navigation" class="padding5">
       <div class="cell topics">
         <div class="cell user">
-              <div id="login-register-button" class="padding10" (click)="setActiveNavigation('login')">
-                <span class="mif-user"></span>
-              </div>
+
+            <div [routerLink]="['']" id="clear-topic-selection" class="margin5" (click)="setCurrentSelectedSubTopic(null)">
+                <span class="mif-layers-clear fg-white "></span>
+            </div>
+            <div id="login-register-button" class="margin5" (click)="setActiveNavigation('login')">
+                <span class="mif-user fg-white "></span>
+            </div>
+
             </div>
         <div class="cell main-topics">
               <div id="main-topic-menu">
@@ -22,7 +27,6 @@
 
       <div class="cell sub-topics" *ngIf="navigation === 'subTopics'">
         <div id="menu-tiles" class="tile-container" [ngClass]="activeNavigationMainTopic ? 'active' : ''">
-            <a [routerLink]="['']" class="main-topic-tile padding5 no-padding-left no-padding-right fg-white bg-blue all tile-large" (click)="setCurrentSelectedSubTopic(null)">Reset All</a>
           <a [routerLink]="[subTopic.Name]" class="main-topic-tile padding5 no-padding-left no-padding-right fg-white"
                [ngClass]="[tilesTypes[i % tilesTypes.length], tilesColors[i % tilesColors.length]]" data-role="tile"
                *ngFor="let subTopic of allTopics[activeNavigationMainTopic]; let i = index"

@@ -113,18 +113,21 @@
   text-align: center;
 }
 
-#login-register-button .mif-user {
-  background: gray;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  line-height: 20px;
+.user div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  width: 2vw;
+  height: 2.5vh;
   border-radius: 50%;
+  background: gray;
 }
 
-#login-register-button:hover {
+#login-register-button:hover, #clear-topic-selection:hover {
   background-color: rgba(255, 255, 255, 0.25)!important;
   cursor: pointer;
+  outline: none;
 }
 
 #topics-navigation {
