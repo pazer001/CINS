@@ -307,7 +307,7 @@ class Media {
 
             //General Video
             this.setMedia(await GeneralVideos.youtube(this.subTopics));
-            this.setMedia(await GeneralVideos.egghead(this.subTopics))
+            this.setMedia(await GeneralVideos.egghead(this.subTopics));
 
             console.timeEnd('COMPLETED: ')
 
@@ -394,6 +394,6 @@ class Media {
     }
 }
 
-var cron = new Media();
-cron.init();
-// module.exports  =   new Media();
+// var cron = new Media();
+// cron.init();
+module.exports  =   new Media();
