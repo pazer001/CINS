@@ -38,6 +38,7 @@ class Media {
         this.subTopics  =   null;
         this.media      =   [];
     }
+
     async init() {
         console.time('COMPLETED: ');
         try {
@@ -157,14 +158,14 @@ class Media {
             ];
 
 
-            Promise.all(getMedia)
-                .then(media => {
-                    this.setMedia(media);
-                    console.timeEnd('COMPLETED: ');
-                })
-                .catch(error => console.log(error))
+            // Promise.all(getMedia)
+            //     .then(media => {
+            //         this.setMedia(media);
+            //         console.timeEnd('COMPLETED: ');
+            //     })
+            //     .catch(error => console.log(error))
 
-/*
+
             //C
             this.setMedia(await c.drdobbs());
 
@@ -312,7 +313,7 @@ class Media {
             this.setMedia(await GeneralVideos.egghead(this.subTopics))
 
             console.timeEnd('COMPLETED: ')
-            */
+
         } catch (e) {
             console.log(e)
         }
