@@ -26,8 +26,9 @@ const Android           =   require('./SubTopics/Android');
 const MongoDB           =   require('./SubTopics/MongoDB');
 const Neo4j             =   require('./SubTopics/Neo4j');
 const NodeJS            =   require('./SubTopics/NodeJS');
-const DotNET               =   require('./SubTopics/DotNET');
+const DotNET            =   require('./SubTopics/DotNET');
 const AWS               =   require('./SubTopics/AWS');
+const Azure             =   require('./SubTopics/Azure');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -62,7 +63,7 @@ class Media {
             let nodeJS      =   new NodeJS(this.subTopics.rows);
             let dotNET      =   new DotNET(this.subTopics.rows);
             let aws         =   new AWS(this.subTopics.rows);
-
+            let azure       =   new Azure(this.subTopics.rows);
 
             //C
             this.setMedia(await c.drdobbs());
@@ -186,6 +187,9 @@ class Media {
             //AWS
             this.setMedia(await aws.aws());
             this.setMedia(await aws.awsBlogs());
+
+            //Azure
+            this.setMedia(await azure.azure());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));

@@ -40,5 +40,7 @@ export const appRoutes: Routes = [
   {path: 'NodeJS', component: MainComponent},
   {path: 'DotNET', component: MainComponent},
   {path: 'AWS', component: MainComponent},
+  {path: 'Azure', component: MainComponent},
+  {path: 'Backbone', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
