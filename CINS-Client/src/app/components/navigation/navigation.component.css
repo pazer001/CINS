@@ -134,6 +134,15 @@
 .topics {
   flex: 1;
   display: flex;
+  outline: none;
+  border: none;
+}
+
+.topics:active {
+  flex: 1;
+  display: flex;
+  outline: none;
+  border: none;
 }
 
 .sub-topics, .user-login, .no-navigation {

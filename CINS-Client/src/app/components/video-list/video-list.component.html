@@ -52,12 +52,6 @@
       <span class="window-icon icon mif-expand-less"></span>
       {{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] || 0 }}
     </span>
-    <!--<span class="window-icon" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] ? '' : 'icon mif-expand-less'">{{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount ? dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount : ''}}</span>-->
-
-
-    <!--<span class="btn-max fg-white text-shadow icon" (click)="rateMedia(currentSelectedSubTopicMediaFilteredItem.Id)" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code === 200 ? 'bg-darkGreen' : dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].code !== 200 ? 'bg-darkRed' : ''" >-->
-      <!--<span class="window-icon" [ngClass]="dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] ? '' : 'icon mif-expand-less'">{{dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id] && dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount ? dataService.ratedMedia[currentSelectedSubTopicMediaFilteredItem.Id].ratedMediaCount : ''}}</span>-->
-    <!--</span>-->
 
     <span *ngIf="dataService.userDetails" class="icon mif-floppy-disk" (click)="postUserMediaSave(dataService.userDetails.data.Id, currentSelectedSubTopicMediaFilteredItem.Id)"></span>
   </div>

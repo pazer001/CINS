@@ -31,7 +31,6 @@ class MongoDB {
                     Type: 'Article'
                 })
             });
-            console.log(mediaUrls)
             resolve(mediaUrls);
         })
     }

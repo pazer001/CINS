@@ -65,6 +65,106 @@ class Media {
             let aws         =   new AWS(this.subTopics.rows);
             let azure       =   new Azure(this.subTopics.rows);
 
+            let getMedia    =   [
+                c.drdobbs(),
+                cpp.isocpp(),
+                cpp.msdn(),
+                cpp.cppSoup(),
+                cpp.cppTruth(),
+                cpp.oldNewThing(),
+                cpp.theViewFromAristeia(),
+                cpp.herbSutter(),
+                cpp.thinkingAsynchronouslyInCpp(),
+                cpp.mrEdd(),
+                cpp.ramblingComments(),
+                cpp.attractiveChaos(),
+                cpp.lightSleeper(),
+                cpp.theFastwareProject(),
+                cpp.theACCUOverloadJournals(),
+                cpp.learningCpp(),
+                cpp.bartoszMilewski(),
+                react.reactjsNewsTwitter(),
+                react.scotch(),
+                react.codementor(),
+                react.tutorialzine(),
+                react.thinkster(),
+                react.thebluecoder(),
+                react.hashbangweekly(),
+                react.daveceddia(),
+                reactNative.facebook(),
+                reactNative.reactNativeNewsTwitter(),
+                reactNative.facebookDocs(),
+                reactNative.tutorialsPoint(),
+                es6.es6Features(),
+                es6.exploringjs(),
+                es6.babel(),
+                es6.qnimate(),
+                es6.nczOnline(),
+                es6.tutorialsPoint(),
+                es6.mozilla(),
+                es6.jsNext(),
+                es6.youDontKnowJS(),
+                angular.angular(),
+                angular.angualrTwitter(),
+                angular.blogspot(),
+                angular.tutorialsPoint(),
+                angular.thoughtram(),
+                foundation.foundation(),
+                foundation.foundationTutorials(),
+                foundation.tutorialsPoint(),
+                aurelia.aurelia(),
+                aurelia.tutorialsDojo(),
+                aurelia.tutorialsPoint(),
+                aurelia.tutAurelia(),
+                koaJS.tutorialsPoint(),
+                jquery.jqueryRain(),
+                mongoDB.mongoDB(),
+                nodeJS.risingstack(),
+                javaScript.javascript(),
+                javaScript.echoJs(),
+                javaScript.jsOrg(),
+                javaScript.jsLive(),
+                php.phpToday(),
+                php.planetPHP(),
+                php.zend(),
+                php.alltop(),
+                php.phpbuilder(),
+                php.tutorialsPoint(),
+                clojure.clojureNews(),
+                clojure.planetClosure(),
+                webRTC.webRtcWorld(),
+                erlang.erlang(),
+                neo4j.neo4jNews(),
+                android.androidDeveloperNews(),
+                android.andevcon(),
+                android.androidHeadlines(),
+                android.androidPolice(),
+                android.androidDevelopers(),
+                android.electronicsWeekly(),
+                dotNET.azureWebsites(),
+                aws.aws(),
+                aws.awsBlogs(),
+                azure.azure(),
+                GeneralArticles.medium(this.subTopics),
+                GeneralArticles.techbeacon(this.subTopics),
+                GeneralArticles.infoq(this.subTopics),
+                GeneralArticles.frontendFront(this.subTopics),
+                GeneralArticles.infoWorld(this.subTopics),
+                GeneralArticles.sitepoint(this.subTopics),
+                GeneralArticles.reddit(this.subTopics),
+                GeneralVideos.youtube(),
+                GeneralVideos.egghead(this.subTopics)
+            ];
+
+
+            Promise.all(getMedia)
+                .then(media => {
+                    this.setMedia(media);
+                    console.timeEnd('COMPLETED: ');
+                })
+                .catch(error => console.log(error))
+
+/*
             //C
             this.setMedia(await c.drdobbs());
 
@@ -86,6 +186,9 @@ class Media {
             this.setMedia(await cpp.learningCpp());
             this.setMedia(await cpp.bartoszMilewski());
 
+
+
+
             //React
             // this.setMedia(await React.reactjsNews());
             // this.setMedia(await react.reactjsNewsIO());
@@ -103,6 +206,8 @@ class Media {
             this.setMedia(await reactNative.reactNativeNewsTwitter());
             this.setMedia(await reactNative.facebookDocs());
             this.setMedia(await reactNative.tutorialsPoint());
+
+
 
             //ES6
             this.setMedia(await es6.es6Features());
@@ -133,6 +238,8 @@ class Media {
             this.setMedia(await aurelia.tutorialsDojo());
             this.setMedia(await aurelia.tutorialsPoint());
             this.setMedia(await aurelia.tutAurelia());
+
+
 
             // KoaJS
             this.setMedia(await koaJS.tutorialsPoint());
@@ -205,6 +312,7 @@ class Media {
             this.setMedia(await GeneralVideos.egghead(this.subTopics))
 
             console.timeEnd('COMPLETED: ')
+            */
         } catch (e) {
             console.log(e)
         }
