@@ -187,9 +187,6 @@ class Media {
             this.setMedia(await cpp.learningCpp());
             this.setMedia(await cpp.bartoszMilewski());
 
-
-
-
             //React
             // this.setMedia(await React.reactjsNews());
             // this.setMedia(await react.reactjsNewsIO());
