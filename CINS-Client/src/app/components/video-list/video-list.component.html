@@ -45,7 +45,10 @@
 <div class="panel no-margin-top no-margin-right no-margin-left margin10" *ngFor="let currentSelectedSubTopicMediaFilteredItem of dataService.currentSelectedSubTopicMediaFiltered">
   <div class="heading">
     <span class="icon" [ngClass]="currentSelectedSubTopicMediaFilteredItem.Type === 'Article' ? 'mif-file-binary' : 'mif-file-play'"></span>
-    <div class="title"><span (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">{{currentSelectedSubTopicMediaFilteredItem.Title}}</span></div>
+    <div class="title padding5">
+      <span (click)="dataService.openMedia(currentSelectedSubTopicMediaFilteredItem)">
+{{currentSelectedSubTopicMediaFilteredItem.Title}}
+    </span></div>
 
 
     <span class="btn-max fg-white text-shadow icon" (click)="rateMedia(currentSelectedSubTopicMediaFilteredItem.Id)">
@@ -69,7 +72,10 @@
             <span class="mif-calendar"></span> {{currentSelectedSubTopicMediaFilteredItem.PublishedAt}}
             <span class="mif-info margin10 no-margin-bottom no-margin-right no-margin-top"></span> {{currentSelectedSubTopicMediaFilteredItem.Source}}
           </h5>
-          <div><p class="text-default">{{currentSelectedSubTopicMediaFilteredItem.Description || '(No Description)' | trim}}</p></div>
+          <br>
+          <div>
+            <p class="text-accent">{{currentSelectedSubTopicMediaFilteredItem.Description || '(No Description)' | trim}}</p>
+          </div>
         </div>
   </div>
 </div>

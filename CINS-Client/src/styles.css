@@ -2,6 +2,11 @@
 @import "~metro-dist/css/metro.min.css";
 @import "~metro-dist/css/metro-icons.min.css";
 
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body::-webkit-scrollbar {
   width: 0.75vw;
   background-color: transparent;
