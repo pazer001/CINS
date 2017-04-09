@@ -61,12 +61,13 @@ Vagrant.configure("2") do |config|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
 
-	config.vm.synced_folder "E:/Projects/CINS", "/var/www/html/CINS", fsnotify: true
+	config.vm.synced_folder "E:/Projects/CINS", "/var/www/CINS", fsnotify: true
 	config.vm.network "private_network", type: "dhcp"
-	config.vm.network "forwarded_port", guest: 5555, host: 5555
-	config.vm.network "forwarded_port", guest: 9000, host: 9000
-	config.vm.network "forwarded_port", guest: 9200, host: 9200
-	config.vm.network "forwarded_port", guest: 5601, host: 5601
+	config.vm.network "forwarded_port", guest: 5432, host: 5432,  host_ip: "127.0.0.1"
+	#config.vm.network "forwarded_port", guest: 9000, host: 9000
+	#config.vm.network "forwarded_port", guest: 9200, host: 9200
+	#psqlconfig.vm.network "forwarded_port", guest: 5601, host: 5601
+
 
 
 

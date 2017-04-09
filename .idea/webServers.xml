@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="c4c61bc7-15a7-4260-89e4-fcb9ff1dceb6" name="Vagrant" url="http://127.0.0.1">
-        <fileTransfer host="127.0.0.1" port="2222" privateKey="E:\Projects\CINS\.vagrant\machines\default\virtualbox\private_key" rootFolder="/var/www/html/CINS" accessType="SFTP" keyPair="true">
+        <fileTransfer host="127.0.0.1" port="2222" privateKey="E:\Projects\CINS\.vagrant\machines\default\virtualbox\private_key" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
