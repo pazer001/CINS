@@ -42,5 +42,9 @@ export const appRoutes: Routes = [
   {path: 'AWS', component: MainComponent},
   {path: 'Azure', component: MainComponent},
   {path: 'Backbone', component: MainComponent},
+  {path: 'Symfony', component: MainComponent},
+  {path: 'CodeIgniter', component: MainComponent},
+  {path: 'ExpressJS', component: MainComponent},
+  {path: 'Native Script', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
