@@ -64,12 +64,6 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "E:/Projects/CINS", "/var/www/CINS", fsnotify: true
 	config.vm.network "private_network", type: "dhcp"
 	config.vm.network "forwarded_port", guest: 5432, host: 5432,  host_ip: "127.0.0.1"
-	#config.vm.network "forwarded_port", guest: 9000, host: 9000
-	#config.vm.network "forwarded_port", guest: 9200, host: 9200
-	#psqlconfig.vm.network "forwarded_port", guest: 5601, host: 5601
-
-
-
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
