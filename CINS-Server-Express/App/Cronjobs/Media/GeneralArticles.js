@@ -16,11 +16,11 @@ class GeneralArticles {
                 var $ = cheerio.load(html);
                 $('.streamItem-card').filter(function() {
                     mediaUrls.push({
-                        PublishedAt: $(this).find('.postMetaInline-authorLockup').find('time').prop('datetime'),
+                        PublishedAt: $(this).find('time').prop('datetime'),
                         Title: $(this).find('.section-inner').find('h3').text(),
                         Description: $(this).find('.section-inner').find('p').text(),
                         SubTopicsId: subTopic.Id,
-                        Source: $(this).find('.postMetaInline-authorLockup').find('a').eq(1).text() || 'Medium',
+                        Source: 'Medium',
                         Url: $(this).find('.postArticle-readMore').find('a').prop('href'),
                         Type: 'Article'
                     });

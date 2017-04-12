@@ -46,6 +46,7 @@ export const appRoutes: Routes = [
   {path: 'CodeIgniter', component: MainComponent},
   {path: 'ExpressJS', component: MainComponent},
   {path: 'Native Script', component: MainComponent},
+  {path: 'LISP', component: MainComponent},
   {path: 'Elixir', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
