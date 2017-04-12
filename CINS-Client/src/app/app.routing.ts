@@ -48,5 +48,6 @@ export const appRoutes: Routes = [
   {path: 'Native Script', component: MainComponent},
   {path: 'LISP', component: MainComponent},
   {path: 'Elixir', component: MainComponent},
+  {path: 'Go', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];

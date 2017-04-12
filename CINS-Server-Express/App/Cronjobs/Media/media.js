@@ -31,6 +31,7 @@ const AWS               =   require('./SubTopics/AWS');
 const Azure             =   require('./SubTopics/Azure');
 const LISP              =   require('./SubTopics/LISP');
 const Elixir            =   require('./SubTopics/Elixir');
+const Go                =   require('./SubTopics/Go');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -69,6 +70,8 @@ class Media {
             let azure       =   new Azure(this.subTopics.rows);
             let lisp        =   new LISP(this.subTopics.rows);
             let elixir      =   new Elixir(this.subTopics.rows);
+            let go          =   new Go(this.subTopics.rows);
+
 
             //C
             this.setMedia(await c.drdobbs());
@@ -206,6 +209,10 @@ class Media {
             //Elixir
             this.setMedia(await elixir.elixirStatus());
 
+            //Go
+            this.setMedia(await go.go());
+            this.setMedia(await go.goBlog());
+
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
             this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
@@ -301,6 +308,6 @@ class Media {
     }
 }
 
-// var cron = new Media();
-// cron.init();
-module.exports  =   new Media();
+var cron = new Media();
+cron.init();
+// module.exports  =   new Media();
