@@ -49,5 +49,8 @@ export const appRoutes: Routes = [
   {path: 'LISP', component: MainComponent},
   {path: 'Elixir', component: MainComponent},
   {path: 'Go', component: MainComponent},
+  {path: 'MATLAB', component: MainComponent},
+  {path: 'Objective C', component: MainComponent},
+  {path: 'R', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];

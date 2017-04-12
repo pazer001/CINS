@@ -32,6 +32,7 @@ const Azure             =   require('./SubTopics/Azure');
 const LISP              =   require('./SubTopics/LISP');
 const Elixir            =   require('./SubTopics/Elixir');
 const Go                =   require('./SubTopics/Go');
+const R                 =   require('./SubTopics/R');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -76,7 +77,7 @@ class Media {
             let lisp        =   new LISP(this.subTopics.rows);
             let elixir      =   new Elixir(this.subTopics.rows);
             let go          =   new Go(this.subTopics.rows);
-
+            let r           =   new R(this.subTopics.rows);
 
             //C
             this.setMedia(await c.drdobbs());
@@ -217,6 +218,9 @@ class Media {
             //Go
             this.setMedia(await go.go());
             this.setMedia(await go.goBlog());
+
+            //R
+            this.setMedia(await r.rBloggers());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
