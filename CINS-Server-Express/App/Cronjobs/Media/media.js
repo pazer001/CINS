@@ -36,6 +36,11 @@ const Go                =   require('./SubTopics/Go');
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
 
+const nodeParams    =   [];
+process.argv.slice(2).forEach(val => {
+    nodeParams[val.split('=')[0]] = val.split('=')[1]
+});
+
 class Media {
     constructor() {
         this.subTopics  =   null;
@@ -308,6 +313,9 @@ class Media {
     }
 }
 
-// var cron = new Media();
-// cron.init();
+if(nodeParams['run'] === 'true') {
+    var cron = new Media();
+    cron.init();
+}
+
 module.exports  =   new Media();
