@@ -30,6 +30,7 @@ const DotNET            =   require('./SubTopics/DotNET');
 const AWS               =   require('./SubTopics/AWS');
 const Azure             =   require('./SubTopics/Azure');
 const LISP              =   require('./SubTopics/LISP');
+const Elixir            =   require('./SubTopics/Elixir');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -67,8 +68,7 @@ class Media {
             let aws         =   new AWS(this.subTopics.rows);
             let azure       =   new Azure(this.subTopics.rows);
             let lisp        =   new LISP(this.subTopics.rows);
-
-
+            let elixir      =   new Elixir(this.subTopics.rows);
 
             //C
             this.setMedia(await c.drdobbs());
@@ -203,6 +203,9 @@ class Media {
             //LISP
             this.setMedia(await lisp.planetLisp());
 
+            //Elixir
+            this.setMedia(await elixir.elixirStatus());
+
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));
             this.setMedia(await GeneralArticles.techbeacon(this.subTopics));
@@ -295,9 +298,6 @@ class Media {
         } catch (e) {
             console.log(e)
         }
-
-
-
     }
 }
 

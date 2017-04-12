@@ -35,7 +35,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="270b9055-8260-405b-b286-13a4b2b65f91" name="CINS Elasticsearch" url="http://192.168.1.43">
-        <fileTransfer host="192.168.1.43" port="22" rootFolder="/var/www/CINS/CINS-Server-Express" accessType="SFTP">
+        <fileTransfer host="192.168.1.43" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
