@@ -61,5 +61,6 @@ export const appRoutes: Routes = [
   {path: 'Xamarin', component: MainComponent},
   {path: 'Web Sockets', component: MainComponent},
   {path: 'Lua', component: MainComponent},
+  {path: 'Perl', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
