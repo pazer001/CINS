@@ -54,5 +54,8 @@ export const appRoutes: Routes = [
   {path: 'R', component: MainComponent},
   {path: 'Scala', component: MainComponent},
   {path: 'Swift', component: MainComponent},
+  {path: 'Bootstrap', component: MainComponent},
+  {path: 'CSS', component: MainComponent},
+  {path: 'Electron', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
