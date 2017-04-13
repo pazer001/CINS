@@ -33,6 +33,7 @@ const LISP              =   require('./SubTopics/LISP');
 const Elixir            =   require('./SubTopics/Elixir');
 const Go                =   require('./SubTopics/Go');
 const R                 =   require('./SubTopics/R');
+const Scala             =   require('./SubTopics/Scala');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -78,6 +79,8 @@ class Media {
             let elixir      =   new Elixir(this.subTopics.rows);
             let go          =   new Go(this.subTopics.rows);
             let r           =   new R(this.subTopics.rows);
+            let scala       =   new Scala(this.subTopics.rows);
+
 
             //C
             this.setMedia(await c.drdobbs());
@@ -221,6 +224,9 @@ class Media {
 
             //R
             this.setMedia(await r.rBloggers());
+
+            //Scala
+            this.setMedia(await scala.scala());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));

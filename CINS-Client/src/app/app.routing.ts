@@ -52,5 +52,7 @@ export const appRoutes: Routes = [
   {path: 'MATLAB', component: MainComponent},
   {path: 'Objective C', component: MainComponent},
   {path: 'R', component: MainComponent},
+  {path: 'Scala', component: MainComponent},
+  {path: 'Swift', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
