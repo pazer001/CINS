@@ -34,6 +34,7 @@ const Elixir            =   require('./SubTopics/Elixir');
 const Go                =   require('./SubTopics/Go');
 const R                 =   require('./SubTopics/R');
 const Scala             =   require('./SubTopics/Scala');
+const Xamarin             =   require('./SubTopics/Xamarin');
 
 const GeneralArticles   =   require('./GeneralArticles');
 const GeneralVideos     =   require('./GeneralVideos');
@@ -52,7 +53,7 @@ class Media {
     async init() {
         console.time('COMPLETED: ');
         try {
-            this.subTopics  = this.subTopics || await TopicsModel.cronSubTopics();
+            this.subTopics  =   this.subTopics || await TopicsModel.cronSubTopics();
             let android     =   new Android(this.subTopics.rows);
             let c           =   new C(this.subTopics.rows);
             let cpp         =   new Cpp(this.subTopics.rows);
@@ -80,7 +81,7 @@ class Media {
             let go          =   new Go(this.subTopics.rows);
             let r           =   new R(this.subTopics.rows);
             let scala       =   new Scala(this.subTopics.rows);
-
+            let xamarin       =   new Xamarin(this.subTopics.rows);
 
             //C
             this.setMedia(await c.drdobbs());
@@ -121,8 +122,6 @@ class Media {
             this.setMedia(await reactNative.facebookDocs());
             this.setMedia(await reactNative.tutorialsPoint());
 
-
-
             //ES6
             this.setMedia(await es6.es6Features());
             this.setMedia(await es6.exploringjs());
@@ -152,8 +151,6 @@ class Media {
             this.setMedia(await aurelia.tutorialsDojo());
             this.setMedia(await aurelia.tutorialsPoint());
             this.setMedia(await aurelia.tutAurelia());
-
-
 
             // KoaJS
             this.setMedia(await koaJS.tutorialsPoint());
@@ -227,6 +224,9 @@ class Media {
 
             //Scala
             this.setMedia(await scala.scala());
+
+            //Xamarin
+            this.setMedia(await xamarin.xamarin());
 
             //General Articles
             this.setMedia(await GeneralArticles.medium(this.subTopics));

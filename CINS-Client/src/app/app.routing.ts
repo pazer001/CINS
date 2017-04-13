@@ -57,5 +57,7 @@ export const appRoutes: Routes = [
   {path: 'Bootstrap', component: MainComponent},
   {path: 'CSS', component: MainComponent},
   {path: 'Electron', component: MainComponent},
+  {path: 'EmberJS', component: MainComponent},
+  {path: 'Xamarin', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
