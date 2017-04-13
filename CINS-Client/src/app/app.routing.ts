@@ -60,5 +60,6 @@ export const appRoutes: Routes = [
   {path: 'EmberJS', component: MainComponent},
   {path: 'Xamarin', component: MainComponent},
   {path: 'Web Sockets', component: MainComponent},
+  {path: 'Lua', component: MainComponent},
   {path: '**', component: NotFoundComponent},
 ];
